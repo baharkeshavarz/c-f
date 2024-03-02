@@ -7,6 +7,7 @@ import { LocalProps } from "@/types"
 import LoanCalculator from "@/components/home/loan-calculator"
 import LocaleSwitcher from "@/components/layout/locale-switcher"
 import ResponsiveAppBar from "@/components/layout/navbar"
+import Example from "@/components/layout/ca"
 
 const Home = async ({ params: { lang } }: LocalProps) => {
   const translation = await getDictionary(lang)
@@ -15,6 +16,7 @@ const Home = async ({ params: { lang } }: LocalProps) => {
       {/* <NavbarWithMegaMenu lang={lang} t={translation} /> */}
       {/* <CarouselWithContent />*/}
       <ResponsiveAppBar lang={lang} t={translation} />
+      <Example />
       <LoanCalculator t={translation} />
       <HomeAbout />
       <Footer />

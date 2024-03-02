@@ -1,13 +1,13 @@
 export interface ChildrenProps {
-    children: React.ReactNode
-  }
+  children: React.ReactNode
+}
 
 export interface NaviagationProps {
-   navigation: any;
+  navigation: any
 }
 
 export interface TranslateProps {
-   t: any;
+  t: any
 }
 
 export interface LocalProps {
@@ -20,10 +20,24 @@ export interface ChildrenLocalProps {
 }
 
 export interface ApiResponse {
-  status: number;
-  data: any;
+  status: number
+  data: any
 }
 
+export interface SettingsT {
+  autoPlay: boolean
+  animation: "fade" | "slide"
+  indicators: boolean
+  duration: number
+  navButtonsAlwaysVisible: boolean
+  navButtonsAlwaysInvisible: boolean
+  fullHeightHover: boolean
+  cycleNavigation: boolean
+  swipe: boolean
+  [key: string]: any
+}
 
-
-
+export interface SettingsProps {
+  settings: SettingsT
+  setSettings: Function
+}

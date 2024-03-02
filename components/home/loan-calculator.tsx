@@ -10,7 +10,7 @@ interface LoanCalculatorProps {
 
 const LoanCalculator = ({ t }: LoanCalculatorProps) => {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-white">
       <div className="background-light850_dark100">
         <LayoutWrapper>
           <div className="grid w-full grid-cols-1 gap-10 py-10 sm:grid-cols-2">
