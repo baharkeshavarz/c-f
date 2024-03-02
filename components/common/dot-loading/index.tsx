@@ -1,16 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Box, useTheme, Theme } from "@mui/material";
+import React from "react"
+import PropTypes from "prop-types"
+import { Box, useTheme, Theme } from "@mui/material"
 
 interface DotLoadingProps {
-  color: string;
-  sx?: React.CSSProperties;
+  color: string
+  sx?: React.CSSProperties
 }
 
 const DotLoading = ({ color, sx }: DotLoadingProps) => {
-  const theme: Theme = useTheme();
-  console.log("color",color)
-  console.log("color",theme.palette.primary.main)
+  const theme: Theme = useTheme()
 
   return (
     <Box
@@ -20,7 +18,7 @@ const DotLoading = ({ color, sx }: DotLoadingProps) => {
         width: "10px",
         height: "10px",
         borderRadius: "5px",
-        backgroundColor: theme.palette[color].main as any || "primary",
+        backgroundColor: (theme.palette[color].main as any) || "primary",
         color: theme.palette[color].main,
         animation: "dot-loading 1s infinite linear alternate",
         animationDelay: "0.5s",
@@ -60,11 +58,11 @@ const DotLoading = ({ color, sx }: DotLoadingProps) => {
         }
       }}
     ></Box>
-  );
-};
+  )
+}
 
 DotLoading.propTypes = {
-  color: PropTypes.string.isRequired,
-};
+  color: PropTypes.string.isRequired
+}
 
-export default DotLoading;
+export default DotLoading
