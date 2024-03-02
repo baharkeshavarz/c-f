@@ -1,0 +1,45 @@
+{
+  "navigation": {
+    "home": "Home",
+    "events": "Events",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "login": "Log In"
+  },
+  "pages": {
+    "home": {
+      "title": "Learn About Our Companyre",
+      "description": "There are many variations of passages of available but the majority have suffered alteration in some form, by injected humou or randomised words."
+    },
+    "calculator": {
+      "amount": "Amount",
+      "term": "Term",
+      "monthlyRepayment": "Monthly repayment",
+      "everyMonth": "The same every month",
+      "detailsEntered": "Based on the details you entered",
+      "arp": "APR",
+      "totalPayable": "Total amount payable",
+      "loanRequired": "Loan required"
+    },
+    "general" : {
+      "login": "Login",
+      "register": "Register",
+      "language": "Language"
+    },
+    "login": {
+      "mobile": "Mobile Number",
+      "password": "Password",
+      "dontHaveAccount": "Don't have an account?",
+      "headerMobile": "Please insert your mobile number",
+      "getCode": "Get the Code"
+    },
+    "signup": {
+      "username": "Username",
+      "password": "Password",
+      "haveAccount": "Do you have an account?"
+    },
+    "about": {
+      "title": "About Our Company",
+      "description": "Welcome to our company, where innovation meets excellence. We are a dynamic and forward-thinking technology company committed to providing smart solutions for businesses. Our team of experts is dedicated to pushing boundaries and creating impactful technological solutions that drive success. Welcome to our company, where innovation meets excellence. We are a dynamic and forward-thinking technology company committed to providing smart solutions for businesses. Our team of experts is dedicated to pushing boundaries and creating impactful technological solutions that drive success. Welcome to our company, where innovation meets excellence. We are a dynamic and forward-thinking technology company committed to providing smart solutions for businesses. Our team of experts is dedicated to pushing boundaries and creating impactful technological solutions that drive success."    }
+  }
+}
