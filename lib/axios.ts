@@ -1,4 +1,3 @@
-
 import axios from "axios"
 import { toast } from "react-toastify"
 import auth from "./auth"
@@ -33,7 +32,7 @@ const _axios = axios.create(config)
 // Interceptor to add IP address to headers
 _axios.interceptors.request.use(
   async function (config) {
-    if (!publicPaths.includes(config.url)) {
+    if (!publicPaths.includes(config.url!)) {
       // Fetch user's IP address
       const userIpAddress = await getUserIpAddress()
       // Add user's IP address to the headers
@@ -71,7 +70,6 @@ _axios.interceptors.response.use(
          toast.error(error?.data?.message)
      }
     }
-
     return Promise.reject("")
   }
 )

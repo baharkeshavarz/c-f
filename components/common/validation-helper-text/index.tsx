@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import PropTypes from "prop-types";
 import { FormHelperText, FormHelperTextProps } from "@mui/material";
 
 interface ValidationHelperTextProps extends FormHelperTextProps {
@@ -16,20 +15,13 @@ const ValidationHelperText: FC<ValidationHelperTextProps> = ({
 }: ValidationHelperTextProps) => {
   return (
     <FormHelperText
-      style={{ marginTop: "0px", marginBottom: "0px" }}
       {...others}
       error={error}
-      sx={{ my: 0, fontSize: "10px" }}
+      sx={{ mt: 0.2, fontSize: "0.7rem" }}
     >
       {error ? helperText : ""}
     </FormHelperText>
   );
-};
-
-ValidationHelperText.propTypes = {
-  error: PropTypes.bool,
-  touched: PropTypes.bool,
-  helperText: PropTypes.string.isRequired,
 };
 
 export default ValidationHelperText;

@@ -1,6 +1,4 @@
 import React from "react"
-
-// MUI
 import { useTheme, alpha } from "@mui/material"
 import TextField from "@mui/material/TextField"
 
@@ -8,8 +6,6 @@ import TextField from "@mui/material/TextField"
 const MuiTextField = ({ register, disabled, name, readOnly = false, sx, otp = false, params, children, ...others }) => {
   // eslint-disable-next-line react/display-name
   const Input = React.forwardRef((props, ref) => <TextField {...props} ref={ref} />)
-
-  // Use Theme
   const theme = useTheme()
 
   const otpStyle = {

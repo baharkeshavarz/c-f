@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material"
 import {
-  IdentificationIcon,
+    IdentificationIcon,
     LockClosedIcon,
   } from "@heroicons/react/24/solid"
 
@@ -12,7 +12,7 @@ interface AuthHeaderProps {
 
 const AuthHeader = ({ page, title, subTitle }: AuthHeaderProps) => {
   return (
-    <Box sx={{ mt: 2 }}>
+    <Box sx={{ my: 2 }}>
       <Stack direction='row' justifyContent='center' mb={1}>
          {page === "login" ? <LockClosedIcon className="h-10 w-10" /> : <IdentificationIcon className="h-10 w-10" />} 
       </Stack>
