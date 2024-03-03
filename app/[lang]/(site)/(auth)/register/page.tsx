@@ -1,5 +1,5 @@
 import { getDictionary } from "@/lib/locale"
-import SignUp from "."
+import Register from "."
 import { LocalProps } from "@/types";
 
 const Page = async({
@@ -8,7 +8,7 @@ const Page = async({
 
   const { pages } = await getDictionary(lang);
   return (
-     <SignUp t={pages}/>
+     <Register t={pages}/>
   )
 }
 

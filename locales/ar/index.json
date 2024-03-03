@@ -27,17 +27,30 @@
        "language": "لغة"
     },
     "login": {
-      "mobile": "رقم الهاتف المحمول",
       "password": "كلمة المرور",
       "rememberMe": "تذكرنى",
-      "headerMobile": "الرجاء إدخال رقم هاتفك المحمول",
+      "headerMsg": "الرجاء إدخال رقم هاتفك المحمول",
       "dontHaveAccount": "ليس لديك حساب؟",
       "getCode": "احصل على الكود"
     },
-    "signup": {
+    "register": {
       "username": "اسم المستخدم",
       "password": "كلمة المرور",
-      "haveAccount": "هل لديك حساب؟"
+      "haveAccount": "هل لديك حساب؟",
+      "headerMsg": "الرجاء إدخال البيانات الخاصة بك"
+    },
+    "forms": {
+      "mobile": "رقم الهاتف المحمول",
+      "nationalCode": "رمز دولي"
+    },
+    "formErrors": {
+       "mobileRequired": "رقم الجوال مطلوب",
+       "mobileNumber11Digits" : "رقم الجوال يجب أن يكون 11 رقم",
+       "nationalIDRequired": "مطلوب الهوية الوطنية",
+       "nationalID10Digits": "يجب أن تتكون الهوية الوطنية من 10 أرقام"
+    },
+    "messages": {
+      "sentMsg": "تم إرسال رسالة نصية"
     },
     "about": {
       "title": "معلومات عنا",

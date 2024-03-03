@@ -25,7 +25,6 @@ const LoginForm = ({ t }: TranslateProps) => {
     formState: { errors }
   } = useForm()
 
-
   // Handle Login
   const handleLogin = (val: string) => {
     setStatus("loading")
@@ -38,7 +37,7 @@ const LoginForm = ({ t }: TranslateProps) => {
             toast.error(data?.message)
           } else {
             router.push(`/verifyLogin/${val?.phoneNumber}`)
-            toast.success("پیامک ارسال شد.")
+            toast.success(t.messages.sentSms)
           }
         }
       })
@@ -50,7 +49,7 @@ const LoginForm = ({ t }: TranslateProps) => {
   return (
     <form onSubmit={handleSubmit(handleLogin)}>
       <Stack mt={3}>
-        <AuthHeader page="login" title={t.general.login} subTitle={t.login.headerMobile} />
+        <AuthHeader page="login" title={t.general.login} subTitle={t.login.headerMsg} />
         <TextField
           autoFocus={true}
           onKeyDown={onlyDigitsWithMaxLen(11)}
@@ -61,16 +60,16 @@ const LoginForm = ({ t }: TranslateProps) => {
           }}
           type='tel'
           fullWidth
-          label={t.login.mobile}
+          label={t.forms.mobile}
           {...register("phoneNumber", {
-            required: "شماره موبایل اجباری است",
+            required: t.formErrors.mobileRequired,
             maxLength: {
               value: 11,
-              message: "شماره موبایل باید 11 رقم باشد"
+              message: t.formErrors.mobileNumber11Digits
             },
             minLength: {
               value: 11,
-              message: "شماره موبایل باید 11 رقم باشد"
+              message: t.formErrors.mobileNumber11Digits
             }
           })}
           inputProps={{ maxLength: 11 }}
@@ -85,7 +84,7 @@ const LoginForm = ({ t }: TranslateProps) => {
       >
          {t.login.getCode}
       </MuiButton>
-      <AuthFooter page="login" title={t.general.register} subTitle={t.login.dontHaveAccount} />
+      <AuthFooter page="login" title={t.general.register} subTitle={t.login.dontHaveAccount} pageLink="register" />
     </form>
   )
 }

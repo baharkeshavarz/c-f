@@ -8,17 +8,13 @@
     background-color: white;
     height: 100%;
     overflow: hidden;
-
     position: relative;
 
     .MediaCaption {
       text-overflow: ellipsis;
-
       position: absolute;
       bottom: 0;
-
       padding: 15px;
-
       background-color: black;
       color: white;
       opacity: 0.6;
@@ -54,13 +50,9 @@
     color: white;
     background-color: $dark-red;
     height: 100%;
-
     position: relative;
-
     cursor: pointer;
-
     padding: 30px;
-
     transition: 300ms;
 
     &:hover,
@@ -88,11 +80,9 @@
     .ViewButton {
       margin-top: 40px;
       color: white;
-
       font-size: $header-font-size;
       border: 3px solid white;
       text-transform: capitalize;
-
       transition: 200ms;
     }
   }

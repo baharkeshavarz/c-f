@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useState } from "react"
 import Carousel from "react-material-ui-carousel"
 import "../../styles/Example.scss"
@@ -83,9 +84,7 @@ const Banner = (props: BannerProps) => {
     <Grid item xs={4} key="content">
       <CardContent className="Content">
         <Typography className="Title">{props.item.Name}</Typography>
-
         <Typography className="Caption">{props.item.Caption}</Typography>
-
         <Button variant="outlined" className="ViewButton">
           View Now
         </Button>
@@ -95,7 +94,6 @@ const Banner = (props: BannerProps) => {
 
   for (let i = 0; i < mediaLength; i++) {
     const item = props.item.Items[i]
-
     const media = (
       <Grid item xs={4} key={item.Name}>
         <CardMedia className="Media" image={item.Image} title={item.Name}>
@@ -103,7 +101,6 @@ const Banner = (props: BannerProps) => {
         </CardMedia>
       </Grid>
     )
-
     items.push(media)
   }
 
@@ -114,7 +111,6 @@ const Banner = (props: BannerProps) => {
   } else if (contentPosition === "middle") {
     items.splice(items.length / 2, 0, content)
   }
-
   return (
     <Card raised className="Banner">
       <Grid container spacing={0} className="BannerGrid">

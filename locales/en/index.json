@@ -27,16 +27,29 @@
       "language": "Language"
     },
     "login": {
-      "mobile": "Mobile Number",
       "password": "Password",
       "dontHaveAccount": "Don't have an account?",
-      "headerMobile": "Please insert your mobile number",
+      "headerMsg": "Please enter your mobile number",
       "getCode": "Get the Code"
     },
-    "signup": {
+    "register": {
       "username": "Username",
       "password": "Password",
-      "haveAccount": "Do you have an account?"
+      "haveAccount": "Do you have an account?",
+      "headerMsg": "Please enter your data"
+    },
+    "forms": {
+      "mobile": "Mobile Number",
+      "nationalCode": "National Code"
+    },
+    "formErrors": {
+      "mobileRequired": "Mobile number is required",
+      "mobileNumber11Digits": "Mobile number must be 11 digits",
+      "nationalIDRequired": "National ID is required.",
+      "nationalID10Digits": "National ID must be 10 digits"
+   },
+   "messages": {
+      "sentSms": "Text message was sent"
     },
     "about": {
       "title": "About Our Company",

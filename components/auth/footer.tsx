@@ -7,11 +7,12 @@ import { usePathname } from "next/navigation";
 
 interface AuthFooterProps {
     page: string;
+    pageLink: string;
     title: string;
     subTitle: string;
 }
 
-const AuthFooter = ({page, title, subTitle }: AuthFooterProps)  => {
+const AuthFooter = ({ page, pageLink, title, subTitle }: AuthFooterProps)  => {
   const pathname= usePathname();
   const lang = findLocalFromUrl(pathname);
   return (
@@ -21,7 +22,7 @@ const AuthFooter = ({page, title, subTitle }: AuthFooterProps)  => {
                 {subTitle}
                 <Typography
                     as="a"
-                    href={`/${lang}/signup`}
+                    href={`/${lang}/${pageLink}`}
                     variant="h6"
                     sx={{ px: 0.2 }}
                     color="secondary"

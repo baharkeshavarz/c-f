@@ -45,9 +45,9 @@ _axios.interceptors.request.use(
     }
     return config
   },
-  function (error) {
-    return Promise.reject("خطایی رخ داده است، دوباره تلاش کنید.")
-  }
+  // function (error) {
+  //   return Promise.reject("خطایی رخ داده است، دوباره تلاش کنید.")
+  // }
 )
 
 _axios.interceptors.response.use(
