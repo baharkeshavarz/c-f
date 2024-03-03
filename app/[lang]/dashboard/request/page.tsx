@@ -1,6 +1,6 @@
 import { getDictionary } from "@/lib/locale"
-import Login from "."
 import { LocalProps } from "@/types";
+import Request from "./kyc";
 
 const Page = async({
   params: { lang },
@@ -8,7 +8,7 @@ const Page = async({
 
   const { pages } = await getDictionary(lang);
   return (
-     <Login t={pages}/>
+     <Request t={pages}/>
   )
 }
 

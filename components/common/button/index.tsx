@@ -31,7 +31,12 @@ const MuiButton: React.FC<MuiButtonProps> = ({
       variant={variant}
       fullWidth={fullWidth}
       disabled={loading}
-      sx={{ ...sx, borderRadius: "8px", mt: 3, bgcolor: `${theme.palette.primary.main} !important` }}
+      sx={{
+         borderRadius: "8px",
+         mt: 3, 
+         bgcolor: `${theme.palette.primary.main} !important`,
+         ...sx
+         }}
       {...others}
     >
       {loading ? (

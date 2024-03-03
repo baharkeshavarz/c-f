@@ -72,7 +72,7 @@ _axios.interceptors.response.use(
      }
     }
 
-    return Promise.reject("خطایی رخ داده است، دوباره تلاش کنید.")
+    return Promise.reject("")
   }
 )
 

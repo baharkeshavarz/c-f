@@ -9,9 +9,9 @@ const Palette = (mode: any) => {
     },
     mode: mode,
     primary: {
-      light: "#f12845",
+      light: "#5ae6bd",
       main: "#32d2a4",
-      dark: "#620011FF",
+      dark: "#168263",
       contrastText: "#FFF"
     },
     secondary: {

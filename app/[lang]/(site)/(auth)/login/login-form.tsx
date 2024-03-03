@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Stack, TextField,  useTheme } from "@mui/material"
-import { useForm } from "react-hook-form"
+import { Stack, TextField } from "@mui/material"
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import { useRouter } from "next/navigation"
 import MuiButton from "@/components/common/button"
 import ValidationHelperText from "@/components/common/validation-helper-text"
@@ -16,7 +16,6 @@ import useAuthenticationStore from "@/store/authentication"
 const LoginForm = ({ t }: TranslateProps) => {
   const [status, setStatus] = useState("")
   const router = useRouter();
-  const theme = useTheme();
   const { doLogin } = useAuthenticationStore()
 
   const {
@@ -26,24 +25,26 @@ const LoginForm = ({ t }: TranslateProps) => {
   } = useForm()
 
   // Handle Login
-  const handleLogin = (val: string) => {
+  const handleLogin: SubmitHandler<FieldValues> = async(data) => {
+    const val = data.phoneNumber;
     setStatus("loading")
-    doLogin(val)
-      .then((response: ApiResponse) => {
-        const { status, data } = response
-        if (status === 200) {
-          setStatus("done")
-          if (!data?.hasValue) {
-            toast.error(data?.message)
-          } else {
-            router.push(`/verifyLogin/${val?.phoneNumber}`)
-            toast.success(t.messages.sentSms)
-          }
+    try {
+      const response: ApiResponse = await doLogin(val);
+      const { status, data } = response;
+  
+      if (status === 200) {
+        setStatus("done");
+  
+        if (!data?.hasValue) {
+          toast.error(data?.message);
+        } else {
+          router.push(`/verifyLogin/${val}`);
+          toast.success(t.messages.sentSms);
         }
-      })
-      .catch(() => {
-        setStatus("error")
-      })
+      }
+    } catch (error) {
+      setStatus("error");
+    }
   }
 
   return (

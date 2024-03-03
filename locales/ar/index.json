@@ -39,6 +39,16 @@
       "haveAccount": "هل لديك حساب؟",
       "headerMsg": "الرجاء إدخال البيانات الخاصة بك"
     },
+    "kyc": {
+      "step1": "Personal Information",
+      "step2": "ID Verification",
+      "step3": "Selffie",
+      "step4": "Review",
+      "step1Info": "Please enter your full information",
+      "step2Info": "Please enter your ID information",
+      "step3Info": "Please enter your selffie information",
+      "step4Info": "Please review information"
+    },
     "forms": {
       "mobile": "رقم الهاتف المحمول",
       "nationalCode": "رمز دولي"

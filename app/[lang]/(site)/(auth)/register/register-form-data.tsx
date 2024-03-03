@@ -24,7 +24,7 @@ const RegisterFormData = ({ t }: TranslateProps) => {
   } = useForm()
 
   // Call Register API
-  const handleRegister = val => {
+  const handleRegister = (val: any) => {
     setState("loading")
     doRegister(val)
       .then((response: ApiResponse) => {

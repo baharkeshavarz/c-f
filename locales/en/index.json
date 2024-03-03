@@ -38,6 +38,16 @@
       "haveAccount": "Do you have an account?",
       "headerMsg": "Please enter your data"
     },
+    "kyc": {
+      "step1": "Personal Information",
+      "step2": "ID Verification",
+      "step3": "Selffie",
+      "step4": "Review",
+      "step1Info": "Please enter your full information",
+      "step2Info": "Please enter your ID information",
+      "step3Info": "Please enter your selffie information",
+      "step4Info": "Please review information"
+    },
     "forms": {
       "mobile": "Mobile Number",
       "nationalCode": "National Code"
