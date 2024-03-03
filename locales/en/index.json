@@ -39,14 +39,14 @@
       "headerMsg": "Please enter your data"
     },
     "kyc": {
-      "step1": "Personal Information",
-      "step2": "ID Verification",
-      "step3": "Selffie",
-      "step4": "Review",
-      "step1Info": "Please enter your full information",
-      "step2Info": "Please enter your ID information",
-      "step3Info": "Please enter your selffie information",
-      "step4Info": "Please review information"
+      "step1": "Gmail Verification",
+      "step2": "Personal Information",
+      "step3": "Upload Documents",
+      "step4": "Financial Self-Declaration",
+      "step1Info": "Please enter your gmail address",
+      "step2Info": "Please enter your information",
+      "step3Info": "Please upload your documents",
+      "step4Info": "Please enter your financial information"
     },
     "forms": {
       "mobile": "Mobile Number",

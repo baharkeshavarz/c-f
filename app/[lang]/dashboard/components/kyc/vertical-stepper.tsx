@@ -10,8 +10,12 @@ import Typography from '@mui/material/Typography';
 import { Grid, useTheme } from '@mui/material';
 import { TranslateProps } from '@/types';
 import MuiButton from "@/components/common/button";
+import PersonalInformation from "./steps/personal-information";
+import GmailVerification from "./steps/gmail.verification";
+import UploadDocuments from "./steps/upload-documents";
+import FinancialDeclaration from "./steps/financial-declaration";
 
-const HorizontalLinearStepper = ({ t }: TranslateProps) => {
+const VarticalLinearStepper = ({ t }: TranslateProps) => {
   const steps = [t.kyc.step1, t.kyc.step2, t.kyc.step3, t.kyc.step4];
   const stepsInfo = [t.kyc.step1Info, t.kyc.step2Info, t.kyc.step3Info, t.kyc.step4Info];
   const theme = useTheme()
@@ -101,6 +105,11 @@ const HorizontalLinearStepper = ({ t }: TranslateProps) => {
                       <Box sx={{ background: "white", borderRadius: "8px", height: "100%", mt: 2,}}>
                         <Box sx={{ display: "flex", p: 1, height: "70%" }}>
                            <Typography variant="caption" sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}/{steps.length}</Typography>
+                           {activeStep === 0 && <GmailVerification/>}
+                           {activeStep === 1 && <PersonalInformation/>}
+                           {activeStep === 2 && <UploadDocuments/>}
+                           {activeStep === 3 && <FinancialDeclaration/>}
+
                         </Box>
                         <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "center", pt: 2, }}>
                           <MuiButton
@@ -129,4 +138,4 @@ const HorizontalLinearStepper = ({ t }: TranslateProps) => {
   );
 }
 
-export default HorizontalLinearStepper;
+export default VarticalLinearStepper;
