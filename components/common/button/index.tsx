@@ -1,16 +1,16 @@
-import React from "react";
-import { Button, Typography, ButtonProps, useTheme } from "@mui/material";
-import DotLoading from "../dot-loading";
+import React from "react"
+import { Button, Typography, ButtonProps, useTheme } from "@mui/material"
+import DotLoading from "../dot-loading"
 
-type ButtonSize = "small" | "medium" | "large";
-type ButtonVariant = "text" | "contained" | "outlined";
+type ButtonSize = "small" | "medium" | "large"
+type ButtonVariant = "text" | "contained" | "outlined"
 
 interface MuiButtonProps extends ButtonProps {
-  loading?: boolean;
-  children: React.ReactNode;
-  sx?: React.CSSProperties;
-  size?: ButtonSize;
-  variant?: ButtonVariant;
+  loading?: boolean
+  children: React.ReactNode
+  sx?: React.CSSProperties
+  size?: ButtonSize
+  variant?: ButtonVariant
 }
 
 const MuiButton: React.FC<MuiButtonProps> = ({
@@ -23,7 +23,7 @@ const MuiButton: React.FC<MuiButtonProps> = ({
   sx,
   ...others
 }: MuiButtonProps) => {
-  const theme = useTheme();
+  const theme = useTheme()
   return (
     <Button
       type={type}
@@ -32,11 +32,10 @@ const MuiButton: React.FC<MuiButtonProps> = ({
       fullWidth={fullWidth}
       disabled={loading}
       sx={{
-         borderRadius: "8px",
-         mt: 3, 
-         bgcolor: `${theme.palette.primary.main} !important`,
-         ...sx
-         }}
+        borderRadius: "8px",
+        mt: 2,
+        ...sx
+      }}
       {...others}
     >
       {loading ? (
@@ -47,7 +46,7 @@ const MuiButton: React.FC<MuiButtonProps> = ({
         </Typography>
       )}
     </Button>
-  );
-};
+  )
+}
 
-export default MuiButton;
+export default MuiButton

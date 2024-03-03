@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "providers/rtl-provider.js", "providers/theme-provider.js", "providers/theme-provider.js", "components/common/main-card/index.js", "app/[lang]/dashboard/components/kyc/vertical-stepper.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "providers/rtl-provider.js", "providers/theme-provider.js", "providers/theme-provider.js", "components/common/main-card/index.js", "app/[lang]/dashboard/components/kyc/vertical-stepper.tsx", "components/common/dot-loading/index.tsx"],
   "exclude": ["node_modules"]
 }

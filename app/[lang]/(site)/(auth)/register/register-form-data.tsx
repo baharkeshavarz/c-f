@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Box, Stack, TextField } from "@mui/material"
+import { Box, Stack, TextField, useTheme } from "@mui/material"
 import MuiButton from "@/components/common/button"
 import ValidationHelperText from "@/components/common/validation-helper-text"
 import { toast } from "react-toastify"
@@ -15,6 +15,7 @@ const RegisterFormData = ({ t }: TranslateProps) => {
   const [state, setState] = useState("")
   const { doRegister } = useAuthenticationStore()
   const router = useRouter()
+  const theme = useTheme()
 
   // Use Form
   const {
@@ -30,9 +31,9 @@ const RegisterFormData = ({ t }: TranslateProps) => {
       .then((response: ApiResponse) => {
         const { status, data } = response
         if (status === 200) {
-          setState("done") 
+          setState("done")
           if (!data?.hasValue) {
-            toast.error(data?.message) 
+            toast.error(data?.message)
           } else {
             toast.success(t.messages.sentSms)
             router.push(`/verifyRegister/${val?.phoneNumber}`)
@@ -52,11 +53,14 @@ const RegisterFormData = ({ t }: TranslateProps) => {
             autoFocus={true}
             onKeyDown={onlyDigitsWithMaxLen(11)}
             sx={{
-              '& legend': { display: 'none' },
-              '& .MuiInputLabel-shrink': { opacity: 0, transition: "all 0.2s ease-in" }
+              "& legend": { display: "none" },
+              "& .MuiInputLabel-shrink": {
+                opacity: 0,
+                transition: "all 0.2s ease-in"
+              }
             }}
-            type='tel'
-            pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+            type="tel"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             label={t.forms.mobile}
             {...register("phoneNumber", {
               required: t.formErrors.mobileRequired,
@@ -73,15 +77,21 @@ const RegisterFormData = ({ t }: TranslateProps) => {
             fullWidth
             inputProps={{ maxLength: 11 }}
           />
-          <ValidationHelperText error={!!errors.phoneNumber} helperText={errors?.phoneNumber?.message as string} />
+          <ValidationHelperText
+            error={!!errors.phoneNumber}
+            helperText={errors?.phoneNumber?.message as string}
+          />
         </Box>
         <Box>
           <TextField
             onKeyDown={onlyDigitsWithMaxLen(10)}
-            type='tell'
+            type="tell"
             sx={{
-              '& legend': { display: 'none' },
-              '& .MuiInputLabel-shrink': { opacity: 0, transition: "all 0.2s ease-in" }
+              "& legend": { display: "none" },
+              "& .MuiInputLabel-shrink": {
+                opacity: 0,
+                transition: "all 0.2s ease-in"
+              }
             }}
             {...register("id", {
               required: t.formErrors.nationalIDRequired,
@@ -95,14 +105,22 @@ const RegisterFormData = ({ t }: TranslateProps) => {
               }
             })}
             inputProps={{ maxLength: 10 }}
-            name='id'
+            name="id"
             fullWidth
             label={t.forms.nationalCode}
           />
-          <ValidationHelperText error={!!errors.id} helperText={errors?.id?.message as string} />
+          <ValidationHelperText
+            error={!!errors.id}
+            helperText={errors?.id?.message as string}
+          />
         </Box>
       </Stack>
-      <MuiButton loading={state === "loading"}>{t.general.register}</MuiButton>
+      <MuiButton
+        sx={{ bgcolor: `${theme.palette.primary.main} !important` }}
+        loading={state === "loading"}
+      >
+        {t.general.register}
+      </MuiButton>
     </form>
   )
 }
