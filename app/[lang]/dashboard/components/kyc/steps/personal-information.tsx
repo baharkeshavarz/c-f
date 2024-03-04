@@ -5,6 +5,7 @@ import { Grid, useTheme, useMediaQuery, Box } from '@mui/material'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import MuiButton from '@/components/common/button'
+import dynamic from 'next/dynamic'
 
 interface PersonalInformationProps {
   setActiveStep?: Dispatch<SetStateAction<number>>
@@ -14,6 +15,11 @@ const PersonalInformation = ({setActiveStep}: PersonalInformationProps) => {
 const theme = useTheme()
 const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"))
 const [status, setStatus] = useState("")
+
+const Map = dynamic(() => import("@/components/map-js"), {
+  loading: () => <p>loading...</p>,
+  ssr: false
+})
 
 const {
     register,
@@ -98,14 +104,16 @@ const {
           </Grid>
 
           <Grid item xs={12} sm={12} md={12} lg={12}>
-              <MuiButton
+            <Map/>
+         </Grid>
+
+        </Grid>
+        <MuiButton
                 sx={{ background: `${theme.palette.primary.main} !important` }}
                 loading={status === "loading"}
             >
               Insert
             </MuiButton>
-        </Grid>
-        </Grid>
       </Box>
     </form>
   )
