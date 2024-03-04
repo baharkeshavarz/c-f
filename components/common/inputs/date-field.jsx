@@ -17,7 +17,8 @@ const DateField = ({control, required, label, name, isMobile }) => {
     } : {};
 
     return <Controller
-        control={control}
+         control={control}
+        //  style={{ position: "relative"}}
         rules={rules}
         name={name}
         render={({
@@ -39,11 +40,14 @@ const DateField = ({control, required, label, name, isMobile }) => {
                     render={
                         <TextField
                             inputProps={{ maxLength: 10 }}
+                            style={{width:'100% !important'}}
                             sx={{
                                 "& .MuiInputBase-root": {
                                     borderRadius: "8px",
-                                    width: "100%",
-                                    backgroundColor: alpha(theme.palette.grey[200], 0.5)
+                                    minWidth: isMobile ? "100%" : "20rem",
+                                    backgroundColor: alpha(theme.palette.grey[200], 0.5),
+                                    // zIndex: 1001, 
+                                    // position: "absolute"
                                 }
                             }}
                             fullWidth

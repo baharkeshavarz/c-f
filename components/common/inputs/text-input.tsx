@@ -31,7 +31,7 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
     type = "text",
     pattern = "[a-zA-Z0-9]",
     fullWidth,
-    sx = {},
+    sx= {},
     ...etc
   } = props
   const inputRules = getInputRules(props)
