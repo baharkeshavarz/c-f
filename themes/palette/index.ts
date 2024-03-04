@@ -9,10 +9,10 @@ const Palette = (mode: any) => {
     },
     mode: mode,
     primary: {
-      light: "#5ae6bd",
-      main: "#32d2a4",
-      dark: "#168263",
-      contrastText: "#FFF"
+      light: "#FFFF99",
+      main: "#ffff00",
+      dark: "#fcf442",
+      contrastText: "#000"
     },
     secondary: {
       light: "#f68b70",
@@ -40,7 +40,7 @@ const Palette = (mode: any) => {
     },
     info: {
       light: "#32BAFF",
-      main: "#16B1FF",
+      main: "#36454F",
       dark: "#139CE0",
       contrastText: "#FFF"
     },
@@ -59,6 +59,9 @@ const Palette = (mode: any) => {
       A200: "#AAAAAA",
       A400: "#616161",
       A700: "#303030"
+    },
+    brown: {
+      main: "#875410"
     },
     text: {
       primary: `rgba(${mainColor}, 0.87)`,

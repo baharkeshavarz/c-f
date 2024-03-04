@@ -3,7 +3,7 @@ import { TextField, useTheme, InputAdornment, InputProps } from "@mui/material"
 import { onlyCharactersWithMaxLen } from "./helper"
 
 interface TextFieldInputProps {
-  register: any // Update this type based on the actual type
+  register: any
   isRequired?: boolean
   maxLength?: number
   minLength?: number
@@ -11,7 +11,7 @@ interface TextFieldInputProps {
   name: string
   min?: number
   max?: number
-  icon?: any,
+  icon?: any
   type?: string
   pattern?: string
   fullWidth?: boolean
@@ -31,11 +31,22 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
     type = "text",
     pattern = "[a-zA-Z0-9]",
     fullWidth,
-    sx= {},
+    sx = {},
     ...etc
   } = props
   const inputRules = getInputRules(props)
   const theme = useTheme()
+
+  const focusStyle = {
+    "& label.Mui-focused": {
+      color: theme.palette.grey[500]
+    },
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: theme.palette.grey[500]
+      }
+    }
+  }
 
   const elementProps: {
     inputProps?: { maxLength: number }
@@ -53,6 +64,7 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
     label: label || "",
     type,
     sx: {
+      ...focusStyle,
       borderRadius: "8px",
       ...sx
     }
@@ -64,7 +76,7 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
       ...elementProps.InputProps,
       endAdornment: (
         <InputAdornment position="start">
-            <Icon size={20} color={theme.palette.primary.dark} />
+          <Icon size={20} color={theme.palette.primary.dark} />
         </InputAdornment>
       )
     }
@@ -73,7 +85,14 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
   elementProps.onKeyDown = onlyCharactersWithMaxLen(maxLength)
 
   return (
-    <TextField {...elementProps} {...register(name, inputRules)} {...etc} />
+    <TextField
+      InputLabelProps={{
+        style: { color: theme.palette.grey[500] }
+      }}
+      {...elementProps}
+      {...register(name, inputRules)}
+      {...etc}
+    />
   )
 }
 

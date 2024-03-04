@@ -11,7 +11,7 @@ import AuthHeader from "@/components/auth/header"
 import AuthFooter from "@/components/auth/footer"
 import { toast } from "react-toastify"
 import useAuthenticationStore from "@/store/authentication"
-import PhoneNumberInput from "@/components/common/inputs/PhoneNumberInput"
+import PhoneNumberInput from "@/components/common/inputs/phone-number"
 
 const LoginForm = ({ t }: TranslateProps) => {
   const [status, setStatus] = useState("")

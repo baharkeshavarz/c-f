@@ -25,7 +25,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
     t.kyc.step4Info
   ]
   const theme = useTheme()
-  const [activeStep, setActiveStep] = useState(1)
+  const [activeStep, setActiveStep] = useState(0)
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1)
@@ -47,9 +47,9 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
           xs={12}
           md={4}
           sx={{
-             display: "flex",
-             justifyContent: "center",  
-        }}
+            display: "flex",
+            justifyContent: "center"
+          }}
         >
           <Stepper
             activeStep={activeStep}
@@ -134,21 +134,29 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                 <Stack
                   sx={{
                     display: "flex",
-                    p: 1,
+                    p: 1
                   }}
                 >
                   <Typography
-                    variant="h6"
-                    color={theme.palette.primary.dark}
+                    variant="h5"
+                    color={theme.palette.grey[600]}
                     sx={{ m: 2, mb: 0 }}
                   >
                     Step {activeStep + 1}/{steps.length}
                   </Typography>
                   <MainCard sx={{ margin: 2 }}>
-                      {activeStep === 0 && <GmailVerification setActiveStep={setActiveStep} />}
-                      {activeStep === 1 && <PersonalInformation setActiveStep={setActiveStep}/>}
-                      {activeStep === 2 && <UploadDocuments setActiveStep={setActiveStep}/>}
-                      {activeStep === 3 && <FinancialDeclaration setActiveStep={setActiveStep}/>}
+                    {activeStep === 0 && (
+                      <GmailVerification setActiveStep={setActiveStep} />
+                    )}
+                    {activeStep === 1 && (
+                      <PersonalInformation setActiveStep={setActiveStep} />
+                    )}
+                    {activeStep === 2 && (
+                      <UploadDocuments setActiveStep={setActiveStep} />
+                    )}
+                    {activeStep === 3 && (
+                      <FinancialDeclaration setActiveStep={setActiveStep} />
+                    )}
                   </MainCard>
                 </Stack>
                 <Box
@@ -171,7 +179,10 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                     Back
                   </MuiButton>
                   <MuiButton
-                    sx={{ background: `${theme.palette.primary.main} !important` }}
+                    sx={{
+                      background: `${theme.palette.common.black} !important`,
+                      color: theme.palette.primary.main
+                    }}
                     onClick={handleNext}
                     fullWidth={false}
                   >

@@ -12,22 +12,28 @@ import { toast } from "react-toastify"
 import auth from "@/lib/auth"
 import { onlyDigitsWithMaxLen, p2e } from "@/components/common/inputs/helper"
 import MuiButton from "@/components/common/button"
-import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
+import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline"
 import { findLocalFromUrl } from "@/lib/url"
 
-interface VerifyFormProps{
-  page: string;
-  isMobile: boolean;
-  setStep?: Dispatch<SetStateAction<string>>;
+interface VerifyFormProps {
+  page: string
+  isMobile: boolean
+  setStep?: Dispatch<SetStateAction<string>>
   setActiveStep?: Dispatch<SetStateAction<number>>
 }
 
-const VerifyForm = ({ page, isMobile, setStep, setActiveStep}: VerifyFormProps) => {
-  const pathname= usePathname();
-  const lang = findLocalFromUrl(pathname);
+const VerifyForm = ({
+  page,
+  isMobile,
+  setStep,
+  setActiveStep
+}: VerifyFormProps) => {
+  const pathname = usePathname()
+  const lang = findLocalFromUrl(pathname)
   const { mobileNumber } = {}
   const router = useRouter()
-  const { doVerifyLogin, doVerifyRegister, doLogin, resendRegisterOtp } = useAuthenticationStore()
+  const { doVerifyLogin, doVerifyRegister, doLogin, resendRegisterOtp } =
+    useAuthenticationStore()
   const [state, setState] = useState("")
   const theme = useTheme()
   const {
@@ -123,86 +129,106 @@ const VerifyForm = ({ page, isMobile, setStep, setActiveStep}: VerifyFormProps) 
 
   const generateHref = () => {
     switch (page) {
-     case "register":
-        return `/${lang}/register?phone=${mobileNumber}`;
-     case "login":
-      return `/${lang}/login?phone=${mobileNumber}`;
-     case "gmail":
+      case "register":
+        return `/${lang}/register?phone=${mobileNumber}`
+      case "login":
+        return `/${lang}/login?phone=${mobileNumber}`
+      case "gmail":
         setStep("data")
-        return `/${lang}/dashboard/request`;
-     default:
-        return "";
+        return `/${lang}/dashboard/request`
+      default:
+        return ""
     }
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit(handleVerify)}>
       <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            width: isMobile ? "100%" : "70%",
-            marginX: "auto",
-            mt: 2,
-            mb: 5,
-          }}
-        >
-      <Stack>
-        <TextField
-          type="tel"
-          autoFocus
-          onKeyDown={onlyDigitsWithMaxLen(6)}
-          onKeyUp={event => {
-            if (event.target.value.length === 6) {
-              handleSubmit(handleVerify)()
-            }
-          }}
-          sx={{
-            "& .MuiInputBase-root": {
-              borderRadius: "8px",
-              backgroundColor: alpha(theme.palette.grey[200], 0.5)
-            }
-          }}
-          inputProps={{
-            maxLength: 6,
-            style: {
-              textAlign: "center",
-              letterSpacing: "2rem",
-              fontWeight: 800
-            }
-          }}
-          fullWidth
-          disabled={state === "loading"}
-          {...register("otp", {
-            required: "Verification code is mandatory",
-            maxLength: {
-              value: 6,
-              message: "Verification code must be 6 digits"
-            },
-            minLength: {
-              value: 6,
-              message: "Verification code must be 6 digits"
-            }
-          })}
-        />
-        <ValidationHelperText error={!!errors.otp} helperText={errors?.otp?.message as string} />
-      </Stack>
-      <Stack direction="row" justifyContent="space-between" alignItems="center" mt={2}>
-        <CountDown actionFunc={sendOtpAgain} amount={3} />
-        <Stack direction="row" alignItems="center" sx={{ fontWeight: 600}}>
-         <ModeEditOutlineIcon size={19} color={theme.palette.secondary.main} />
-          <Link
-            href=""
-            onClick={() => generateHref()}
-          >
-            Edit
-          </Link>
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          width: isMobile ? "100%" : "70%",
+          marginX: "auto",
+          mt: 2,
+          mb: 5
+        }}
+      >
+        <Stack>
+          <TextField
+            type="tel"
+            autoFocus
+            onKeyDown={onlyDigitsWithMaxLen(6)}
+            InputLabelProps={{
+              style: { color: theme.palette.grey[500] }
+            }}
+            onKeyUp={event => {
+              if (event.target.value.length === 6) {
+                handleSubmit(handleVerify)()
+              }
+            }}
+            sx={{
+              "& .MuiInputBase-root": {
+                borderRadius: "8px",
+                backgroundColor: alpha(theme.palette.grey[200], 0.5)
+              },
+              "& label.Mui-focused": {
+                color: theme.palette.grey[500]
+              },
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: theme.palette.grey[500]
+                }
+              }
+            }}
+            inputProps={{
+              maxLength: 6,
+              style: {
+                textAlign: "center",
+                letterSpacing: "2rem",
+                fontWeight: 800
+              }
+            }}
+            fullWidth
+            disabled={state === "loading"}
+            {...register("otp", {
+              required: "Verification code is mandatory",
+              maxLength: {
+                value: 6,
+                message: "Verification code must be 6 digits"
+              },
+              minLength: {
+                value: 6,
+                message: "Verification code must be 6 digits"
+              }
+            })}
+          />
+          <ValidationHelperText
+            error={!!errors.otp}
+            helperText={errors?.otp?.message as string}
+          />
         </Stack>
-      </Stack>
-      <MuiButton 
-         sx={{ background: `${theme.palette.primary.main} !important` }}
-         loading={state === "loading"}>
-           Confirm Code
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          mt={2}
+        >
+          <CountDown actionFunc={sendOtpAgain} amount={3} />
+          <Stack direction="row" alignItems="center" sx={{ fontWeight: 600 }}>
+            <ModeEditOutlineIcon
+              size={19}
+              color={theme.palette.secondary.main}
+            />
+            <Link href="" onClick={() => generateHref()}>
+              Edit
+            </Link>
+          </Stack>
+        </Stack>
+        <MuiButton
+          sx={{ background: `${theme.palette.primary.main} !important` }}
+          loading={state === "loading"}
+        >
+          Confirm Code
         </MuiButton>
       </Box>
     </form>

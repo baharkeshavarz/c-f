@@ -1,17 +1,26 @@
 import { useRef, useState } from "react"
-import { Stack, Typography, Grid, useTheme, Button, Box, CircularProgress} from "@mui/material"
+import {
+  Stack,
+  Typography,
+  Grid,
+  useTheme,
+  Button,
+  Box,
+  CircularProgress
+} from "@mui/material"
 import MainCard from "@/components/common/main-card"
-import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload"
+import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown"
 import { toast } from "react-toastify"
 import { useMediaQuery } from "@mui/material"
 import { Photo } from "@mui/icons-material"
+import Image from "next/image"
 
 interface FileUploaderProps {
-  title: string,
-  subTitle: string,
-  setFile: any,
-  sx?: React.CSSProperties,
+  title: string
+  subTitle: string
+  setFile: any
+  sx?: React.CSSProperties
 }
 
 const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
@@ -98,12 +107,20 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
   return (
     <MainCard
       shadow={3}
-      sx={{ borderRadius: "10px", cursor: "pointer", display: "block", minHeight: "135px", mt: 1, ...sx }}
+      sx={{
+        borderRadius: "10px",
+        cursor: "pointer",
+        display: "block",
+        minHeight: "135px",
+        bgcolor: theme.palette.primary.dark,
+        mt: 1,
+        ...sx
+      }}
       onClick={handleFileUpload}
     >
       <input
         ref={inputRef}
-        type='file'
+        type="file"
         hidden
         multiple
         accept={["image/jpeg", "image/png", "application/pdf"]}
@@ -112,51 +129,82 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
 
       {image && !loading && (
         <>
-          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginBottom: 1}}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginBottom: 1
+            }}
+          >
             <Button
-              color='warning'
-              variant='contained'
+              color="warning"
+              variant="contained"
               fullWidth={isMobile}
               startIcon={<Photo />}
-              size='medium'
-              sx={{ background: `${theme.palette.warning.dark} !important`, borderRadius: "4px", px: 2 }}
+              size="medium"
+              sx={{
+                background: `${theme.palette.brown.main} !important`,
+                borderRadius: "4px",
+                px: 2
+              }}
             >
-               Change the {title}
+              Change the {title}
             </Button>
           </Box>
           {!isMobile ? (
             isPdf ? (
-              <Grid display={"flex"} justifyContent={"center"} alignItems={"center"} mb={2}>
+              <Grid
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                mb={2}
+              >
                 <iframe
                   frameborder="0"
-                  allowtransparency='yes'
-                  scrolling='no'
-                  width='70%'
-                  height='500'
+                  allowtransparency="yes"
+                  scrolling="no"
+                  width="70%"
+                  height="500"
                   src={isPdf + "#toolbar=0"}
                 />
               </Grid>
             ) : (
               <Box>
-                <img src={image} className='resize_fit_center' alt='selected_img' />
+                <Image
+                  src={image}
+                  alt={title}
+                  width={100}
+                  height={100}
+                  className="resize_fit_center"
+                />
               </Box>
             )
           ) : isPdf ? (
             <Stack
-              direction='row'
-              justifyContent='center'
+              direction="row"
+              justifyContent="center"
               onClick={e => {
                 e.stopPropagation() // Stop the event from propagating to the parent (handleFileUpload)
                 downloadPdfFile() // Call the downloadPdfFile function
               }}
             >
-              <Button size="large" startIcon={<ArrowCircleDownIcon/>} variant='contained' sx={{ borderRadius: "8px" }}>
+              <Button
+                size="large"
+                startIcon={<ArrowCircleDownIcon />}
+                variant="contained"
+                sx={{ borderRadius: "8px" }}
+              >
                 دانلود فایل چک آپلود شده
               </Button>
             </Stack>
           ) : (
             <Box>
-              <img src={image} className='resize_fit_center' alt='selected_img' />
+              <img
+                src={image}
+                className="resize_fit_center"
+                alt="selected_img"
+              />
             </Box>
           )}
         </>
@@ -167,15 +215,27 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
         </Box>
       )}
       {!image && !loading && (
-        <Box sx={{ m: 0.3, borderRadius: "6px", border: `1px solid ${theme.palette.divider}` }}>
-          <Stack direction='row' justifyContent="center" alignContent="center" my={2}>
-            <Stack direction='row' alignItems="center" justifyContent='center'>
-              <CloudDownloadIcon/>
+        <Box
+          sx={{
+            m: 0.3,
+            borderRadius: "6px",
+            border: `1px solid ${theme.palette.divider}`,
+            background: theme.palette.common.white
+          }}
+        >
+          <Stack
+            direction="row"
+            justifyContent="center"
+            alignContent="center"
+            my={2}
+          >
+            <Stack direction="row" alignItems="center" justifyContent="center">
+              <CloudDownloadIcon />
               <Stack ml={3}>
                 <Typography variant="h5" fontWeight="bold">
                   {title}
                 </Typography>
-                <Typography variant="caption" color="secondary">
+                <Typography variant="caption" color={theme.palette.grey[500]}>
                   {subTitle}
                 </Typography>
               </Stack>
@@ -184,11 +244,13 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
         </Box>
       )}
 
-      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <Typography variant="caption" sx={{ mt: 1, fontWeight: 600, }} >
-              The maximum file size is 5 MB.
-          </Typography>
-        </Box>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
+        <Typography variant="caption" sx={{ mt: 1, fontWeight: 600 }}>
+          The maximum file size is 5 MB.
+        </Typography>
+      </Box>
     </MainCard>
   )
 }
