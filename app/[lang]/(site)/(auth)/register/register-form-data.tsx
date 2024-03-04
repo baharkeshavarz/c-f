@@ -116,7 +116,7 @@ const RegisterFormData = ({ t }: TranslateProps) => {
         </Box>
       </Stack>
       <MuiButton
-        sx={{ bgcolor: `${theme.palette.primary.main} !important` }}
+        sx={{ background: `${theme.palette.primary.main} !important` }}
         loading={state === "loading"}
       >
         {t.general.register}

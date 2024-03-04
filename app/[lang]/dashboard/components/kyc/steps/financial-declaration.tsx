@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
-const FinancialDeclaration = () => {
+interface FinancialDeclarationProps {
+  setActiveStep?: Dispatch<SetStateAction<number>>
+}
+
+const FinancialDeclaration = ({setActiveStep}: FinancialDeclarationProps) => {
   return (
     <div>
       FinancialDeclaration

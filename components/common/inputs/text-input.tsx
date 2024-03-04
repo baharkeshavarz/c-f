@@ -11,7 +11,7 @@ interface TextFieldInputProps {
   name: string
   min?: number
   max?: number
-  icon?: React.ElementType
+  icon?: any,
   type?: string
   pattern?: string
   fullWidth?: boolean
@@ -64,7 +64,7 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
       ...elementProps.InputProps,
       endAdornment: (
         <InputAdornment position="start">
-          <Icon size={20} color={theme.palette.primary.dark} />
+            <Icon size={20} color={theme.palette.primary.dark} />
         </InputAdornment>
       )
     }

@@ -11,7 +11,7 @@ import { Grid, Stack, useTheme } from "@mui/material"
 import { TranslateProps } from "@/types"
 import MuiButton from "@/components/common/button"
 import PersonalInformation from "./steps/personal-information"
-import GmailVerification from "./steps/gmail.verification"
+import GmailVerification from "./steps/gmail/gmail.verification"
 import UploadDocuments from "./steps/upload-documents"
 import FinancialDeclaration from "./steps/financial-declaration"
 
@@ -141,10 +141,10 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                   >
                     Step {activeStep + 1}/{steps.length}
                   </Typography>
-                  {activeStep === 0 && <GmailVerification />}
-                  {activeStep === 1 && <PersonalInformation />}
-                  {activeStep === 2 && <UploadDocuments />}
-                  {activeStep === 3 && <FinancialDeclaration />}
+                  {activeStep === 0 && <GmailVerification setActiveStep={setActiveStep} />}
+                  {activeStep === 1 && <PersonalInformation setActiveStep={setActiveStep}/>}
+                  {activeStep === 2 && <UploadDocuments setActiveStep={setActiveStep}/>}
+                  {activeStep === 3 && <FinancialDeclaration setActiveStep={setActiveStep}/>}
                 </Stack>
                 <Box
                   sx={{
@@ -166,7 +166,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                     Back
                   </MuiButton>
                   <MuiButton
-                    sx={{ bgcolor: `${theme.palette.primary.main} !important` }}
+                    sx={{ background: `${theme.palette.primary.main} !important` }}
                     onClick={handleNext}
                     fullWidth={false}
                   >

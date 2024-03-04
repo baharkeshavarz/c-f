@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
-const PersonalInformation = () => {
+interface PersonalInformationProps {
+  setActiveStep?: Dispatch<SetStateAction<number>>
+}
+
+const PersonalInformation = ({setActiveStep}: PersonalInformationProps) => {
   return (
     <div>
       PersonalInformation

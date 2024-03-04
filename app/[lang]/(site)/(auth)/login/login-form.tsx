@@ -69,7 +69,7 @@ const LoginForm = ({ t }: TranslateProps) => {
         />
       </Stack>
       <MuiButton
-        sx={{ bgcolor: `${theme.palette.primary.main} !important` }}
+        sx={{ background: `${theme.palette.primary.main} !important` }}
         loading={status === "loading"}
       >
         {t.login.getCode}

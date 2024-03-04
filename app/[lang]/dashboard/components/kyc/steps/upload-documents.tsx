@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
-const UploadDocuments = () => {
+interface UploadDocumentsProps {
+  setActiveStep?: Dispatch<SetStateAction<number>>
+}
+
+const UploadDocuments = ({setActiveStep}: UploadDocumentsProps) => {
   return (
     <div>
       UploadDocuments
