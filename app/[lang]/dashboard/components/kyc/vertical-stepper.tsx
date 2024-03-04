@@ -14,6 +14,7 @@ import PersonalInformation from "./steps/personal-information"
 import GmailVerification from "./steps/gmail/gmail.verification"
 import UploadDocuments from "./steps/upload-documents"
 import FinancialDeclaration from "./steps/financial-declaration"
+import MainCard from "@/components/common/main-card"
 
 const VarticalLinearStepper = ({ t }: TranslateProps) => {
   const steps = [t.kyc.step1, t.kyc.step2, t.kyc.step3, t.kyc.step4]
@@ -24,7 +25,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
     t.kyc.step4Info
   ]
   const theme = useTheme()
-  const [activeStep, setActiveStep] = useState(0)
+  const [activeStep, setActiveStep] = useState(1)
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1)
@@ -39,21 +40,25 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
   }
 
   return (
-    <Box sx={{ width: "100%", display: "flex", mb: 2 }}>
+    <Box sx={{ width: "100%", display: "flex" }}>
       <Grid container spacing={2} margin={1}>
         <Grid
           item
           xs={12}
           md={4}
-          sx={{ display: "flex", justifyContent: "center" }}
+          sx={{
+             display: "flex",
+             justifyContent: "center",  
+        }}
         >
           <Stepper
             activeStep={activeStep}
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
-              width: "100%"
+              width: "100%",
+              marginBottom: 4,
+              height: "20rem"
             }}
           >
             {steps.map((label, index) => {
@@ -73,7 +78,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                         ? theme.palette.common.black
                         : theme.palette.grey[200],
                     p: 2,
-                    mt: 2,
+                    m: 0,
                     borderRadius: 2,
                     fontWeight: 700,
                     "& .MuiStepLabel-root .Mui-completed": {
@@ -123,7 +128,6 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                 sx={{
                   background: "white",
                   borderRadius: "8px",
-                  height: "100%",
                   mt: 2
                 }}
               >
@@ -131,7 +135,6 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                   sx={{
                     display: "flex",
                     p: 1,
-                    height: "70%"
                   }}
                 >
                   <Typography
@@ -141,10 +144,12 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                   >
                     Step {activeStep + 1}/{steps.length}
                   </Typography>
-                  {activeStep === 0 && <GmailVerification setActiveStep={setActiveStep} />}
-                  {activeStep === 1 && <PersonalInformation setActiveStep={setActiveStep}/>}
-                  {activeStep === 2 && <UploadDocuments setActiveStep={setActiveStep}/>}
-                  {activeStep === 3 && <FinancialDeclaration setActiveStep={setActiveStep}/>}
+                  <MainCard sx={{ margin: 2 }}>
+                      {activeStep === 0 && <GmailVerification setActiveStep={setActiveStep} />}
+                      {activeStep === 1 && <PersonalInformation setActiveStep={setActiveStep}/>}
+                      {activeStep === 2 && <UploadDocuments setActiveStep={setActiveStep}/>}
+                      {activeStep === 3 && <FinancialDeclaration setActiveStep={setActiveStep}/>}
+                  </MainCard>
                 </Stack>
                 <Box
                   sx={{

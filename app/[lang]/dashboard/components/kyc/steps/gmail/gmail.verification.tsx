@@ -15,10 +15,10 @@ const GmailVerification = ({ setActiveStep }: GmailVerificationProps ) => {
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"))
 
   return (
-    <MainCard sx={{ margin: 2 }}>
+    <>
         {step === "data" && <GetData isMobile={isMobile} setStep={setStep}/>}
         {step === "verify" && <VerifyForm isMobile={isMobile} setStep={setStep} page="gmail" setActiveStep={setActiveStep}/>}
-    </MainCard>
+    </>
   )
 }
 
