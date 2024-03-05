@@ -9,7 +9,7 @@ import {
   CircularProgress
 } from "@mui/material"
 import MainCard from "@/components/common/main-card"
-import CloudDownloadIcon from "@mui/icons-material/CloudDownload"
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown"
 import { toast } from "react-toastify"
 import { useMediaQuery } from "@mui/material"
@@ -17,13 +17,14 @@ import { Photo } from "@mui/icons-material"
 import Image from "next/image"
 
 interface FileUploaderProps {
+  t: any;
   title: string
   subTitle: string
   setFile: any
   sx?: React.CSSProperties
 }
 
-const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
+const FileUploader = ({ t, title, subTitle, setFile, sx }: FileUploaderProps) => {
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("xs"))
   const inputRef = useRef()
   const theme = useTheme()
@@ -144,7 +145,7 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
               startIcon={<Photo />}
               size="medium"
               sx={{
-                background: `${theme.palette.brown.main} !important`,
+                background: `${theme.palette.brown[500]} !important`,
                 borderRadius: "4px",
                 px: 2
               }}
@@ -230,7 +231,7 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
             my={2}
           >
             <Stack direction="row" alignItems="center" justifyContent="center">
-              <CloudDownloadIcon />
+              <CloudUploadIcon />
               <Stack ml={3}>
                 <Typography variant="h5" fontWeight="bold">
                   {title}
@@ -248,7 +249,7 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Typography variant="caption" sx={{ mt: 1, fontWeight: 600, color: "white" }}>
-          The maximum file size is 5 MB.
+            {t.messages.fileMaxSize}
         </Typography>
       </Box>
     </MainCard>

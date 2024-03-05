@@ -61,7 +61,7 @@ const Palette = (mode: any) => {
       A700: "#303030"
     },
     brown: {
-      main: "#875410"
+      500: "#795548"
     },
     text: {
       primary: `rgba(${mainColor}, 0.87)`,

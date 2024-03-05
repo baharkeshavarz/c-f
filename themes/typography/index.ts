@@ -51,18 +51,22 @@ const Typography = (fontFamily : any) => {
     },
     subtitle1: {
       fontSize: "0.875rem",
-      fontWeight: 600,
+      fontWeight: 500,
       lineHeight: 1.57
     },
-    subtitle1WithAlignment: {
+    subtitle1Bold: {
       fontSize: "0.875rem",
       fontWeight: 600,
-      lineHeight: 1.57,
-      textAlign: "justify",
+      lineHeight: 1.57
     },
     subtitle2: {
       fontSize: "0.75rem",
       fontWeight: 500,
+      lineHeight: 1.66
+    },
+    subtitle2Bold: {
+      fontSize: "0.75rem",
+      fontWeight: 600,
       lineHeight: 1.66
     },
     overline: {

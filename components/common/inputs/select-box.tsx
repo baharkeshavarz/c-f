@@ -10,6 +10,7 @@ interface SelectBoxInputProps {
 
 const SelectBoxInput = ({ label, options, onChange, sx= {} }: SelectBoxInputProps) => {
   const theme = useTheme()
+
   return (
     <Autocomplete
         {...sx}
@@ -19,10 +20,18 @@ const SelectBoxInput = ({ label, options, onChange, sx= {} }: SelectBoxInputProp
         renderInput={params => (
         <TextField
             sx={{
-            "& .MuiInputBase-root": {
-                borderRadius: "8px",
-                backgroundColor: alpha(theme.palette.grey[200], 0.5)
-            }
+                "& label.Mui-focused": {
+                    color: theme.palette.grey[500]
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "&.Mui-focused fieldset": {
+                      borderColor: theme.palette.grey[500]
+                    }
+                  },
+                "& .MuiInputBase-root": {
+                    borderRadius: "8px",
+                    backgroundColor: alpha(theme.palette.grey[200], 0.5)
+                }
             }}
             {...params}
             label={label}

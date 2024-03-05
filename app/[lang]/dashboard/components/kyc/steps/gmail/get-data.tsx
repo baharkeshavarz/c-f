@@ -7,13 +7,15 @@ import { Box, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import MarkunreadIcon from "@mui/icons-material/Markunread"
+import { TranslateProps } from "@/types"
 
 interface GetDataProps {
+  t: any,
   isMobile: boolean
   setStep: Dispatch<SetStateAction<string>>
 }
 
-const GetData = ({ isMobile, setStep }: GetDataProps) => {
+const GetData = ({ t, isMobile, setStep }: GetDataProps) => {
   const [status, setStatus] = useState("")
   const theme = useTheme()
   const {
@@ -42,13 +44,14 @@ const GetData = ({ isMobile, setStep }: GetDataProps) => {
       >
         <TextFieldInput
           name="gmailAddress"
-          label="Gmail Address"
+          label={t.forms.gmail}
           isRequired={true}
           register={register}
           maxLength={50}
           minLength={5}
           fullWidth={isMobile}
           icon={MarkunreadIcon}
+          t={t}
         />
         <ValidationHelperText
           error={!!errors?.gmailAddress}

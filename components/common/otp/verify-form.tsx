@@ -16,6 +16,7 @@ import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline"
 import { findLocalFromUrl } from "@/lib/url"
 
 interface VerifyFormProps {
+  t: any,
   page: string
   isMobile: boolean
   setStep?: Dispatch<SetStateAction<string>>
@@ -23,6 +24,7 @@ interface VerifyFormProps {
 }
 
 const VerifyForm = ({
+  t,
   page,
   isMobile,
   setStep,
@@ -57,7 +59,7 @@ const VerifyForm = ({
           if (response?.status === 200) {
             if (!response?.data?.succeed) {
               setState("done")
-              toast.error(response?.data?.message || "خطایی پیش آمده است")
+              toast.error(response?.data?.message || "An error has occurred")
             } else {
               setState("done")
               auth.login(response?.data?.value)
@@ -86,7 +88,7 @@ const VerifyForm = ({
           if (response?.status === 200) {
             setState("done")
             if (!response?.data?.succeed) {
-              toast.error(response?.data?.message || "خطایی پیش آمده است")
+              toast.error(response?.data?.message || "An error has occurred")
             } else {
               auth.login(response?.data?.value)
               auth.loadUser()
@@ -213,15 +215,12 @@ const VerifyForm = ({
           alignItems="center"
           mt={2}
         >
-          <CountDown actionFunc={sendOtpAgain} amount={3} />
+          <CountDown t={t} actionFunc={sendOtpAgain} amount={3} />
           <Stack direction="row" alignItems="center" sx={{ fontWeight: 600 }}>
-            <ModeEditOutlineIcon
-              size={19}
-              color={theme.palette.secondary.main}
-            />
             <Link href="" onClick={() => generateHref()}>
-              Edit
+               {t.general.edit}
             </Link>
+            <ModeEditOutlineIcon/>
           </Stack>
         </Stack>
         <MuiButton

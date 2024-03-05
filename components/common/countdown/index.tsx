@@ -2,11 +2,12 @@ import { useState, useEffect } from "react"
 import { Button, Typography } from "@mui/material"
 
 interface CountDownProps {
+  t: any;
   amount?: number,
   actionFunc: any;
 }
 
-const CountDown = ({ amount= 120, actionFunc } : CountDownProps) => {
+const CountDown = ({ t, amount= 120, actionFunc } : CountDownProps) => {
   const [time, setTime] = useState("")
   const sendAgainCode = () => {
     Promise.resolve()
@@ -47,7 +48,7 @@ const CountDown = ({ amount= 120, actionFunc } : CountDownProps) => {
         </Typography>
       ) : (
         <Button sx={{ py: 1, fontWeight: 600 }} disableRipple color="secondary" variant="text" size="small" onClick={sendAgainCode}>
-            Send Again
+            {t.general.sendAgain}
         </Button>
       )}
     </>

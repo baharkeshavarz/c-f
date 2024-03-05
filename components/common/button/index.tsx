@@ -1,6 +1,6 @@
 import React from "react"
 import { Button, Typography, ButtonProps, useTheme } from "@mui/material"
-import DotLoading from "../dot-loading"
+import DotLoading from "../loading/dot-loading"
 
 type ButtonSize = "small" | "medium" | "large"
 type ButtonVariant = "text" | "contained" | "outlined"

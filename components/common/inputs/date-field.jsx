@@ -17,55 +17,61 @@ const DateField = ({control, required, label, name, isMobile }) => {
     } : {};
 
     return <Controller
-         control={control}
-        //  style={{ position: "relative"}}
-        rules={rules}
-        name={name}
-        render={({
-            field: { onChange, name, value },
-            fieldState: { invalid, isDirty }, //optional
-            formState: { errors }
-        }) => {
-            if (value?.includes("-")) {
-                value = moment(value).locale("fa").format("YYYY/MM/DD")
-            }
-            return (
-                <DatePicker
-                    fullWidth
-                    locale={en_locale}
-                    value={value || ""}
-                    onChange={date => {
-                        onChange(date?.isValid ? p2e(date.format("YYYY/MM/DD")) : "")
-                    }}
-                    render={
-                        <TextField
-                            inputProps={{ maxLength: 10 }}
-                            style={{width:'100% !important'}}
-                            sx={{
-                                "& .MuiInputBase-root": {
-                                    borderRadius: "8px",
-                                    minWidth: isMobile ? "100%" : "20rem",
-                                    backgroundColor: alpha(theme.palette.grey[200], 0.5),
-                                    // zIndex: 1001, 
-                                    // position: "absolute"
-                                }
-                            }}
-                            fullWidth
-                            label={label}
-                            value={value || ""}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position='start'>
-                                        <CalendarMonthIcon size={20} color={theme.palette.primary.main} />
-                                    </InputAdornment>
-                                )
-                            }}
-                        />
+                control={control}
+                rules={rules}
+                name={name}
+                render={({
+                    field: { onChange, name, value },
+                    formState: { errors }
+                }) => {
+                    if (value?.includes("-")) {
+                        value = moment(value).locale("fa").format("YYYY/MM/DD")
                     }
-                />
-            )
-        }}
-    />
+                    return (
+                        <DatePicker
+                            fullWidth
+                            locale={en_locale}
+                            value={value || ""}
+                            onChange={date => {
+                                onChange(date?.isValid ? p2e(date.format("YYYY/MM/DD")) : "")
+                            }}
+                            render={
+                                <TextField
+                                    inputProps={{ maxLength: 10 }}
+                                    style={{width:'100% !important'}}
+                                    sx={{
+                                        "& label.Mui-focused": {
+                                            color: theme.palette.grey[500]
+                                        },
+                                        "& .MuiOutlinedInput-root": {
+                                            "&.Mui-focused fieldset": {
+                                            borderColor: theme.palette.grey[500]
+                                            }
+                                        },
+                                        "& .MuiInputBase-root": {
+                                            borderRadius: "8px",
+                                            minWidth: isMobile ? "100%" : "20rem",
+                                            backgroundColor: alpha(theme.palette.grey[200], 0.5),
+                                            // zIndex: 1001, 
+                                            // position: "absolute"
+                                        }
+                                    }}
+                                    fullWidth
+                                    label={label}
+                                    value={value || ""}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position='start'>
+                                                <CalendarMonthIcon size={20} color={theme.palette.primary.main} />
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                            }
+                        />
+                    )
+                }}
+            />
 }
 
 

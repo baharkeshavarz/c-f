@@ -4,20 +4,23 @@ import { Dispatch, SetStateAction, useState } from "react"
 import { useMediaQuery } from "@mui/material"
 import GetData from "./get-data"
 import VerifyForm from "@/components/common/otp/verify-form"
+import { TranslateProps } from "@/types"
 
 interface GmailVerificationProps {
-  setActiveStep: Dispatch<SetStateAction<number>>
+  t : TranslateProps,
+  setActiveStep: Dispatch<SetStateAction<number>>,
 }
 
-const GmailVerification = ({ setActiveStep }: GmailVerificationProps) => {
+const GmailVerification = ({ t, setActiveStep }: GmailVerificationProps) => {
   const [step, setStep] = useState("data")
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"))
 
   return (
     <>
-      {step === "data" && <GetData isMobile={isMobile} setStep={setStep} />}
+      {step === "data" && <GetData t={t} isMobile={isMobile} setStep={setStep} />}
       {step === "verify" && (
         <VerifyForm
+          t={t}
           isMobile={isMobile}
           setStep={setStep}
           page="gmail"

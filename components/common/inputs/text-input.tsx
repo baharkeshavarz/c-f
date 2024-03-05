@@ -3,6 +3,7 @@ import { TextField, useTheme, InputAdornment, InputProps } from "@mui/material"
 import { onlyCharactersWithMaxLen } from "./helper"
 
 interface TextFieldInputProps {
+  t: any
   register: any
   isRequired?: boolean
   maxLength?: number
@@ -20,6 +21,7 @@ interface TextFieldInputProps {
 
 const TextFieldInput: FC<TextFieldInputProps> = props => {
   const {
+    t,
     register,
     isRequired = true,
     maxLength = 10,
@@ -106,6 +108,7 @@ interface ValidationRules {
 
 function getInputRules(props: TextFieldInputProps): ValidationRules {
   const {
+    t,
     register,
     isRequired = true,
     maxLength = 10,
@@ -126,7 +129,7 @@ function getInputRules(props: TextFieldInputProps): ValidationRules {
   const rules: ValidationRules = {
     maxLength: { value: maxLength, message: maxLengthMsg }
   }
-  if (isRequired) rules.required = lbl + " is required "
+  if (isRequired) rules.required = lbl + `  ${t.formErrors.isRequired}`
   if (minLength) rules.minLength = { value: minLength, message: minLengthMsg }
   if (min) rules.min = { value: min, message: minMsg }
   if (max !== Number.MAX_VALUE) rules.max = { value: max, message: maxMsg }

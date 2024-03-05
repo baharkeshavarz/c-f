@@ -7,7 +7,7 @@ import Step from "@mui/material/Step"
 import StepLabel from "@mui/material/StepLabel"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
-import { Grid, Stack, useTheme } from "@mui/material"
+import { Divider, Grid, Stack, useTheme } from "@mui/material"
 import { TranslateProps } from "@/types"
 import MuiButton from "@/components/common/button"
 import PersonalInformation from "./steps/personal-information"
@@ -40,15 +40,21 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
   }
 
   return (
-    <Box sx={{ width: "100%", display: "flex" }}>
-      <Grid container spacing={2} margin={1}>
+    <Box sx={{
+            width: "100%",
+            display: "flex",     
+            background: "white",
+            borderRadius: "4px",
+            marginBottom: 3,
+        }}>
+      <Grid container spacing={1} margin={1}>
         <Grid
           item
           xs={12}
           md={4}
           sx={{
             display: "flex",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <Stepper
@@ -89,7 +95,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                         color: "grey.700" // Just text label (COMPLETED)
                       },
                     "& .MuiStepLabel-root .Mui-active": {
-                      color: theme.palette.brown.main // circle color (ACTIVE)
+                      color: "brown.500" // circle color (ACTIVE)
                     },
                     "& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel":
                       {
@@ -124,37 +130,35 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
             </>
           ) : (
             <>
-              <Box
-                sx={{
-                  background: "white",
-                  borderRadius: "8px",
-                }}
-              >
+              <Box>
                 <Stack
                   sx={{
                     display: "flex",
-                    p: 1
+                    p: 1,
+                    borderLeft: 1,
+                    borderColor: theme.palette.grey[100],
                   }}
                 >
                   <Typography
-                    variant="h5"
+                    variant="subtitle1Bold"
                     color={theme.palette.grey[600]}
-                    sx={{ m: 2, mb: 0 }}
+                    sx={{ m: 2 }}
                   >
-                    Step {activeStep + 1}/{steps.length}
+                    {t.kyc.step} {activeStep + 1}/{steps.length}: {steps[activeStep]}
                   </Typography>
+
                   <MainCard sx={{ margin: 2 }}>
                     {activeStep === 0 && (
-                      <GmailVerification setActiveStep={setActiveStep} />
+                      <GmailVerification t={t} setActiveStep={setActiveStep} />
                     )}
                     {activeStep === 1 && (
-                      <PersonalInformation setActiveStep={setActiveStep} />
+                      <PersonalInformation t={t} setActiveStep={setActiveStep} />
                     )}
                     {activeStep === 2 && (
-                      <UploadDocuments setActiveStep={setActiveStep} />
+                      <UploadDocuments t={t} setActiveStep={setActiveStep} />
                     )}
                     {activeStep === 3 && (
-                      <FinancialDeclaration setActiveStep={setActiveStep} />
+                      <FinancialDeclaration t={t} setActiveStep={setActiveStep} />
                     )}
                   </MainCard>
                 </Stack>

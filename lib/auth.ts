@@ -28,7 +28,7 @@ class AuthHandler {
         return profileServices.getProfileData().then(res => {
             if (res?.status === 200) {
                 if (!res?.data?.succeed) {
-                    const err = res?.data?.message || "خطایی پیش آمده است"
+                    const err = res?.data?.message || "An error has occurred"
                     toast.error(err)
                     throw err
                 } else {
@@ -42,7 +42,7 @@ class AuthHandler {
                 }
             }
         }).catch((err) => {
-            toast.error(err || "خطایی پیش آمده است")
+            toast.error(err || "An error has occurred")
             throw err
         })
     }

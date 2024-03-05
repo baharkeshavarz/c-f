@@ -3,12 +3,14 @@
 import React, { Dispatch, SetStateAction, useState } from "react"
 import FileUploader from "@/components/common/file-uploader"
 import { Box, Grid } from "@mui/material"
+import { TranslateProps } from "@/types"
 
 interface UploadDocumentsProps {
+  t : any,
   setActiveStep?: Dispatch<SetStateAction<number>>
 }
 
-const UploadDocuments = ({ setActiveStep }: UploadDocumentsProps) => {
+const UploadDocuments = ({ t, setActiveStep }: UploadDocumentsProps) => {
   const [passport, setPassport] = useState("")
   const [nationalCode, setNationalCode] = useState("")
 
@@ -20,16 +22,18 @@ const UploadDocuments = ({ setActiveStep }: UploadDocumentsProps) => {
       <Grid container justifyContent="center" alignItems="center" spacing={2}>
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <FileUploader
+            t={t}
             setFile={setPassport}
-            title="Passport"
-            subTitle="Please upload your passport photo"
+            title={t.forms.passport}
+            subTitle={t.messages.insertPassport}
           />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <FileUploader
+            t={t}
             setFile={setNationalCode}
-            title="National ID"
-            subTitle="Please upload your National ID photo"
+            title={t.forms.nationalID}
+            subTitle={t.messages.insertNationalID}
           />
         </Grid>
       </Grid>

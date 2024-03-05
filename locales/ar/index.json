@@ -24,7 +24,9 @@
     "general": {
        "login": "تسجيل الدخول",
        "register": "يسجل",
-       "language": "لغة"
+       "language": "لغة",
+       "edit": "يحرر",
+       "sendAgain": "أعد الإرسال"
     },
     "login": {
       "password": "كلمة المرور",
@@ -40,27 +42,47 @@
       "headerMsg": "الرجاء إدخال البيانات الخاصة بك"
     },
     "kyc": {
-      "step1": "Personal Information",
-      "step2": "ID Verification",
-      "step3": "Selffie",
-      "step4": "Review",
-      "step1Info": "Please enter your full information",
-      "step2Info": "Please enter your ID information",
-      "step3Info": "Please enter your selffie information",
-      "step4Info": "Please review information"
+      "step": "خطوة",
+      "kycHeader": "التحقق من KYC",
+      "kycHeaderSub": "التحقق من هويتك والبدء",
+      "step1": "التحقق من جيميل",
+      "step2": "معلومات شخصية",
+      "step3": "قم بتحميل المستندات الخاصة بك",
+      "step4": "الإقرار الذاتي المالي",
+      "step1Info": "الرجاء إدخال عنوان جيميل الخاص بك",
+      "step2Info": "الرجاء إدخال المعلومات الخاصة بك",
+      "step3Info": "يرجى تحميل المستندات الخاصة بك",
+      "step4Info": "الرجاء إدخال المعلومات المالية الخاصة بك"
     },
     "forms": {
       "mobile": "رقم الهاتف المحمول",
-      "nationalCode": "رمز دولي"
+      "gmail": "عنوان جيميل",
+      "name": "الاسم الأول",
+      "family": "اسم العائلة",
+      "fatherName": "اسم الأب",
+      "gender": "جنس",
+      "birthdate": "تاريخ الميلاد",
+      "province": "مقاطعة",
+      "city": "مدينة",
+      "address": "عنوان",
+      "passport": "رقم جواز السفر",
+      "nationalID": "رقم الهوية الوطنية",
+      "averageSalary": "متوسط ​​الدخل",
+      "jobStatus": "الحالة الوظيفية",
+      "monthlyInsultment": "الإهانة الشهرية"
     },
     "formErrors": {
+       "isRequired": "مطلوب",
        "mobileRequired": "رقم الجوال مطلوب",
        "mobileNumber11Digits" : "رقم الجوال يجب أن يكون 11 رقم",
        "nationalIDRequired": "مطلوب الهوية الوطنية",
        "nationalID10Digits": "يجب أن تتكون الهوية الوطنية من 10 أرقام"
     },
     "messages": {
-      "sentMsg": "تم إرسال رسالة نصية"
+      "sentMsg": "تم إرسال رسالة نصية",
+      "insertPassport": "يرجى تحميل صورة جواز السفر الخاص بك",
+      "insertNationalID": "يرجى تحميل صورة الهوية الوطنية الخاصة بك",
+      "fileMaxSize": "الحد الأقصى لحجم الملف هو 5 ميغابايت"
     },
     "about": {
       "title": "معلومات عنا",

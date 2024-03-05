@@ -24,7 +24,9 @@
     "general" : {
       "login": "Login",
       "register": "Register",
-      "language": "Language"
+      "language": "Language",
+      "edit": "Edit",
+      "sendAgain": "Send Again"
     },
     "login": {
       "password": "Password",
@@ -39,9 +41,12 @@
       "headerMsg": "Please enter your data"
     },
     "kyc": {
+      "step": "Step",
+      "kycHeader": "KYC Verification",
+      "kycHeaderSub": "Verfity your identification and get started",
       "step1": "Gmail Verification",
       "step2": "Personal Information",
-      "step3": "Upload Documents",
+      "step3": "Upload Your Documents",
       "step4": "Financial Self-Declaration",
       "step1Info": "Please enter your gmail address",
       "step2Info": "Please enter your information",
@@ -50,16 +55,37 @@
     },
     "forms": {
       "mobile": "Mobile Number",
-      "nationalCode": "National Code"
+      "gmail": "Gmail Address",
+      "name": "First Name",
+      "family": "Last Name",
+      "fatherName": "Father Name",
+      "gender": "Gender",
+      "birthdate": "Birthdate",
+      "province": "Province",
+      "city": "City",
+      "address": "Address",
+      "passport": "Passport Number",
+      "nationalID": "National Identification Number",
+      "averageSalary": "Average Salary",
+      "jobStatus": "Job Status",
+      "monthlyInsultment": "Monthly Insultment"
     },
     "formErrors": {
+      "isRequired": "is required",
       "mobileRequired": "Mobile number is required",
       "mobileNumber11Digits": "Mobile number must be 11 digits",
       "nationalIDRequired": "National ID is required.",
       "nationalID10Digits": "National ID must be 10 digits"
    },
    "messages": {
-      "sentSms": "Text message was sent"
+      "sentSms": "Text message was sent",
+      "insertPassport": "Please upload a picture of your passport",
+      "insertNationalID": "Please upload your National ID photo",
+      "fileMaxSize": "The maximum file size is 5 MB"
+
+    },
+   "errors": {
+      "errorHappened": "An error has occurred"
     },
     "about": {
       "title": "About Our Company",
