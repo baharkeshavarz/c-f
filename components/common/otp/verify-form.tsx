@@ -11,10 +11,9 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import auth from "@/lib/auth"
 import { onlyDigitsWithMaxLen, p2e } from "@/components/common/inputs/helper"
-import MuiButton from "@/components/common/button"
-import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline"
 import { findLocalFromUrl } from "@/lib/url"
 import KycActions from "@/app/[lang]/dashboard/components/kyc/kyc-actions"
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 interface VerifyFormProps {
   t: any,
@@ -139,7 +138,9 @@ const VerifyForm = ({
       case "login":
         return `/${lang}/login?phone=${mobileNumber}`
       case "gmail":
-        setStep("data")
+        if (setStep) {
+          setStep("data")
+        }
         return `/${lang}/dashboard/request`
       default:
         return ""
@@ -152,10 +153,8 @@ const VerifyForm = ({
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: isMobile ? "100%" : "70%",
-          marginX: "auto",
-          mt: 2,
-          mb: 5
+          width: isMobile ? "100%" : "80%",
+          mb: 1
         }}
       >
         <Stack>
@@ -196,14 +195,14 @@ const VerifyForm = ({
             fullWidth
             disabled={state === "loading"}
             {...register("otp", {
-              required: "Verification code is mandatory",
+              required: t.formErrors.verificationCodeIsRequired,
               maxLength: {
                 value: 6,
-                message: "Verification code must be 6 digits"
+                message: t.formErrors.verificationCode6Digits,
               },
               minLength: {
                 value: 6,
-                message: "Verification code must be 6 digits"
+                message:  t.formErrors.verificationCode6Digits,
               }
             })}
           />
@@ -216,14 +215,14 @@ const VerifyForm = ({
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          mt={2}
+          mt={1}
         >
           <CountDown t={t} actionFunc={sendOtpAgain} amount={3} />
-          <Stack direction="row" alignItems="center" sx={{ fontWeight: 600 }}>
+          <Stack direction="row" alignItems="center" spacing={0.2} sx={{ fontWeight: 600 }}>
+            <EditCalendarIcon/>
             <Link href="" onClick={() => generateHref()}>
                {t.general.edit}
             </Link>
-            <ModeEditOutlineIcon/>
           </Stack>
         </Stack>
         <KycActions

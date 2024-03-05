@@ -98,9 +98,8 @@ export const OnlyEnglishCharacter = () => (event: InputEvent) => {
 
 export const commaSep = (num: number | string) =>
   (typeof num === "number"
-    ? p2e(num)
+    ? p2e(num.toString())
     : +p2e(num).replace(/\D/g, "")
   ).toLocaleString()
-export const remSep = (value: string) => value.replace(/\D/g, "")
-export const p2e = (s: string) =>
-  s.replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+export const remSep = (value: string) => value?.replace(/\D/g, "")
+export const p2e = (s: string) => s.replace(/[۰-۹٠-٩]/g, d => "۰۱۲۳۴۵۶۷۸۹0123456789".charAt("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".indexOf(d)));

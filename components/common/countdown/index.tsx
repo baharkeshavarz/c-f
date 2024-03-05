@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Button, Typography } from "@mui/material"
+import { Button, Typography, useTheme } from "@mui/material"
 
 interface CountDownProps {
   t: any;
@@ -9,6 +9,7 @@ interface CountDownProps {
 
 const CountDown = ({ t, amount= 120, actionFunc } : CountDownProps) => {
   const [time, setTime] = useState("")
+  const theme = useTheme()
   const sendAgainCode = () => {
     Promise.resolve()
       .then(() => {
@@ -47,7 +48,7 @@ const CountDown = ({ t, amount= 120, actionFunc } : CountDownProps) => {
           {time}
         </Typography>
       ) : (
-        <Button sx={{ py: 1, fontWeight: 600 }} disableRipple color="secondary" variant="text" size="small" onClick={sendAgainCode}>
+        <Button sx={{ pb: 1, fontWeight: 600, color: theme.palette.common.black }} disableRipple variant="text" size="small" onClick={sendAgainCode}>
             {t.general.sendAgain}
         </Button>
       )}

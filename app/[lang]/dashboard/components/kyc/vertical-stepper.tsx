@@ -12,7 +12,6 @@ import PersonalInformation from "./steps/personal-information"
 import GmailVerification from "./steps/gmail/gmail.verification"
 import UploadDocuments from "./steps/upload-documents"
 import FinancialDeclaration from "./steps/financial-declaration"
-import MainCard from "@/components/common/main-card"
 
 const VarticalLinearStepper = ({ t }: TranslateProps) => {
   const steps = [t.kyc.step1, t.kyc.step2, t.kyc.step3, t.kyc.step4]
@@ -23,7 +22,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
     t.kyc.step4Info
   ]
   const theme = useTheme()
-  const [activeStep, setActiveStep] = useState(3)
+  const [activeStep, setActiveStep] = useState(0)
   return (
     <Box sx={{
             width: "100%",
@@ -49,7 +48,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
               flexDirection: "column",
               width: "100%",
               marginBottom: 4,
-              height: "20rem"
+              height: "21rem"
             }}
           >
             {steps.map((label, index) => {
@@ -107,7 +106,8 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
             <Stack
               sx={{
                 display: "flex",
-                p: 1,
+                py: 1,
+                px: 2,
                 borderLeft: 1,
                 borderColor: theme.palette.grey[100],
               }}
@@ -115,12 +115,12 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
               <Typography
                 variant="subtitle1Bold"
                 color={theme.palette.grey[600]}
-                sx={{ m: 2 }}
+                paddingX={1.5}
               >
                 {t.kyc.step} {activeStep + 1}/{steps.length}: {steps[activeStep]}
               </Typography>
 
-              <MainCard sx={{ margin: 2 }}>
+              <Box sx={{ px: 1.5 }}>
                 {activeStep === 0 && (
                   <GmailVerification t={t} activeStep={0} setActiveStep={setActiveStep} />
                 )}
@@ -133,7 +133,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                 {activeStep === 3 && (
                   <FinancialDeclaration t={t} activeStep={3} setActiveStep={setActiveStep} />
                 )}
-              </MainCard>
+              </Box>
             </Stack>
           </Box>
         </Grid>

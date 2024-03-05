@@ -1,12 +1,13 @@
 "use client"
 
 import TextFieldInput from "@/components/common/inputs/text-input"
-import { Box, Grid, useMediaQuery, useTheme } from "@mui/material"
+import { Grid, Stack, useMediaQuery, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import SelectBoxInput from "@/components/common/inputs/select-box"
 import KycActions from "../kyc-actions"
+import ValidationHelperText from "@/components/common/validation-helper-text"
 
 interface FinancialDeclarationProps {
   t : any,
@@ -39,15 +40,10 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
 
   return (
     <form onSubmit={handleSubmit(handleFinancial)}>
-      <Box sx={{
-                p: 2,
-                display: "flex",
-                flexDirection: "column",
-                width: isMobile ? "100%" : "80%",
-                marginX: "auto",
-                marginY: 1
+      <Stack sx={{
+                py: 2,
            }}>
-        <Grid container justifyContent="center" alignItems="center" spacing={2}>
+        <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={6}>
             <TextFieldInput
               name="averageSalary"
@@ -61,11 +57,15 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
               icon={AttachMoneyIcon}
               t={t}
             />
+           <ValidationHelperText
+              error={!!errors?.averageSalary}
+              helperText={(errors?.averageSalary?.message as string) || ""}
+            />
           </Grid>
 
           <Grid item xs={12} sm={12} md={6}>
             <TextFieldInput
-              name="Monthly Installments"
+              name="monthlyInstallments"
               label={t.forms.monthlyInsultment}
               type="number"
               isRequired={true}
@@ -76,9 +76,14 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
               icon={AttachMoneyIcon}
               t={t}
             />
+           
+            <ValidationHelperText
+              error={!!errors?.monthlyInstallments}
+              helperText={(errors?.monthlyInstallments?.message as string) || ""}
+            />
           </Grid>
 
-          <Grid item xs={12} sm={12} md={12}>
+          <Grid item xs={12} sm={12} md={6}>
              <SelectBoxInput label={t.forms.jobStatus} options={[]} />
           </Grid>
       
@@ -90,8 +95,7 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
             />
           </Grid>
         </Grid>
-
-      </Box>
+      </Stack>
     </form>
   )
 }

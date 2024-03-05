@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import { TextField, useTheme, InputAdornment, InputProps } from "@mui/material"
 import { onlyCharactersWithMaxLen } from "./helper"
+import cellphoneValidation from "@/lib/inputs"
 
 type ButtonSize = "small" | "medium" | "large"
 
@@ -20,6 +21,7 @@ interface TextFieldInputProps {
   fullWidth?: boolean
   sx?: React.CSSProperties,
   size?: ButtonSize,
+  value?:any
 }
 
 const TextFieldInput: FC<TextFieldInputProps> = props => {
@@ -91,7 +93,9 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
   elementProps.onKeyDown = onlyCharactersWithMaxLen(maxLength)
 
   return (
-    <TextField
+    <>
+    {/* {JSON.stringify(inputRules)} */}
+     <TextField
       InputLabelProps={{
         style: { color: theme.palette.grey[500] }
       }}
@@ -99,7 +103,8 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
       {...register(name, inputRules)}
       {...etc}
     />
-  )
+    </>
+   )
 }
 
 interface ValidationRules {
@@ -107,12 +112,14 @@ interface ValidationRules {
   minLength?: { value: number; message: string }
   maxLength?: { value: number; message: string }
   min?: { value: number; message: string }
-  max?: { value: number; message: string }
+  max?: { value: number; message: string },
+  validate?: { value: number; message: string }
 }
 
 function getInputRules(props: TextFieldInputProps): ValidationRules {
   const {
     t,
+    pattern,
     register,
     isRequired = true,
     maxLength = 10,
@@ -120,8 +127,10 @@ function getInputRules(props: TextFieldInputProps): ValidationRules {
     label,
     name,
     min = 0,
-    max = Number.MAX_VALUE
+    value,
+    max = Number.MAX_VALUE,
   } = props
+
   const lbl = label || ""
   let minLengthMsg = `${lbl} must be at least ${minLength} digit.`
   let maxLengthMsg = `${lbl} حداکثر باید ${maxLength} رقم باشد.`
@@ -137,7 +146,11 @@ function getInputRules(props: TextFieldInputProps): ValidationRules {
   if (minLength) rules.minLength = { value: minLength, message: minLengthMsg }
   if (min) rules.min = { value: min, message: minMsg }
   if (max !== Number.MAX_VALUE) rules.max = { value: max, message: maxMsg }
+ // debugger
+  // if (pattern) {rules.validate = cellphoneValidation("999")}
+  
+  // if(cellphoneValidation("9999")) rules.validate= { value: 1,message:'mobile number is wrong'}
+  // console.log("rules", rules);
   return rules
 }
-
 export default TextFieldInput

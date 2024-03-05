@@ -26,7 +26,7 @@
        "register": "يسجل",
        "language": "لغة",
        "edit": "يحرر",
-       "sendAgain": "أعد الإرسال"
+       "sendAgain": "ارسل الرمز مجددا"
     },
     "login": {
       "password": "كلمة المرور",
@@ -78,7 +78,9 @@
        "mobileRequired": "رقم الجوال مطلوب",
        "mobileNumber11Digits" : "رقم الجوال يجب أن يكون 11 رقم",
        "nationalIDRequired": "مطلوب الهوية الوطنية",
-       "nationalID10Digits": "يجب أن تتكون الهوية الوطنية من 10 أرقام"
+       "nationalID10Digits": "يجب أن تتكون الهوية الوطنية من 10 أرقام",
+       "verificationCodeIsRequired": "رمز التحقق مطلوب",
+       "verificationCode6Digits": "يجب أن يتكون رمز التحقق من 6 أرقام"
     },
     "messages": {
       "sentMsg": "تم إرسال رسالة نصية",

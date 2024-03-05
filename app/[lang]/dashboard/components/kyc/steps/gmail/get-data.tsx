@@ -11,12 +11,12 @@ import KycActions from "../../kyc-actions"
 interface GetDataProps {
   t: any,
   isMobile: boolean
-  setStep: Dispatch<SetStateAction<string>>
+  setStep: Dispatch<SetStateAction<string>>,
+  setEmail: Dispatch<SetStateAction<string>>,
 }
 
-const GetData = ({ t, isMobile, setStep }: GetDataProps) => {
+const GetData = ({ t, isMobile, setStep, setEmail }: GetDataProps) => {
   const [status, setStatus] = useState("")
-  const theme = useTheme()
   const {
     register,
     handleSubmit,
@@ -25,8 +25,9 @@ const GetData = ({ t, isMobile, setStep }: GetDataProps) => {
 
   // Handle Verification
   const handleVerification: SubmitHandler<FieldValues> = async data => {
-    const val = data.gmailAddress
-    console.log("data", data)
+    const emailAddress = data.gmailAddress
+    console.log("data", emailAddress)
+    setEmail(emailAddress)
     setStep("verify")
   }
 
@@ -36,8 +37,8 @@ const GetData = ({ t, isMobile, setStep }: GetDataProps) => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: isMobile ? "100%" : "70%",
-          marginX: "auto",
+          width: "100%",
+          paddingTop: 2,
           marginY: 1
         }}
       >
@@ -51,7 +52,9 @@ const GetData = ({ t, isMobile, setStep }: GetDataProps) => {
           fullWidth={isMobile}
           icon={MarkunreadIcon}
           t={t}
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
         />
+       
         <ValidationHelperText
           error={!!errors?.gmailAddress}
           helperText={(errors?.gmailAddress?.message as string) || ""}

@@ -50,7 +50,7 @@ const DateField = ({control, required, label, name, isMobile }) => {
                                         },
                                         "& .MuiInputBase-root": {
                                             borderRadius: "2px",
-                                            minWidth: isMobile ? "100%" : "20rem",
+                                            minWidth: isMobile ? "100%" : "21rem",
                                             // backgroundColor: alpha(theme.palette.grey[200], 0.5),
                                         }
                                     }}

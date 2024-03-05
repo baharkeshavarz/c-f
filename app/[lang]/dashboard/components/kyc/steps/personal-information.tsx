@@ -47,7 +47,7 @@ const PersonalInformation = ({ t, activeStep, setActiveStep }: PersonalInformati
 
   return (
     <form onSubmit={handleSubmit(handlePersonalInfo)}>
-      <Box sx={{ p: 2 }}>
+      <Box sx={{ py: 2 }}>
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <TextFieldInput

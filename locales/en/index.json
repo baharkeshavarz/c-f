@@ -26,7 +26,7 @@
       "register": "Register",
       "language": "Language",
       "edit": "Edit",
-      "sendAgain": "Send Again"
+      "sendAgain": "Send code again"
     },
     "login": {
       "password": "Password",
@@ -77,14 +77,16 @@
       "mobileRequired": "Mobile number is required",
       "mobileNumber11Digits": "Mobile number must be 11 digits",
       "nationalIDRequired": "National ID is required.",
-      "nationalID10Digits": "National ID must be 10 digits"
+      "nationalID10Digits": "National ID must be 10 digits",
+      "verificationCodeIsRequired": "Verification code is required",
+      "verificationCode6Digits": "Verification code must be 6 digits"
    },
    "messages": {
       "sentSms": "Text message was sent",
       "insertPassport": "Please upload a picture of your passport",
       "insertNationalID": "Please upload your National ID photo",
-      "fileMaxSize": "The maximum file size is 5 MB"
-
+      "fileMaxSize": "The maximum file size is 5 MB",
+      "verificationCodeEmail": "Verification code being sent to email"
     },
    "errors": {
       "errorHappened": "An error has occurred"
