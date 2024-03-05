@@ -39,7 +39,7 @@ const MuiButton: React.FC<MuiButtonProps> = ({
       {...others}
     >
       {loading ? (
-        <DotLoading sx={{ py: 2 }} color="primary" />
+        <DotLoading sx={{ paddingTop: 2, paddingBottom: 2 }} color="primary" />
       ) : (
         <Typography fontWeight="bold" py={0.7}>
           {children}

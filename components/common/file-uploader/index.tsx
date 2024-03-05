@@ -27,7 +27,7 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("xs"))
   const inputRef = useRef()
   const theme = useTheme()
-  const [image, setImage] = useState()
+  const [image, setImage] = useState("")
   const [loading, setLoading] = useState(false)
   const [isPdf, setIsPdf] = useState(false)
 
@@ -51,11 +51,11 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
 
           if (fileType.startsWith("image/")) {
             // It's an image
-            setFile(reader.result.split(",")[1])
+            setFile(reader!.result!.split(",")[1])
             setIsPdf(false)
           } else if (fileType === "application/pdf") {
-            setFile(reader.result.split(",")[1])
-            setIsPdf(reader.result)
+            setFile(reader!.result!.split(",")[1])
+            setIsPdf(!!reader.result)
           } else {
             // Unsupported file type
             toast.error("Unsupported file type.")
@@ -112,7 +112,7 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
         cursor: "pointer",
         display: "block",
         minHeight: "135px",
-        bgcolor: theme.palette.primary.dark,
+        bgcolor: theme.palette.common.black,
         mt: 1,
         ...sx
       }}
@@ -195,7 +195,7 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
                 variant="contained"
                 sx={{ borderRadius: "8px" }}
               >
-                دانلود فایل چک آپلود شده
+                Download the {tilte}
               </Button>
             </Stack>
           ) : (
@@ -247,7 +247,7 @@ const FileUploader = ({ title, subTitle, setFile, sx }: FileUploaderProps) => {
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Typography variant="caption" sx={{ mt: 1, fontWeight: 600 }}>
+        <Typography variant="caption" sx={{ mt: 1, fontWeight: 600, color: "white" }}>
           The maximum file size is 5 MB.
         </Typography>
       </Box>

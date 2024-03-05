@@ -2,15 +2,18 @@
 
 import React, { Dispatch, SetStateAction, useState } from "react"
 import FileUploader from "@/components/common/file-uploader"
-import { Box, Grid, Stack } from "@mui/material"
+import { Box, Grid } from "@mui/material"
 
 interface UploadDocumentsProps {
   setActiveStep?: Dispatch<SetStateAction<number>>
 }
 
 const UploadDocuments = ({ setActiveStep }: UploadDocumentsProps) => {
-  const [passport, setPassport] = useState()
-  const [nationalCode, setNationalCode] = useState()
+  const [passport, setPassport] = useState("")
+  const [nationalCode, setNationalCode] = useState("")
+
+  console.log("passport", passport);
+  console.log("nationalCode", nationalCode);
 
   return (
     <Box sx={{ p: 2 }}>

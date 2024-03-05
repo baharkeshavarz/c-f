@@ -75,7 +75,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                     width: "100%",
                     background:
                       activeStep === index
-                        ? theme.palette.common.black
+                        ? theme.palette.primary.main
                         : theme.palette.grey[200],
                     p: 2,
                     m: 0,
@@ -89,14 +89,14 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                         color: "grey.700" // Just text label (COMPLETED)
                       },
                     "& .MuiStepLabel-root .Mui-active": {
-                      color: theme.palette.common.white // circle color (ACTIVE)
+                      color: theme.palette.brown.main // circle color (ACTIVE)
                     },
                     "& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel":
                       {
                         color: "common.black" // Just text label (ACTIVE)
                       },
                     "& .MuiStepLabel-root .Mui-active .MuiStepIcon-text": {
-                      fill: "black" // circle's number (ACTIVE)
+                      fill: theme.palette.common.white // circle's number (ACTIVE)
                     }
                   }}
                 >
@@ -128,7 +128,6 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                 sx={{
                   background: "white",
                   borderRadius: "8px",
-                  mt: 2
                 }}
               >
                 <Stack
@@ -173,7 +172,8 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                     onClick={handleBack}
                     variant="outlined"
                     sx={{
-                      mx: 1
+                      marginLeft: 1,
+                      marginRight: 1,
                     }}
                   >
                     Back
