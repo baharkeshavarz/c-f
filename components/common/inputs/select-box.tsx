@@ -29,8 +29,8 @@ const SelectBoxInput = ({ label, options, onChange, sx= {} }: SelectBoxInputProp
                     }
                   },
                 "& .MuiInputBase-root": {
-                    borderRadius: "8px",
-                    backgroundColor: alpha(theme.palette.grey[200], 0.5)
+                    borderRadius: "2px",
+                  //  backgroundColor: alpha(theme.palette.grey[200], 0.5)
                 }
             }}
             {...params}

@@ -8,10 +8,11 @@ import { TranslateProps } from "@/types"
 
 interface GmailVerificationProps {
   t : TranslateProps,
+  activeStep: number,
   setActiveStep: Dispatch<SetStateAction<number>>,
 }
 
-const GmailVerification = ({ t, setActiveStep }: GmailVerificationProps) => {
+const GmailVerification = ({ t, activeStep, setActiveStep }: GmailVerificationProps) => {
   const [step, setStep] = useState("data")
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"))
 
@@ -24,6 +25,7 @@ const GmailVerification = ({ t, setActiveStep }: GmailVerificationProps) => {
           isMobile={isMobile}
           setStep={setStep}
           page="gmail"
+          activeStep={activeStep}
           setActiveStep={setActiveStep}
         />
       )}

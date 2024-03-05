@@ -51,7 +51,9 @@
       "step1Info": "Please enter your gmail address",
       "step2Info": "Please enter your information",
       "step3Info": "Please upload your documents",
-      "step4Info": "Please enter your financial information"
+      "step4Info": "Please enter your financial information",
+      "nextStep": "Next Step",
+      "backStep": "Back Step"
     },
     "forms": {
       "mobile": "Mobile Number",

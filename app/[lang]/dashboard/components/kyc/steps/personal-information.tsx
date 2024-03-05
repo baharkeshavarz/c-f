@@ -4,17 +4,20 @@ import DateField from "@/components/common/inputs/date-field"
 import { Grid, useTheme, useMediaQuery, Box } from "@mui/material"
 import { Dispatch, SetStateAction, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
-import MuiButton from "@/components/common/button"
 import dynamic from "next/dynamic"
-import { TranslateProps } from "@/types"
 import Loading from "@/components/common/loading/loading"
+import KycActions from "../kyc-actions"
+import ValidationHelperText from "@/components/common/validation-helper-text"
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import HomeIcon from '@mui/icons-material/Home';
 
 interface PersonalInformationProps {
   t : any,
-  setActiveStep?: Dispatch<SetStateAction<number>>
+  activeStep: number,
+  setActiveStep: Dispatch<SetStateAction<number>>
 }
 
-const PersonalInformation = ({ t, setActiveStep }: PersonalInformationProps) => {
+const PersonalInformation = ({ t, activeStep, setActiveStep }: PersonalInformationProps) => {
   const theme = useTheme()
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"))
   const [status, setStatus] = useState("")
@@ -33,8 +36,13 @@ const PersonalInformation = ({ t, setActiveStep }: PersonalInformationProps) => 
 
   // Handle handlePersonalInfo
   const handlePersonalInfo: SubmitHandler<FieldValues> = async data => {
-    const val = data.gmailAddress
-    console.log("data", data)
+    setActiveStep(++activeStep);
+    console.log("dataaaa", data)
+  }
+
+  // Handle Back
+  const handleBack = () => {
+     setActiveStep(prevActiveStep => prevActiveStep - 1)
   }
 
   return (
@@ -51,7 +59,12 @@ const PersonalInformation = ({ t, setActiveStep }: PersonalInformationProps) => 
               minLength={5}
               fullWidth={isMobile}
               t={t}
+              icon={AssignmentIndIcon}
             />
+           <ValidationHelperText
+             error={!!errors?.name}
+             helperText={(errors?.name?.message as string) || ""}
+           />
           </Grid>
 
           <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -64,6 +77,11 @@ const PersonalInformation = ({ t, setActiveStep }: PersonalInformationProps) => 
               minLength={5}
               fullWidth={isMobile}
               t={t}
+              icon={AssignmentIndIcon}
+            />
+            <ValidationHelperText
+              error={!!errors?.family}
+              helperText={(errors?.family?.message as string) || ""}
             />
           </Grid>
 
@@ -77,6 +95,25 @@ const PersonalInformation = ({ t, setActiveStep }: PersonalInformationProps) => 
               minLength={5}
               fullWidth={isMobile}
               t={t}
+              icon={AssignmentIndIcon}
+            />
+             <ValidationHelperText
+              error={!!errors?.fatherName}
+              helperText={(errors?.fatherName?.message as string) || ""}
+            />
+          </Grid>
+          
+          <Grid item xs={12} sm={12} md={6} lg={6} sx={{ position: "relative", zIndex: "555"}}>
+            <DateField
+              control={control}
+              required
+              isMobile={isMobile}
+              label={t.forms.birthdate}
+              name="birthdate"
+            />
+            <ValidationHelperText
+              error={!!errors?.birthdate}
+              helperText={(errors?.birthdate?.message as string) || ""}
             />
           </Grid>
 
@@ -88,20 +125,10 @@ const PersonalInformation = ({ t, setActiveStep }: PersonalInformationProps) => 
           </Grid>
 
           <Grid item xs={12} sm={12} md={6} lg={6}>
-            <SelectBoxInput      
+               <SelectBoxInput      
                  label={t.forms.city}
                  options={[]} />
            </Grid>
-
-          <Grid item xs={12} sm={12} md={6} lg={6} sx={{ position: "relative", zIndex: "555"}}>
-            <DateField
-              control={control}
-              required
-              isMobile={isMobile}
-              label={t.forms.birthdate}
-              name="date"
-            />
-          </Grid>
 
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <TextFieldInput
@@ -113,6 +140,11 @@ const PersonalInformation = ({ t, setActiveStep }: PersonalInformationProps) => 
               minLength={5}
               fullWidth={isMobile}
               t={t}
+              icon={HomeIcon}
+            />
+             <ValidationHelperText
+              error={!!errors?.address}
+              helperText={(errors?.address?.message as string) || ""}
             />
           </Grid>
 
@@ -120,15 +152,11 @@ const PersonalInformation = ({ t, setActiveStep }: PersonalInformationProps) => 
             <Map />
           </Grid>
         </Grid>
-        <MuiButton
-          sx={{
-            background: `${theme.palette.common.black} !important`,
-            color: theme.palette.primary.main
-          }}
-          loading={status === "loading"}
-        >
-          Insert
-        </MuiButton>
+        <KycActions
+            t={t} 
+            activeStep={activeStep}
+            handleBack={handleBack}
+        />
       </Box>
     </form>
   )

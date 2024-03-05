@@ -14,12 +14,14 @@ import { onlyDigitsWithMaxLen, p2e } from "@/components/common/inputs/helper"
 import MuiButton from "@/components/common/button"
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline"
 import { findLocalFromUrl } from "@/lib/url"
+import KycActions from "@/app/[lang]/dashboard/components/kyc/kyc-actions"
 
 interface VerifyFormProps {
   t: any,
   page: string
   isMobile: boolean
   setStep?: Dispatch<SetStateAction<string>>
+  activeStep: number,
   setActiveStep?: Dispatch<SetStateAction<number>>
 }
 
@@ -28,6 +30,7 @@ const VerifyForm = ({
   page,
   isMobile,
   setStep,
+  activeStep,
   setActiveStep
 }: VerifyFormProps) => {
   const pathname = usePathname()
@@ -223,12 +226,10 @@ const VerifyForm = ({
             <ModeEditOutlineIcon/>
           </Stack>
         </Stack>
-        <MuiButton
-          sx={{ background: `${theme.palette.primary.main} !important` }}
-          loading={state === "loading"}
-        >
-          Confirm Code
-        </MuiButton>
+        <KycActions
+            t={t} 
+            activeStep={activeStep}
+        />
       </Box>
     </form>
   )

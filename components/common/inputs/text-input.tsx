@@ -2,6 +2,8 @@ import React, { FC } from "react"
 import { TextField, useTheme, InputAdornment, InputProps } from "@mui/material"
 import { onlyCharactersWithMaxLen } from "./helper"
 
+type ButtonSize = "small" | "medium" | "large"
+
 interface TextFieldInputProps {
   t: any
   register: any
@@ -16,7 +18,8 @@ interface TextFieldInputProps {
   type?: string
   pattern?: string
   fullWidth?: boolean
-  sx?: React.CSSProperties
+  sx?: React.CSSProperties,
+  size?: ButtonSize,
 }
 
 const TextFieldInput: FC<TextFieldInputProps> = props => {
@@ -34,6 +37,7 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
     pattern = "[a-zA-Z0-9]",
     fullWidth,
     sx = {},
+    size = "small",
     ...etc
   } = props
   const inputRules = getInputRules(props)
@@ -67,7 +71,7 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
     type,
     sx: {
       ...focusStyle,
-      borderRadius: "8px",
+      borderRadius: "2px",
       ...sx
     }
   }

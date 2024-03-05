@@ -1,13 +1,12 @@
 "use client"
 
-import MuiButton from "@/components/common/button"
 import TextFieldInput from "@/components/common/inputs/text-input"
 import ValidationHelperText from "@/components/common/validation-helper-text"
 import { Box, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import MarkunreadIcon from "@mui/icons-material/Markunread"
-import { TranslateProps } from "@/types"
+import KycActions from "../../kyc-actions"
 
 interface GetDataProps {
   t: any,
@@ -57,15 +56,10 @@ const GetData = ({ t, isMobile, setStep }: GetDataProps) => {
           error={!!errors?.gmailAddress}
           helperText={(errors?.gmailAddress?.message as string) || ""}
         />
-        <MuiButton
-          sx={{
-            background: `${theme.palette.common.black} !important`,
-            color: theme.palette.primary.main
-          }}
-          loading={status === "loading"}
-        >
-          Validate
-        </MuiButton>
+        <KycActions
+            t={t} 
+            activeStep={0}
+        />
       </Box>
     </form>
   )

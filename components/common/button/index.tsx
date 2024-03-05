@@ -15,7 +15,7 @@ interface MuiButtonProps extends ButtonProps {
 
 const MuiButton: React.FC<MuiButtonProps> = ({
   type = "submit",
-  size = "large",
+  size = "medium",
   variant = "contained",
   fullWidth = true,
   loading = false,
@@ -32,7 +32,7 @@ const MuiButton: React.FC<MuiButtonProps> = ({
       fullWidth={fullWidth}
       disabled={loading}
       sx={{
-        borderRadius: "8px",
+        borderRadius: "2px",
         mt: 2,
         ...sx
       }}
@@ -41,7 +41,7 @@ const MuiButton: React.FC<MuiButtonProps> = ({
       {loading ? (
         <DotLoading sx={{ paddingTop: 2, paddingBottom: 2 }} color="primary" />
       ) : (
-        <Typography fontWeight="bold" py={0.7}>
+        <Typography py={0.2}>
           {children}
         </Typography>
       )}

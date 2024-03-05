@@ -1,23 +1,24 @@
 "use client"
 
-import MuiButton from "@/components/common/button"
 import TextFieldInput from "@/components/common/inputs/text-input"
 import { Box, Grid, useMediaQuery, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import SelectBoxInput from "@/components/common/inputs/select-box"
-import { TranslateProps } from "@/types"
+import KycActions from "../kyc-actions"
 
 interface FinancialDeclarationProps {
   t : any,
-  setActiveStep?: Dispatch<SetStateAction<number>>
+  activeStep: number,
+  setActiveStep: Dispatch<SetStateAction<number>>
 }
 
-const FinancialDeclaration = ({ t, setActiveStep }: FinancialDeclarationProps) => {
+const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclarationProps) => {
   const [status, setStatus] = useState("")
   const theme = useTheme()
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"))
+
   const {
     register,
     handleSubmit,
@@ -28,6 +29,12 @@ const FinancialDeclaration = ({ t, setActiveStep }: FinancialDeclarationProps) =
   const handleFinancial: SubmitHandler<FieldValues> = async data => {
     const val = data
     console.log("data", data)
+    setActiveStep(prevActiveStep => prevActiveStep + 1)
+  }
+  
+  // Handle Back
+  const handleBack = () => {
+    setActiveStep(prevActiveStep => prevActiveStep - 1)
   }
 
   return (
@@ -41,7 +48,7 @@ const FinancialDeclaration = ({ t, setActiveStep }: FinancialDeclarationProps) =
                 marginY: 1
            }}>
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
-          <Grid item xs={12} sm={12} md={12}>
+          <Grid item xs={12} sm={12} md={6}>
             <TextFieldInput
               name="averageSalary"
               label={t.forms.averageSalary}
@@ -56,11 +63,7 @@ const FinancialDeclaration = ({ t, setActiveStep }: FinancialDeclarationProps) =
             />
           </Grid>
 
-          <Grid item xs={12} sm={12} md={12}>
-             <SelectBoxInput label={t.forms.jobStatus} options={[]} />
-          </Grid>
-
-          <Grid item xs={12} sm={12} md={12}>
+          <Grid item xs={12} sm={12} md={6}>
             <TextFieldInput
               name="Monthly Installments"
               label={t.forms.monthlyInsultment}
@@ -74,16 +77,20 @@ const FinancialDeclaration = ({ t, setActiveStep }: FinancialDeclarationProps) =
               t={t}
             />
           </Grid>
+
+          <Grid item xs={12} sm={12} md={12}>
+             <SelectBoxInput label={t.forms.jobStatus} options={[]} />
+          </Grid>
+      
+          <Grid item xs={12} sm={12} md={12}>
+            <KycActions
+                t={t} 
+                activeStep={activeStep}
+                handleBack={handleBack}
+            />
+          </Grid>
         </Grid>
-        <MuiButton
-          sx={{
-            background: `${theme.palette.common.black} !important`,
-            color: theme.palette.primary.main
-          }}
-          loading={status === "loading"}
-        >
-          Insert
-        </MuiButton>
+
       </Box>
     </form>
   )

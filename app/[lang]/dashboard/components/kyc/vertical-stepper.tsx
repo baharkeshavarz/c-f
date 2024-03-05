@@ -5,11 +5,9 @@ import Box from "@mui/material/Box"
 import Stepper from "@mui/material/Stepper"
 import Step from "@mui/material/Step"
 import StepLabel from "@mui/material/StepLabel"
-import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
-import { Divider, Grid, Stack, useTheme } from "@mui/material"
+import { Grid, Stack, useTheme } from "@mui/material"
 import { TranslateProps } from "@/types"
-import MuiButton from "@/components/common/button"
 import PersonalInformation from "./steps/personal-information"
 import GmailVerification from "./steps/gmail/gmail.verification"
 import UploadDocuments from "./steps/upload-documents"
@@ -25,20 +23,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
     t.kyc.step4Info
   ]
   const theme = useTheme()
-  const [activeStep, setActiveStep] = useState(0)
-
-  const handleNext = () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1)
-  }
-
-  const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1)
-  }
-
-  const handleReset = () => {
-    setActiveStep(0)
-  }
-
+  const [activeStep, setActiveStep] = useState(3)
   return (
     <Box sx={{
             width: "100%",
@@ -118,84 +103,39 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
           </Stepper>
         </Grid>
         <Grid item xs={12} md={8}>
-          {activeStep === steps.length ? (
-            <>
-              <Typography sx={{ mt: 2, mb: 1 }}>
-                All steps completed - you&apos;re finished
+          <Box>
+            <Stack
+              sx={{
+                display: "flex",
+                p: 1,
+                borderLeft: 1,
+                borderColor: theme.palette.grey[100],
+              }}
+            >
+              <Typography
+                variant="subtitle1Bold"
+                color={theme.palette.grey[600]}
+                sx={{ m: 2 }}
+              >
+                {t.kyc.step} {activeStep + 1}/{steps.length}: {steps[activeStep]}
               </Typography>
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <Box sx={{ flex: "1 1 auto" }} />
-                <Button onClick={handleReset}>Reset</Button>
-              </Box>
-            </>
-          ) : (
-            <>
-              <Box>
-                <Stack
-                  sx={{
-                    display: "flex",
-                    p: 1,
-                    borderLeft: 1,
-                    borderColor: theme.palette.grey[100],
-                  }}
-                >
-                  <Typography
-                    variant="subtitle1Bold"
-                    color={theme.palette.grey[600]}
-                    sx={{ m: 2 }}
-                  >
-                    {t.kyc.step} {activeStep + 1}/{steps.length}: {steps[activeStep]}
-                  </Typography>
 
-                  <MainCard sx={{ margin: 2 }}>
-                    {activeStep === 0 && (
-                      <GmailVerification t={t} setActiveStep={setActiveStep} />
-                    )}
-                    {activeStep === 1 && (
-                      <PersonalInformation t={t} setActiveStep={setActiveStep} />
-                    )}
-                    {activeStep === 2 && (
-                      <UploadDocuments t={t} setActiveStep={setActiveStep} />
-                    )}
-                    {activeStep === 3 && (
-                      <FinancialDeclaration t={t} setActiveStep={setActiveStep} />
-                    )}
-                  </MainCard>
-                </Stack>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    pt: 2
-                  }}
-                >
-                  <MuiButton
-                    disabled={activeStep === 0}
-                    fullWidth={false}
-                    onClick={handleBack}
-                    variant="outlined"
-                    sx={{
-                      marginLeft: 1,
-                      marginRight: 1,
-                    }}
-                  >
-                    Back
-                  </MuiButton>
-                  <MuiButton
-                    sx={{
-                      background: `${theme.palette.common.black} !important`,
-                      color: theme.palette.primary.main
-                    }}
-                    onClick={handleNext}
-                    fullWidth={false}
-                  >
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                  </MuiButton>
-                </Box>
-              </Box>
-            </>
-          )}
+              <MainCard sx={{ margin: 2 }}>
+                {activeStep === 0 && (
+                  <GmailVerification t={t} activeStep={0} setActiveStep={setActiveStep} />
+                )}
+                {activeStep === 1 && (
+                  <PersonalInformation t={t} activeStep={1} setActiveStep={setActiveStep} />
+                )}
+                {activeStep === 2 && (
+                  <UploadDocuments t={t} activeStep={2} setActiveStep={setActiveStep} />
+                )}
+                {activeStep === 3 && (
+                  <FinancialDeclaration t={t} activeStep={3} setActiveStep={setActiveStep} />
+                )}
+              </MainCard>
+            </Stack>
+          </Box>
         </Grid>
       </Grid>
     </Box>
