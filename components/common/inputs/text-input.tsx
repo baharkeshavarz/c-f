@@ -1,7 +1,6 @@
 import React, { FC } from "react"
 import { TextField, useTheme, InputAdornment, InputProps } from "@mui/material"
 import { onlyCharactersWithMaxLen } from "./helper"
-import cellphoneValidation from "@/lib/inputs"
 
 type ButtonSize = "small" | "medium" | "large"
 

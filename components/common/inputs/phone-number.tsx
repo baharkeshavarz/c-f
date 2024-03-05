@@ -23,12 +23,24 @@ const PhoneNumberInput = ({
   ...etc
 }: PhoneNumberInputProps) => {
   const theme = useTheme()
+  const focusStyle = {
+  "& label.Mui-focused": {
+    color: theme.palette.grey[500]
+  },
+  "& .MuiOutlinedInput-root": {
+    "&.Mui-focused fieldset": {
+      borderColor: theme.palette.grey[500]
+    }
+  }
+ }
+ 
   return (
     <TextField
       autoFocus={true}
       disabled={disabled}
       onKeyDown={onlyDigitsWithMaxLen(11)}
       sx={{
+        ...focusStyle,
         "& legend": { display: "none" },
         "& .MuiInputLabel-shrink": {
           opacity: 0,
@@ -57,7 +69,7 @@ const PhoneNumberInput = ({
             <MobileFriendlyIcon />
           </InputAdornment>
         ) : (
-          <></>
+          ""
         )
       }}
       {...etc}

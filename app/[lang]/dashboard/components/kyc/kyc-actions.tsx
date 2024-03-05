@@ -28,6 +28,7 @@ const KycActions = ({ t, activeStep, handleNext={}, handleBack={}}: KycActionsPr
             sx={{
               marginLeft: 1,
               marginRight: 1,
+              color: theme.palette.grey[900]
             }}
         >
          {t.kyc.backStep}

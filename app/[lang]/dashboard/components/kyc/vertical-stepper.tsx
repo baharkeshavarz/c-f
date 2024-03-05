@@ -91,10 +91,12 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                   }}
                 >
                   <StepLabel {...labelProps}>
-                    <Typography variant="h6">{label}</Typography>
-                    <Typography variant="caption">
-                      {stepsInfo[index]}
-                    </Typography>
+                    <Stack>
+                      <Typography variant="subtitle1Bold">{label}</Typography>
+                      <Typography variant="caption">
+                        {stepsInfo[index]}
+                      </Typography>
+                    </Stack>
                   </StepLabel>
                 </Step>
               )
