@@ -22,7 +22,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
     t.kyc.step4Info
   ]
   const theme = useTheme()
-  const [activeStep, setActiveStep] = useState(0)
+  const [activeStep, setActiveStep] = useState(1)
   return (
     <Box sx={{
             width: "100%",

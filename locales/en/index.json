@@ -63,6 +63,7 @@
       "fatherName": "Father Name",
       "gender": "Gender",
       "birthdate": "Birthdate",
+      "country": "Country",
       "province": "Province",
       "city": "City",
       "address": "Address",
@@ -70,7 +71,8 @@
       "nationalID": "National Identification Number",
       "averageSalary": "Average Salary",
       "jobStatus": "Job Status",
-      "monthlyInsultment": "Monthly Insultment"
+      "monthlyInsultment": "Monthly Insultment",
+      "mortgageRepayment": "Mortgage Repayment"
     },
     "formErrors": {
       "isRequired": "is required",

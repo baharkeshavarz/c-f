@@ -10,6 +10,7 @@ import KycActions from "../kyc-actions"
 import ValidationHelperText from "@/components/common/validation-helper-text"
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import HomeIcon from '@mui/icons-material/Home';
+import DividerText from "@/components/common/elemens/divider-text"
 
 interface PersonalInformationProps {
   t : any,
@@ -49,6 +50,9 @@ const PersonalInformation = ({ t, activeStep, setActiveStep }: PersonalInformati
     <form onSubmit={handleSubmit(handlePersonalInfo)}>
       <Box sx={{ py: 2 }}>
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
+             <DividerText content="User Information" sx={{}}/>
+          </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <TextFieldInput
               name="name"
@@ -117,14 +121,25 @@ const PersonalInformation = ({ t, activeStep, setActiveStep }: PersonalInformati
             />
           </Grid>
 
-          <Grid item xs={12} sm={12} md={6} lg={6}>
+          <Grid item xs={12} sm={12} md={12} lg={12} >
+             <DividerText content="User Address" sx={{ marginTop: 3}}/>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+             <SelectBoxInput  
+                 label={t.forms.country}
+                 options={[]} 
+             />
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={4} lg={4}>
              <SelectBoxInput  
                  label={t.forms.province}
                  options={[]} 
              />
           </Grid>
 
-          <Grid item xs={12} sm={12} md={6} lg={6}>
+          <Grid item xs={12} sm={12} md={4} lg={4}>
                <SelectBoxInput      
                  label={t.forms.city}
                  options={[]} />

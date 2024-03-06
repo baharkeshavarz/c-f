@@ -47,6 +47,10 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
                 py: 2,
            }}>
         <Grid container spacing={2}>
+           <Grid item xs={12} sm={12} md={6}>
+             <SelectBoxInput label={t.forms.jobStatus} options={[]} />
+          </Grid>
+
           <Grid item xs={12} sm={12} md={6}>
             <CurrencyTextField
               control={control}
@@ -85,8 +89,25 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
           </Grid>
 
           <Grid item xs={12} sm={12} md={6}>
-             <SelectBoxInput label={t.forms.jobStatus} options={[]} />
+            <CurrencyTextField
+              control={control}
+              name="mortgageRepayment"
+              label={t.forms.mortgageRepayment}
+              type="tel"
+              register={register}
+              maxLength={11}
+              minLength={5}
+              icon={AttachMoneyIcon}
+              t={t}
+            />
+           
+            <ValidationHelperText
+              error={!!errors?.mortgageRepayment}
+              helperText={(errors?.mortgageRepayment?.message as string) || ""}
+            />
           </Grid>
+
+
       
           <Grid item xs={12} sm={12} md={12}>
             <KycActions

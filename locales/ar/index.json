@@ -64,6 +64,7 @@
       "fatherName": "اسم الأب",
       "gender": "جنس",
       "birthdate": "تاريخ الميلاد",
+      "country": "دولة",
       "province": "مقاطعة",
       "city": "مدينة",
       "address": "عنوان",
@@ -71,7 +72,8 @@
       "nationalID": "رقم الهوية الوطنية",
       "averageSalary": "متوسط ​​الدخل",
       "jobStatus": "الحالة الوظيفية",
-      "monthlyInsultment": "الإهانة الشهرية"
+      "monthlyInsultment": "الإهانة الشهرية",
+      "mortgageRepayment": "سداد الرهن العقاري"
     },
     "formErrors": {
        "isRequired": "مطلوب",
