@@ -8,6 +8,8 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import SelectBoxInput from "@/components/common/inputs/select-box"
 import KycActions from "../kyc-actions"
 import ValidationHelperText from "@/components/common/validation-helper-text"
+import CurrencyTextField from "@/components/common/inputs/currency-input"
+
 
 interface FinancialDeclarationProps {
   t : any,
@@ -23,6 +25,7 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors }
   } = useForm()
 
@@ -45,15 +48,14 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
            }}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={6}>
-            <TextFieldInput
+            <CurrencyTextField
+              control={control}
+              type="tel"
               name="averageSalary"
               label={t.forms.averageSalary}
-              isRequired={true}
-              type="number"
               register={register}
-              maxLength={50}
+              maxLength={11}
               minLength={5}
-              fullWidth={isMobile}
               icon={AttachMoneyIcon}
               t={t}
             />
@@ -64,15 +66,14 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
           </Grid>
 
           <Grid item xs={12} sm={12} md={6}>
-            <TextFieldInput
+            <CurrencyTextField
+              control={control}
               name="monthlyInstallments"
               label={t.forms.monthlyInsultment}
-              type="number"
-              isRequired={true}
+              type="tel"
               register={register}
-              maxLength={50}
+              maxLength={11}
               minLength={5}
-              fullWidth={isMobile}
               icon={AttachMoneyIcon}
               t={t}
             />

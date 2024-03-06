@@ -93,7 +93,6 @@ const TextFieldInput: FC<TextFieldInputProps> = props => {
 
   return (
     <>
-    {/* {JSON.stringify(inputRules)} */}
      <TextField
       InputLabelProps={{
         style: { color: theme.palette.grey[500] }
@@ -115,7 +114,7 @@ interface ValidationRules {
   validate?: { value: number; message: string }
 }
 
-function getInputRules(props: TextFieldInputProps): ValidationRules {
+export const getInputRules = (props: TextFieldInputProps): ValidationRules => {
   const {
     t,
     pattern,
@@ -131,8 +130,8 @@ function getInputRules(props: TextFieldInputProps): ValidationRules {
   } = props
 
   const lbl = label || ""
-  let minLengthMsg = `${lbl} must be at least ${minLength} digit.`
-  let maxLengthMsg = `${lbl} حداکثر باید ${maxLength} رقم باشد.`
+  let minLengthMsg = `${lbl} must be at least ${minLength} digits.`
+  let maxLengthMsg = `${lbl} must be at most ${maxLength} digits.`
   let minMsg = `${lbl} نمیتواند کمتر از ${min} باشد.`
   let maxMsg = `${lbl} نمیتواند بیشتر از ${max} باشد.`
   if (minLength === maxLength) {
@@ -145,11 +144,6 @@ function getInputRules(props: TextFieldInputProps): ValidationRules {
   if (minLength) rules.minLength = { value: minLength, message: minLengthMsg }
   if (min) rules.min = { value: min, message: minMsg }
   if (max !== Number.MAX_VALUE) rules.max = { value: max, message: maxMsg }
- // debugger
-  // if (pattern) {rules.validate = cellphoneValidation("999")}
-  
-  // if(cellphoneValidation("9999")) rules.validate= { value: 1,message:'mobile number is wrong'}
-  // console.log("rules", rules);
   return rules
 }
 export default TextFieldInput

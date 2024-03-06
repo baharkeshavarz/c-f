@@ -2,7 +2,7 @@
 
 import TextFieldInput from "@/components/common/inputs/text-input"
 import ValidationHelperText from "@/components/common/validation-helper-text"
-import { Box, useTheme } from "@mui/material"
+import { Box } from "@mui/material"
 import { Dispatch, SetStateAction, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import MarkunreadIcon from "@mui/icons-material/Markunread"
