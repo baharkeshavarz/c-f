@@ -8,27 +8,33 @@ import StepLabel from "@mui/material/StepLabel"
 import Typography from "@mui/material/Typography"
 import { Grid, Stack, useTheme } from "@mui/material"
 import { TranslateProps } from "@/types"
-import PersonalInformation from "./steps/personal-information"
-import GmailVerification from "./steps/gmail/gmail.verification"
-import UploadDocuments from "./steps/upload-documents"
-import FinancialDeclaration from "./steps/financial-declaration"
+import PersonalInformation from "./personal-information"
+import GmailVerification from "./gmail/gmail.verification"
+import UploadDocuments from "./upload-documents"
+import FinancialDeclaration from "./financial-declaration"
+import ValiadationStep from "./validation-step"
+import ChooseCredit from "./choose-credit"
 
 const VarticalLinearStepper = ({ t }: TranslateProps) => {
-  const steps = [t.kyc.step1, t.kyc.step2, t.kyc.step3, t.kyc.step4]
+  const steps = [t.kyc.step1, t.kyc.step2, t.kyc.step3, t.kyc.step4, t.kyc.step5,t.kyc.step6]
   const stepsInfo = [
     t.kyc.step1Info,
     t.kyc.step2Info,
     t.kyc.step3Info,
-    t.kyc.step4Info
+    t.kyc.step4Info,
+    t.kyc.step4Info,
+    t.kyc.step5Info,
+    t.kyc.step6Info,
   ]
   const theme = useTheme()
-  const [activeStep, setActiveStep] = useState(1)
+  const [activeStep, setActiveStep] = useState(5)
   return (
     <Box sx={{
             width: "100%",
+            height: "100%",
             display: "flex",     
-            background: "white",
             borderRadius: "4px",
+            background: "white",
             marginBottom: 3,
         }}>
       <Grid container spacing={1} margin={1}>
@@ -48,7 +54,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
               flexDirection: "column",
               width: "100%",
               marginBottom: 4,
-              height: "21rem"
+              height: "30rem"
             }}
           >
             {steps.map((label, index) => {
@@ -103,6 +109,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
             })}
           </Stepper>
         </Grid>
+
         <Grid item xs={12} md={8}>
           <Box>
             <Stack
@@ -134,6 +141,12 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                 )}
                 {activeStep === 3 && (
                   <FinancialDeclaration t={t} activeStep={3} setActiveStep={setActiveStep} />
+                )}
+                {activeStep === 4 && (
+                  <ValiadationStep t={t} activeStep={3} setActiveStep={setActiveStep} />
+                )}
+                {activeStep === 5 && (
+                  <ChooseCredit t={t} activeStep={3} setActiveStep={setActiveStep} />
                 )}
               </Box>
             </Stack>

@@ -30,7 +30,7 @@
               "providers/theme-provider.js",
               "providers/theme-provider.js",
               "components/common/main-card/index.js",
-              "app/[lang]/dashboard/components/kyc/vertical-stepper.tsx", 
+              "app/[lang]/dashboard/components/kyc/steps/vertical-stepper.tsx", 
               "components/common/loading/dot-loading.tsx",
               "types/leaflet.d.ts"
     ],

@@ -1,5 +1,5 @@
 import React from 'react'
-import VarticalLinearStepper from "../components/kyc/vertical-stepper"
+import VarticalLinearStepper from "../components/kyc/steps/vertical-stepper"
 import LayoutWrapper from '@/components/layout/layout-wrapper'
 import { TranslateProps } from '@/types'
 import KycHeader from '../components/kyc/kyc-header'

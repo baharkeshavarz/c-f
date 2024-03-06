@@ -1,6 +1,5 @@
 "use client"
 
-import TextFieldInput from "@/components/common/inputs/text-input"
 import { Grid, Stack, useMediaQuery, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
@@ -106,9 +105,6 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
               helperText={(errors?.mortgageRepayment?.message as string) || ""}
             />
           </Grid>
-
-
-      
           <Grid item xs={12} sm={12} md={12}>
             <KycActions
                 t={t} 
