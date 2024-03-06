@@ -86,7 +86,9 @@
       "insertPassport": "Please upload a picture of your passport",
       "insertNationalID": "Please upload your National ID photo",
       "fileMaxSize": "The maximum file size is 5 MB",
-      "verificationCodeEmail": "Verification code being sent to email"
+      "verificationCodeEmail": "Verification code being sent to email",
+      "verificationCodePhone": "Verification code being sent to your mobile number",
+      "confirmCode": "confirm Code"
     },
    "errors": {
       "errorHappened": "An error has occurred"

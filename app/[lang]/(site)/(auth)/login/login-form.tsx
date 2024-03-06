@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { Stack, useTheme } from "@mui/material"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import { useRouter } from "next/navigation"
@@ -12,8 +12,18 @@ import AuthFooter from "@/components/auth/footer"
 import { toast } from "react-toastify"
 import useAuthenticationStore from "@/store/authentication"
 import PhoneNumberInput from "@/components/common/inputs/phone-number"
+import {
+  LockClosedIcon,
+} from "@heroicons/react/24/solid"
 
-const LoginForm = ({ t }: TranslateProps) => {
+
+interface LoginFormProps {
+  t: any;
+  setStep: Dispatch<SetStateAction<string>>,
+  setMobile: Dispatch<SetStateAction<string>>, 
+}
+
+const LoginForm = ({ t, setStep, setMobile }: LoginFormProps) => {
   const [status, setStatus] = useState("")
   const router = useRouter()
   const { doLogin } = useAuthenticationStore()
@@ -27,25 +37,27 @@ const LoginForm = ({ t }: TranslateProps) => {
 
   // Handle Login
   const handleLogin: SubmitHandler<FieldValues> = async data => {
-    const val = data.phoneNumber
-    setStatus("loading")
-    try {
-      const response: ApiResponse = await doLogin(val)
-      const { status, data } = response
+    const phoneNum = data.phoneNumber
+    setMobile(phoneNum)
+    setStep("verify")
+   // setStatus("loading")
+    // try {
+    //   const response: ApiResponse = await doLogin(phoneNum)
+    //   const { status, data } = response
 
-      if (status === 200) {
-        setStatus("done")
+    //   if (status === 200) {
+    //     setStatus("done")
 
-        if (!data?.hasValue) {
-          toast.error(data?.message)
-        } else {
-          router.push(`/verifyLogin/${val}`)
-          toast.success(t.messages.sentSms)
-        }
-      }
-    } catch (error) {
-      setStatus("error")
-    }
+    //     if (!data?.hasValue) {
+    //       toast.error(data?.message)
+    //     } else {
+    //       router.push(`/verifyLogin/${phoneNum}`)
+    //       toast.success(t.messages.sentSms)
+    //     }
+    //   }
+    // } catch (error) {
+    //   setStatus("error")
+    // }
   }
 
   return (
@@ -55,6 +67,7 @@ const LoginForm = ({ t }: TranslateProps) => {
           page="login"
           title={t.general.login}
           subTitle={t.login.headerMsg}
+          icon={LockClosedIcon}
         />
         <PhoneNumberInput
           register={register}

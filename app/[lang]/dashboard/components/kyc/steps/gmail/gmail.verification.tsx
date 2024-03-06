@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useState } from "react"
 import { useMediaQuery, Typography } from "@mui/material"
 import GetData from "./get-data"
 import VerifyForm from "@/components/common/otp/verify-form"
-import { TranslateProps } from "@/types"
+import KycActions from "../../kyc-actions"
 
 interface GmailVerificationProps {
   t : any,
@@ -27,13 +27,17 @@ const GmailVerification = ({ t, activeStep, setActiveStep }: GmailVerificationPr
           <span style={{ fontWeight: "bold", fontSize: "14px" }}> {email} </span> 
         </Typography>
 
-        <VerifyForm
-          t={t}
-          isMobile={isMobile}
-          setStep={setStep}
-          page="gmail"
-          activeStep={activeStep}
-          setActiveStep={setActiveStep}
+         <VerifyForm
+            t={t}
+            isMobile={isMobile}
+            setStep={setStep}
+            page="gmail"
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
+        />
+         <KycActions 
+             t={t} 
+             activeStep={activeStep}
         />
         </>
       )}

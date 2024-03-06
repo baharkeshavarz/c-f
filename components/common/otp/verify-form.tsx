@@ -12,15 +12,15 @@ import { toast } from "react-toastify"
 import auth from "@/lib/auth"
 import { onlyDigitsWithMaxLen, p2e } from "@/components/common/inputs/helper"
 import { findLocalFromUrl } from "@/lib/url"
-import KycActions from "@/app/[lang]/dashboard/components/kyc/kyc-actions"
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 interface VerifyFormProps {
   t: any,
   page: string
-  isMobile: boolean
-  setStep?: Dispatch<SetStateAction<string>>
-  activeStep: number,
+  isMobile: boolean,
+  receiveData: string;
+  setStep: Dispatch<SetStateAction<string>>
+  activeStep?: number,
   setActiveStep?: Dispatch<SetStateAction<number>>
 }
 
@@ -28,13 +28,14 @@ const VerifyForm = ({
   t,
   page,
   isMobile,
+  receiveData,
   setStep,
   activeStep,
   setActiveStep
 }: VerifyFormProps) => {
+
   const pathname = usePathname()
   const lang = findLocalFromUrl(pathname)
-  const { mobileNumber } = {}
   const router = useRouter()
   const { doVerifyLogin, doVerifyRegister, doLogin, resendRegisterOtp } =
     useAuthenticationStore()
@@ -52,7 +53,7 @@ const VerifyForm = ({
     if (page === "register") {
       setState("loading")
       const registerData = {
-        mobileNumber: mobileNumber,
+        mobileNumber: receiveData,
         code: p2e(val?.otp),
         token: ""
       }
@@ -83,7 +84,7 @@ const VerifyForm = ({
       setState("loading")
       const loginData = {
         password: p2e(val?.otp),
-        userName: mobileNumber
+        userName: receiveData
       }
       doVerifyLogin(loginData)
         .then(response => {
@@ -131,29 +132,13 @@ const VerifyForm = ({
     }
   }
 
-  const generateHref = () => {
-    switch (page) {
-      case "register":
-        return `/${lang}/register?phone=${mobileNumber}`
-      case "login":
-        return `/${lang}/login?phone=${mobileNumber}`
-      case "gmail":
-        if (setStep) {
-          setStep("data")
-        }
-        return `/${lang}/dashboard/request`
-      default:
-        return ""
-    }
-  }
-
   return (
     <form onSubmit={handleSubmit(handleVerify)}>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: isMobile ? "100%" : "80%",
+          width: "100%",
           mb: 1
         }}
       >
@@ -217,18 +202,14 @@ const VerifyForm = ({
           alignItems="center"
           mt={1}
         >
-          <CountDown t={t} actionFunc={sendOtpAgain} amount={3} />
+          <CountDown t={t} actionFunc={sendOtpAgain} amount={120} />
           <Stack direction="row" alignItems="center" spacing={0.2} sx={{ fontWeight: 600 }}>
             <EditCalendarIcon/>
-            <Link href="" onClick={() => generateHref()}>
+            <Link href="" onClick={() => setStep("data")}>
                {t.general.edit}
             </Link>
           </Stack>
         </Stack>
-        <KycActions
-            t={t} 
-            activeStep={activeStep}
-        />
       </Box>
     </form>
   )
