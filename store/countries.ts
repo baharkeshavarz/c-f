@@ -1,19 +1,29 @@
 import { create } from "zustand"
-import common from "../services/common"
+import { persist } from "zustand/middleware"
 
-interface CountriesStore {
-  getCountriesCode: () => Promise<any>
-  getCountriesList: () => Promise<any>
+type CountriesStore = {
+  countriesInfo: any
+  onSetCountriesList: (items: any) => void
+  onSetCountriesCodeList: (items: any) => void
+  onSetNationalitiesList: (items: any) => void
 }
 
-const useCountriesStore = create<CountriesStore>(set => ({
-  getCountriesCode: () => {
-    return common.getCountriesCode()
-  },
+const initialValue = {
+  countriesList: [],
+  countriesCodeList: [],
+  nationalitiesList: []
+}
 
-  getCountriesList: () => {
-    return common.getCountriesList()
-  }
-}))
-
-export default useCountriesStore
+export const useCountriesStore = create(
+  persist(
+    (set: any) => ({
+      countriesInfo: initialValue,
+      onSetCountriesList: (items: any) => set({ countriesInfo: items }),
+      onSetCountriesCodeList: (items: any) => set({ countriesInfo: items }),
+      onSetNationalitiesList: (items: any) => set({ countriesInfo: items })
+    }),
+    {
+      name: "countries"
+    }
+  )
+)

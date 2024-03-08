@@ -6,17 +6,21 @@ import { Box, Grid } from "@mui/material"
 import KycActions from "../kyc-actions"
 
 interface UploadDocumentsProps {
-  t : any,
-  activeStep: number,
+  t: any
+  activeStep: number
   setActiveStep: Dispatch<SetStateAction<number>>
 }
 
-const UploadDocuments = ({ t ,activeStep, setActiveStep }: UploadDocumentsProps) => {
+const UploadDocuments = ({
+  t,
+  activeStep,
+  setActiveStep
+}: UploadDocumentsProps) => {
   const [passport, setPassport] = useState("")
   const [nationalCode, setNationalCode] = useState("")
 
-  console.log("passport", passport);
-  console.log("nationalCode", nationalCode);
+  console.log("passport", passport)
+  console.log("nationalCode", nationalCode)
 
   // Handle Next
   const handleNext = () => {
@@ -43,19 +47,19 @@ const UploadDocuments = ({ t ,activeStep, setActiveStep }: UploadDocumentsProps)
           <FileUploader
             t={t}
             setFile={setNationalCode}
-            title={t.forms.nationalID}
+            title={t.forms.nationalCode}
             subTitle={t.messages.insertNationalID}
           />
         </Grid>
 
         <Grid item xs={12} sm={12} md={6}>
           <KycActions
-              t={t} 
-              activeStep={activeStep}
-              handleNext={handleNext}
-              handleBack={handleBack}
+            t={t}
+            activeStep={activeStep}
+            handleNext={handleNext}
+            handleBack={handleBack}
           />
-         </Grid>
+        </Grid>
       </Grid>
     </Box>
   )

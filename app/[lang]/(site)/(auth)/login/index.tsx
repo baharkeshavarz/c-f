@@ -27,8 +27,7 @@ const Login = ({ t }: TranslateProps) => {
             shadow={3}
             sx={{
               borderRadius: "16px",
-              p: 3,
-              background: theme.palette.grey[50]
+              p: 3
             }}
           >
             {step === "data" && (

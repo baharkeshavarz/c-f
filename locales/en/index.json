@@ -74,13 +74,14 @@
       "address": "Address",
       "passport": "Passport",
       "passportNo": "Passport Number",
-      "nationalID": "National Identification",
+      "nationalCode": "National Identification",
       "nationalIDNo": "National Identification Number",
       "averageSalary": "Average Salary",
       "jobStatus": "Job Status",
       "monthlyInsultment": "Monthly Insultment",
       "mortgageRepayment": "Mortgage Repayment",
-      "code": "Code"
+      "code": "Code",
+      "nationality": "Nationality"
     },
     "formErrors": {
       "isRequired": "is required",

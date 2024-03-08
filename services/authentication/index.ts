@@ -9,10 +9,7 @@ const doLogin = (data: any) => {
 
 // Register Service
 const doRegister = (userData: any) => {
-  return axios.post("/api/v1/account/register", {
-    mobileNumber: userData?.phoneNumber,
-    nationalCode: userData?.id
-  })
+  return axios.post("/api/v1/account/register", userData)
 }
 
 const verifyLogin = (data: any) => {

@@ -13,8 +13,9 @@ import useAuthenticationStore from "@/store/authentication"
 import PhoneNumberInput from "@/components/common/inputs/phone-number"
 import { LockClosedIcon } from "@heroicons/react/24/solid"
 import SelectBoxInput from "@/components/common/inputs/select-box"
-import useCountriesStore from "@/store/countries"
+import { useCountriesStore } from "@/store/countries"
 import Loading from "@/components/common/loading/loading"
+import CommonServices from "@/services/common"
 
 interface LoginFormProps {
   t: any
@@ -36,8 +37,8 @@ const LoginForm = ({
   const [status, setStatus] = useState("")
   const [countriesCode, setCountriesCode] = useState([])
   const { doLogin } = useAuthenticationStore()
-  const { getCountriesCode } = useCountriesStore()
   const theme = useTheme()
+  const { countriesInfo, onSetCountriesCodeList } = useCountriesStore()
 
   const {
     register,
@@ -51,7 +52,6 @@ const LoginForm = ({
     const phoneNumber = `${code}${telephone}`
     setMobile(telephone)
     setStatus("loading")
-
     try {
       const response: ApiResponse = await doLogin(phoneNumber)
       const { status, data } = response
@@ -72,14 +72,19 @@ const LoginForm = ({
   // Get Countries Code
   useEffect(() => {
     setStatus("loading")
-    getCountriesCode().then(res => {
-      let codes: any[] = []
-      if (res.data.value) {
-        res.data.value.map((item: any) => codes.push(item.code))
+    const getCountriesCodeFunc = async () => {
+      const response = await CommonServices.getCountriesCode()
+      if (response.status === 200) {
+        let codes: never[] = []
+        if (response.data.value) {
+          response.data.value.map((item: any) => codes.push(item.code as never))
+        }
+        setCountriesCode(codes)
+        setStatus("false")
+        onSetCountriesCodeList({ ...countriesInfo, countriesCodeList: codes })
       }
-      setCountriesCode(codes)
-      setStatus("false")
-    })
+    }
+    getCountriesCodeFunc()
   }, [])
 
   if (status === "loading") {
@@ -96,8 +101,8 @@ const LoginForm = ({
           icon={LockClosedIcon}
         />
 
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={4} md={5}>
+        <Grid container spacing={2} mt={1}>
+          <Grid item xs={12} sm={4} md={4}>
             <SelectBoxInput
               label={t.forms.code}
               value={code}
@@ -107,7 +112,7 @@ const LoginForm = ({
               }}
             />
           </Grid>
-          <Grid item xs={12} sm={8} md={7}>
+          <Grid item xs={12} sm={8} md={8}>
             <PhoneNumberInput
               register={register}
               name="phoneNumber"

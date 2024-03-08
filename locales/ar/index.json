@@ -75,13 +75,14 @@
       "address": "عنوان",
       "passport": "جواز السفر",
       "passportNo": "رقم جواز السفر",
-      "nationalID": "الهوية الوطنية",
+      "nationalCode": "الهوية الوطنية",
       "nationalIDNo": "رقم الهوية الوطنية",
       "averageSalary": "متوسط ​​الدخل",
       "jobStatus": "الحالة الوظيفية",
       "monthlyInsultment": "الإهانة الشهرية",
       "mortgageRepayment": "سداد الرهن العقاري",
-      "code": "Code"
+      "code": "Code",
+      "nationality": "Nationality"
     },
     "formErrors": {
       "isRequired": "مطلوب",

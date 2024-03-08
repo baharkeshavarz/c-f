@@ -9,9 +9,14 @@ const getCountriesList = () => {
   return axios.get("/api/v1/common/getCountryList")
 }
 
+const getNationalityList = () => {
+  return axios.get("/api/v1/common/getNationalityList")
+}
+
 const CommonServices = {
   getCountriesCode,
-  getCountriesList
+  getCountriesList,
+  getNationalityList
 }
 
 export default CommonServices

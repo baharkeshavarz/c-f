@@ -11,10 +11,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "react-toastify"
 import auth from "@/lib/auth"
 import { onlyDigitsWithMaxLen, p2e } from "@/components/common/inputs/helper"
-import { findLocalFromUrl } from "@/lib/url"
 import EditCalendarIcon from "@mui/icons-material/EditCalendar"
-import page from "@/app/[lang]/page"
-import router from "next/router"
 
 interface VerifyFormProps {
   t: any
