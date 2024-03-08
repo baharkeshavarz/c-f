@@ -7,6 +7,7 @@ type ButtonVariant = "text" | "contained" | "outlined"
 
 interface MuiButtonProps extends ButtonProps {
   loading?: boolean
+  disabled?: boolean
   children: React.ReactNode
   sx?: React.CSSProperties
   size?: ButtonSize
@@ -19,6 +20,7 @@ const MuiButton: React.FC<MuiButtonProps> = ({
   variant = "contained",
   fullWidth = true,
   loading = false,
+  disabled = false,
   children,
   sx,
   ...others
@@ -30,7 +32,7 @@ const MuiButton: React.FC<MuiButtonProps> = ({
       size={size}
       variant={variant}
       fullWidth={fullWidth}
-      disabled={loading}
+      disabled={disabled}
       sx={{
         borderRadius: "2px",
         mt: 2,
@@ -38,13 +40,14 @@ const MuiButton: React.FC<MuiButtonProps> = ({
       }}
       {...others}
     >
-      {loading ? (
+      {loading && (
         <DotLoading sx={{ paddingTop: 2, paddingBottom: 2 }} color="primary" />
-      ) : (
-        <Typography py={0.2}>
-          {children}
-        </Typography>
       )}
+
+      {/* {disabled && <Typography sx={{ color: "whit" }}>disabled</Typography>} */}
+      <Typography py={0.2} sx={{ color: disabled ? "white" : "primary" }}>
+        {children}
+      </Typography>
     </Button>
   )
 }

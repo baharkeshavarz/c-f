@@ -14,12 +14,16 @@ async function getUserIpAddress() {
   }
 }
 
-const publicPaths = ["/api/v1/account/register", "/api/v1/account/registerVerify", "/api/v1/account/sendOtp"]
+const publicPaths = [
+  "/api/v1/account/register",
+  "/api/v1/account/registerVerify",
+  "/api/v1/account/sendLoginOtp"
+]
 const API_URL = "http://10.1.10.171:5001"
 
 const config = {
   baseURL: API_URL,
-  timeout: 300 * 1000,  //5 mins
+  timeout: 300 * 1000, //5 mins
   headers: {
     "Access-Control-Allow-Credentials": true,
     "Content-Type": "application/json; charset=utf-8",
@@ -43,7 +47,7 @@ _axios.interceptors.request.use(
       config.headers.Authorization = `Bearer ${auth.accessToken}`
     }
     return config
-  },
+  }
   // function (error) {
   //   return Promise.reject("خطایی رخ داده است، دوباره تلاش کنید.")
   // }
@@ -66,9 +70,9 @@ _axios.interceptors.response.use(
           console.error(e)
         })
     } else {
-     if (error?.data?.message) {
-         toast.error(error?.data?.message)
-     }
+      if (error?.data?.message) {
+        toast.error(error?.data?.message)
+      }
     }
     return Promise.reject("")
   }

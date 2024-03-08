@@ -1,32 +1,42 @@
 "use client"
 
-import { Dispatch, SetStateAction, useState } from "react"
-import { Stack, useTheme } from "@mui/material"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { Grid, Stack, useTheme } from "@mui/material"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
-import { useRouter } from "next/navigation"
 import MuiButton from "@/components/common/button"
 import ValidationHelperText from "@/components/common/validation-helper-text"
-import { ApiResponse, TranslateProps } from "@/types"
+import { ApiResponse } from "@/types"
 import AuthHeader from "@/components/auth/header"
 import AuthFooter from "@/components/auth/footer"
 import { toast } from "react-toastify"
 import useAuthenticationStore from "@/store/authentication"
 import PhoneNumberInput from "@/components/common/inputs/phone-number"
-import {
-  LockClosedIcon,
-} from "@heroicons/react/24/solid"
-
+import { LockClosedIcon } from "@heroicons/react/24/solid"
+import SelectBoxInput from "@/components/common/inputs/select-box"
+import useCountriesStore from "@/store/countries"
+import Loading from "@/components/common/loading/loading"
 
 interface LoginFormProps {
-  t: any;
-  setStep: Dispatch<SetStateAction<string>>,
-  setMobile: Dispatch<SetStateAction<string>>, 
+  t: any
+  setStep: Dispatch<SetStateAction<string>>
+  mobile: string
+  setMobile: Dispatch<SetStateAction<string>>
+  code: string
+  setCode: Dispatch<SetStateAction<string>>
 }
 
-const LoginForm = ({ t, setStep, setMobile }: LoginFormProps) => {
+const LoginForm = ({
+  t,
+  setStep,
+  mobile,
+  setMobile,
+  code,
+  setCode
+}: LoginFormProps) => {
   const [status, setStatus] = useState("")
-  const router = useRouter()
+  const [countriesCode, setCountriesCode] = useState([])
   const { doLogin } = useAuthenticationStore()
+  const { getCountriesCode } = useCountriesStore()
   const theme = useTheme()
 
   const {
@@ -37,27 +47,43 @@ const LoginForm = ({ t, setStep, setMobile }: LoginFormProps) => {
 
   // Handle Login
   const handleLogin: SubmitHandler<FieldValues> = async data => {
-    const phoneNum = data.phoneNumber
-    setMobile(phoneNum)
-    setStep("verify")
-   // setStatus("loading")
-    // try {
-    //   const response: ApiResponse = await doLogin(phoneNum)
-    //   const { status, data } = response
+    const telephone = data.phoneNumber
+    const phoneNumber = `${code}${telephone}`
+    setMobile(telephone)
+    setStatus("loading")
 
-    //   if (status === 200) {
-    //     setStatus("done")
+    try {
+      const response: ApiResponse = await doLogin(phoneNumber)
+      const { status, data } = response
+      if (status === 200) {
+        setStatus("done")
+        if (!data?.succeed) {
+          toast.error(data?.message)
+        } else {
+          setStep("verify")
+          toast.success(t.messages.sentSms)
+        }
+      }
+    } catch (error) {
+      setStatus("error")
+    }
+  }
 
-    //     if (!data?.hasValue) {
-    //       toast.error(data?.message)
-    //     } else {
-    //       router.push(`/verifyLogin/${phoneNum}`)
-    //       toast.success(t.messages.sentSms)
-    //     }
-    //   }
-    // } catch (error) {
-    //   setStatus("error")
-    // }
+  // Get Countries Code
+  useEffect(() => {
+    setStatus("loading")
+    getCountriesCode().then(res => {
+      let codes: any[] = []
+      if (res.data.value) {
+        res.data.value.map((item: any) => codes.push(item.code))
+      }
+      setCountriesCode(codes)
+      setStatus("false")
+    })
+  }, [])
+
+  if (status === "loading") {
+    return <Loading />
   }
 
   return (
@@ -69,23 +95,39 @@ const LoginForm = ({ t, setStep, setMobile }: LoginFormProps) => {
           subTitle={t.login.headerMsg}
           icon={LockClosedIcon}
         />
-        <PhoneNumberInput
-          register={register}
-          name="phoneNumber"
-          label={t.forms.mobile}
-          t={t}
-          icon={true}
-        />
+
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={4} md={5}>
+            <SelectBoxInput
+              label={t.forms.code}
+              value={code}
+              options={countriesCode}
+              onChange={(_, item: any) => {
+                setCode(item)
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={8} md={7}>
+            <PhoneNumberInput
+              register={register}
+              name="phoneNumber"
+              label={t.forms.mobile}
+              t={t}
+              icon={true}
+            />
+          </Grid>
+        </Grid>
         <ValidationHelperText
           error={!!errors?.phoneNumber}
           helperText={(errors?.phoneNumber?.message as string) || ""}
         />
       </Stack>
       <MuiButton
-        sx={{ 
-               background: `${theme.palette.common.black} !important`,
-               color: theme.palette.primary.main
-         }}
+        sx={{
+          background: `${theme.palette.common.black} !important`,
+          color: theme.palette.primary.main
+        }}
+        // disabled={mobile === "" || code === ""}
         loading={status === "loading"}
       >
         {t.login.getCode}

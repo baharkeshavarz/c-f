@@ -22,7 +22,7 @@ export const onlyDigitsWithMaxLen = (max: number) => (event: InputEvent) => {
   )
     return
 
-  const val = remSep(event.currentTarget.value)
+  const val = remSep(event.target.value)
 
   if (val.length >= max) {
     return event.preventDefault()
@@ -97,14 +97,13 @@ export const OnlyEnglishCharacter = () => (event: InputEvent) => {
 }
 
 export const commaSep = (num: number | string) => {
- return (
-       typeof num === "number"
-       ? p2e(num.toString())
-       : +p2e(num).replace(/\D/g, "")
-   ).toLocaleString()
-
+  return (
+    typeof num === "number" ? p2e(num.toString()) : +p2e(num).replace(/\D/g, "")
+  ).toLocaleString()
 }
 
-
 export const remSep = (value: string) => value?.replace(/\D/g, "")
-export const p2e = (s: string) => s.replace(/[۰-۹٠-٩]/g, d => "۰۱۲۳۴۵۶۷۸۹0123456789".charAt("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".indexOf(d)));
+export const p2e = (s: string) =>
+  s.replace(/[۰-۹٠-٩]/g, d =>
+    "۰۱۲۳۴۵۶۷۸۹0123456789".charAt("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩".indexOf(d))
+  )

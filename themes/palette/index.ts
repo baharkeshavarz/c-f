@@ -45,7 +45,7 @@ const Palette = (mode: any) => {
       contrastText: "#FFF"
     },
     grey: {
-      50: "#FAFAFA",
+      50: "#FFFFFC",
       100: "#F5F5F5",
       200: "#EEEEEE",
       300: "#E0E0E0",

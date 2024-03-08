@@ -2,16 +2,21 @@ import axios from "../../lib/axios"
 
 // Login Service
 const doLogin = (data: any) => {
-  return axios.post("/api/v1/account/sendOtp", { userName: data?.phoneNumber })
+  return axios.post("/api/v1/account/sendLoginOtp", {
+    userName: data
+  })
 }
 
 // Register Service
 const doRegister = (userData: any) => {
-  return axios.post("/api/v1/account/register", { mobileNumber: userData?.phoneNumber, nationalCode: userData?.id })
+  return axios.post("/api/v1/account/register", {
+    mobileNumber: userData?.phoneNumber,
+    nationalCode: userData?.id
+  })
 }
 
 const verifyLogin = (data: any) => {
-  return axios.post("/api/v1/account/loginOtp", data)
+  return axios.post("/api/v1/account/loginByOtp", data)
 }
 
 const verifyRegister = (data: any) => {
@@ -27,11 +32,16 @@ const refreshToken = (token: any) => {
 }
 
 const resendRegisterOtp = (number: string) => {
-  return axios.post("/api/v1/account/resendRegisterOtp", { mobileNumber: number })
+  return axios.post("/api/v1/account/resendRegisterOtp", {
+    mobileNumber: number
+  })
 }
 
 const emtaLogin = (data: any) => {
-  return axios.post("/api/v1/account/emtaLogin", { userName: "0902474848313", domainAddress: "https://www.test.com" })
+  return axios.post("/api/v1/account/emtaLogin", {
+    userName: "0902474848313",
+    domainAddress: "https://www.test.com"
+  })
 }
 
 const verifyEmtaLogin = (data: any) => {

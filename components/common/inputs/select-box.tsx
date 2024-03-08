@@ -1,43 +1,50 @@
-import React from 'react'
-import {  useTheme, Autocomplete, TextField, alpha } from '@mui/material'
+import React from "react"
+import { useTheme, Autocomplete, TextField } from "@mui/material"
 
 interface SelectBoxInputProps {
-    options: [],
-    label?: string,
-    onChange?: () => {},
-    sx?: React.CSSProperties
+  options: any
+  value: any
+  label?: string
+  onChange?: any
+  sx?: React.CSSProperties
 }
 
-const SelectBoxInput = ({ label, options, onChange, sx= {} }: SelectBoxInputProps) => {
+const SelectBoxInput = ({
+  label,
+  options,
+  value,
+  onChange,
+  sx = {}
+}: SelectBoxInputProps) => {
   const theme = useTheme()
 
   return (
     <Autocomplete
-        {...sx}
-        onChange={onChange}
-        disablePortal
-        options={options}
-        renderInput={params => (
+      {...sx}
+      onChange={onChange}
+      disablePortal
+      value={value}
+      options={options}
+      renderInput={params => (
         <TextField
-            sx={{
-                "& label.Mui-focused": {
-                    color: theme.palette.grey[500]
-                  },
-                  "& .MuiOutlinedInput-root": {
-                    "&.Mui-focused fieldset": {
-                      borderColor: theme.palette.grey[500]
-                    }
-                  },
-                "& .MuiInputBase-root": {
-                    borderRadius: "2px",
-                  //  backgroundColor: alpha(theme.palette.grey[200], 0.5)
-                }
-            }}
-            {...params}
-            label={label}
+          sx={{
+            "& label.Mui-focused": {
+              color: theme.palette.grey[500]
+            },
+            "& .MuiOutlinedInput-root": {
+              "&.Mui-focused fieldset": {
+                borderColor: theme.palette.grey[500]
+              }
+            },
+            "& .MuiInputBase-root": {
+              borderRadius: "2px"
+            }
+          }}
+          {...params}
+          label={label}
         />
-        )}
-   />
+      )}
+    />
   )
 }
 

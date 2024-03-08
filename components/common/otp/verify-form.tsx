@@ -12,15 +12,17 @@ import { toast } from "react-toastify"
 import auth from "@/lib/auth"
 import { onlyDigitsWithMaxLen, p2e } from "@/components/common/inputs/helper"
 import { findLocalFromUrl } from "@/lib/url"
-import EditCalendarIcon from '@mui/icons-material/EditCalendar';
+import EditCalendarIcon from "@mui/icons-material/EditCalendar"
+import page from "@/app/[lang]/page"
+import router from "next/router"
 
 interface VerifyFormProps {
-  t: any,
+  t: any
   page: string
-  isMobile: boolean,
-  receiveData: string;
+  isMobile: boolean
+  receiveData: string
   setStep: Dispatch<SetStateAction<string>>
-  activeStep?: number,
+  activeStep?: number
   setActiveStep?: Dispatch<SetStateAction<number>>
 }
 
@@ -33,9 +35,6 @@ const VerifyForm = ({
   activeStep,
   setActiveStep
 }: VerifyFormProps) => {
-
-  const pathname = usePathname()
-  const lang = findLocalFromUrl(pathname)
   const router = useRouter()
   const { doVerifyLogin, doVerifyRegister, doLogin, resendRegisterOtp } =
     useAuthenticationStore()
@@ -49,7 +48,7 @@ const VerifyForm = ({
   } = useForm()
 
   // Handle Verify
-  const handleVerify: SubmitHandler<FieldValues> = async data => {
+  const handleVerify: SubmitHandler<FieldValues> = async val => {
     if (page === "register") {
       setState("loading")
       const registerData = {
@@ -62,7 +61,7 @@ const VerifyForm = ({
           if (response?.status === 200) {
             if (!response?.data?.succeed) {
               setState("done")
-              toast.error(response?.data?.message || "An error has occurred")
+              toast.error(response?.data?.message || t.errors.errorHappened)
             } else {
               setState("done")
               auth.login(response?.data?.value)
@@ -81,6 +80,7 @@ const VerifyForm = ({
         setActiveStep(1)
       }
     } else {
+      // Login
       setState("loading")
       const loginData = {
         password: p2e(val?.otp),
@@ -91,12 +91,12 @@ const VerifyForm = ({
           if (response?.status === 200) {
             setState("done")
             if (!response?.data?.succeed) {
-              toast.error(response?.data?.message || "An error has occurred")
+              toast.error(response?.data?.message || t.errors.errorHappened)
             } else {
               auth.login(response?.data?.value)
               auth.loadUser()
               auth.backToBeforeLogin(router)
-              toast.success("خوش آمدید")
+              toast.success(t.messages.welcome)
             }
           }
         })
@@ -183,11 +183,11 @@ const VerifyForm = ({
               required: t.formErrors.verificationCodeIsRequired,
               maxLength: {
                 value: 6,
-                message: t.formErrors.verificationCode6Digits,
+                message: t.formErrors.verificationCode6Digits
               },
               minLength: {
                 value: 6,
-                message:  t.formErrors.verificationCode6Digits,
+                message: t.formErrors.verificationCode6Digits
               }
             })}
           />
@@ -203,10 +203,15 @@ const VerifyForm = ({
           mt={1}
         >
           <CountDown t={t} actionFunc={sendOtpAgain} amount={120} />
-          <Stack direction="row" alignItems="center" spacing={0.2} sx={{ fontWeight: 600 }}>
-            <EditCalendarIcon/>
+          <Stack
+            direction="row"
+            alignItems="center"
+            spacing={0.2}
+            sx={{ fontWeight: 600 }}
+          >
+            <EditCalendarIcon />
             <Link href="" onClick={() => setStep("data")}>
-               {t.general.edit}
+              {t.general.edit}
             </Link>
           </Stack>
         </Stack>

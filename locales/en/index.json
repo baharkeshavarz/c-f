@@ -21,7 +21,7 @@
       "totalPayable": "Total amount payable",
       "loanRequired": "Loan required"
     },
-    "general" : {
+    "general": {
       "login": "Login",
       "register": "Register",
       "language": "Language",
@@ -38,7 +38,7 @@
       "username": "Username",
       "password": "Password",
       "haveAccount": "Do you have an account?",
-      "headerMsg": "Please enter your data"
+      "headerMsg": "Please fill out the form"
     },
     "kyc": {
       "step": "Step",
@@ -79,7 +79,8 @@
       "averageSalary": "Average Salary",
       "jobStatus": "Job Status",
       "monthlyInsultment": "Monthly Insultment",
-      "mortgageRepayment": "Mortgage Repayment"
+      "mortgageRepayment": "Mortgage Repayment",
+      "code": "Code"
     },
     "formErrors": {
       "isRequired": "is required",
@@ -89,21 +90,23 @@
       "nationalID10Digits": "National ID must be 10 digits",
       "verificationCodeIsRequired": "Verification code is required",
       "verificationCode6Digits": "Verification code must be 6 digits"
-   },
-   "messages": {
+    },
+    "messages": {
       "sentSms": "Text message was sent",
       "insertPassport": "Please upload a picture of your passport",
       "insertNationalID": "Please upload your National ID photo",
       "fileMaxSize": "The maximum file size is 5 MB",
       "verificationCodeEmail": "Verification code being sent to email",
       "verificationCodePhone": "Verification code being sent to your mobile number",
-      "confirmCode": "confirm Code"
+      "confirmCode": "Confirm the Code",
+      "welcome": "Welcome!"
     },
-   "errors": {
+    "errors": {
       "errorHappened": "An error has occurred"
     },
     "about": {
       "title": "About Our Company",
-      "description": "Welcome to our company, where innovation meets excellence. We are a dynamic and forward-thinking technology company committed to providing smart solutions for businesses. Our team of experts is dedicated to pushing boundaries and creating impactful technological solutions that drive success. Welcome to our company, where innovation meets excellence. We are a dynamic and forward-thinking technology company committed to providing smart solutions for businesses. Our team of experts is dedicated to pushing boundaries and creating impactful technological solutions that drive success. Welcome to our company, where innovation meets excellence. We are a dynamic and forward-thinking technology company committed to providing smart solutions for businesses. Our team of experts is dedicated to pushing boundaries and creating impactful technological solutions that drive success."    }
+      "description": "Welcome to our company, where innovation meets excellence. We are a dynamic and forward-thinking technology company committed to providing smart solutions for businesses. Our team of experts is dedicated to pushing boundaries and creating impactful technological solutions that drive success. Welcome to our company, where innovation meets excellence. We are a dynamic and forward-thinking technology company committed to providing smart solutions for businesses. Our team of experts is dedicated to pushing boundaries and creating impactful technological solutions that drive success. Welcome to our company, where innovation meets excellence. We are a dynamic and forward-thinking technology company committed to providing smart solutions for businesses. Our team of experts is dedicated to pushing boundaries and creating impactful technological solutions that drive success."
+    }
   }
 }

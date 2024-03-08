@@ -3,8 +3,9 @@
 import { InputAdornment, TextField, useTheme } from "@mui/material"
 import { onlyDigitsWithMaxLen } from "./helper"
 import MobileFriendlyIcon from "@mui/icons-material/MobileFriendly"
+import PhoneNumberInput from "./phone-number"
 
-interface PhoneNumberInputProps {
+interface CountryCodeProps {
   register: any
   t: any
   disabled?: boolean
@@ -13,7 +14,7 @@ interface PhoneNumberInputProps {
   icon?: boolean
 }
 
-const PhoneNumberInput = ({
+const CountryCodeInput = ({
   register,
   name,
   label,
@@ -21,7 +22,7 @@ const PhoneNumberInput = ({
   icon = false,
   t,
   ...etc
-}: PhoneNumberInputProps) => {
+}: CountryCodeProps) => {
   const theme = useTheme()
   const focusStyle = {
     "& label.Mui-focused": {
@@ -54,11 +55,11 @@ const PhoneNumberInput = ({
         required: t.formErrors.mobileRequired,
         maxLength: {
           value: 10,
-          message: t.formErrors.mobileNumber10Digits
+          message: t.formErrors.mobileNumber11Digits
         },
         minLength: {
-          value: 10,
-          message: t.formErrors.mobileNumber10Digits
+          value: 2,
+          message: t.formErrors.mobileNumber11Digits
         }
       })}
       InputProps={{

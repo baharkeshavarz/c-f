@@ -22,11 +22,11 @@
       "loanRequired": "القرض مطلوب"
     },
     "general": {
-       "login": "تسجيل الدخول",
-       "register": "يسجل",
-       "language": "لغة",
-       "edit": "يحرر",
-       "sendAgain": "ارسل الرمز مجددا"
+      "login": "تسجيل الدخول",
+      "register": "يسجل",
+      "language": "لغة",
+      "edit": "يحرر",
+      "sendAgain": "ارسل الرمز مجددا"
     },
     "login": {
       "password": "كلمة المرور",
@@ -80,16 +80,17 @@
       "averageSalary": "متوسط ​​الدخل",
       "jobStatus": "الحالة الوظيفية",
       "monthlyInsultment": "الإهانة الشهرية",
-      "mortgageRepayment": "سداد الرهن العقاري"
+      "mortgageRepayment": "سداد الرهن العقاري",
+      "code": "Code"
     },
     "formErrors": {
-       "isRequired": "مطلوب",
-       "mobileRequired": "رقم الجوال مطلوب",
-       "mobileNumber11Digits" : "رقم الجوال يجب أن يكون 11 رقم",
-       "nationalIDRequired": "مطلوب الهوية الوطنية",
-       "nationalID10Digits": "يجب أن تتكون الهوية الوطنية من 10 أرقام",
-       "verificationCodeIsRequired": "رمز التحقق مطلوب",
-       "verificationCode6Digits": "يجب أن يتكون رمز التحقق من 6 أرقام"
+      "isRequired": "مطلوب",
+      "mobileRequired": "رقم الجوال مطلوب",
+      "mobileNumber11Digits": "رقم الجوال يجب أن يكون 11 رقم",
+      "nationalIDRequired": "مطلوب الهوية الوطنية",
+      "nationalID10Digits": "يجب أن تتكون الهوية الوطنية من 10 أرقام",
+      "verificationCodeIsRequired": "رمز التحقق مطلوب",
+      "verificationCode6Digits": "يجب أن يتكون رمز التحقق من 6 أرقام"
     },
     "messages": {
       "sentMsg": "تم إرسال رسالة نصية",
@@ -97,7 +98,8 @@
       "insertNationalID": "يرجى تحميل صورة الهوية الوطنية الخاصة بك",
       "fileMaxSize": "الحد الأقصى لحجم الملف هو 5 ميغابايت",
       "verificationCodePhone": "يتم إرسال رمز التحقق إلى رقم هاتفك المحمول",
-      "confirmCode": "تأكيد الرمز"
+      "confirmCode": "تأكيد الرمز",
+      "welcome": "Welcome!"
     },
     "about": {
       "title": "معلومات عنا",
