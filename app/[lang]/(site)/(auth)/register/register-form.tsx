@@ -167,14 +167,13 @@ const RegisterForm = ({
 
   return (
     <form onSubmit={handleSubmit(handleRegister)}>
-      <Stack mt={2}>
+      <Stack>
         <AuthHeader
-          page="register"
           title={t.general.register}
           subTitle={t.register.headerMsg}
           icon={IdentificationIcon}
         />
-        <Grid container spacing={2}>
+        <Grid container spacing={2} mt={1}>
           <Grid item xs={12} sm={4} md={4}>
             <SelectBoxInput
               label={t.forms.code}

@@ -21,8 +21,8 @@ const noto_arabic = Noto_Sans_Arabic({
 })
 
 export const metadata: Metadata = {
-  title: "Crowd Funding App",
-  description: "Crowd Funding App",
+  title: "Influous",
+  description: "Influous App",
   icons: {
     icon: "/assets/images/logo.png"
   }
@@ -38,24 +38,25 @@ export default async function RootLayout({
 }: ChildrenLocalProps) {
   const lang = params.lang.toString()
   return (
-    <html
-      lang={lang}
-      dir={lang=== "ar" ? "rtl" : "ltr"}
-    >
+    <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
       <body
         dir={lang === "ar" ? "rtl" : "ltr"}
         className={
-            params.lang.toString() === "ar"
+          params.lang.toString() === "ar"
             ? noto_arabic.className
             : roboto.className
         }
-      > 
+      >
         <main>
-           <ThemeComponent>
-              <ToastProvider />
-               {lang === "ar" ? <EmotionCache>{children}</EmotionCache> : <> {children} </> }
-            </ThemeComponent>
-         </main>
+          <ThemeComponent>
+            <ToastProvider />
+            {lang === "ar" ? (
+              <EmotionCache>{children}</EmotionCache>
+            ) : (
+              <> {children} </>
+            )}
+          </ThemeComponent>
+        </main>
       </body>
     </html>
   )

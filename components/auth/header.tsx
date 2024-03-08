@@ -1,14 +1,12 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material"
 
 interface AuthHeaderProps {
-  page: string
   icon: any
   title: string
   subTitle: string
 }
 
-const AuthHeader = ({ page, icon, title, subTitle }: AuthHeaderProps) => {
-  const theme = useTheme()
+const AuthHeader = ({ icon, title, subTitle }: AuthHeaderProps) => {
   const Icon = icon
   return (
     <Box sx={{ my: 2 }}>

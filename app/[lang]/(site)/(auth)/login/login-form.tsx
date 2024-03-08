@@ -93,9 +93,8 @@ const LoginForm = ({
 
   return (
     <form onSubmit={handleSubmit(handleLogin)}>
-      <Stack mt={3}>
+      <Stack mt={1}>
         <AuthHeader
-          page="login"
           title={t.general.login}
           subTitle={t.login.headerMsg}
           icon={LockClosedIcon}
@@ -107,7 +106,7 @@ const LoginForm = ({
               label={t.forms.code}
               value={code}
               options={countriesCode}
-              onChange={(_, item: any) => {
+              onChange={(_: any, item: any) => {
                 setCode(item)
               }}
             />

@@ -45,8 +45,8 @@ const LocaleSwitcher = ({ classes, t }: LocaleSwitcherProps) => {
   }, [pathName])
 
   return (
-    <div className={`mx-1 flex h-full items-center ${classes}`}>
-      <FormControl variant="standard" sx={{ minWidth: 150 }}>
+    <div className={`mx-1 flex h-full items-center bg-white ${classes}`}>
+      <FormControl variant="standard" sx={{ minWidth: 150, p: 0, m: 0 }}>
         <InputLabel
           sx={{
             display: "flex",

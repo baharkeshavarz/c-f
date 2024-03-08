@@ -19,7 +19,7 @@ const Login = ({ t }: TranslateProps) => {
         container
         justifyContent="center"
         alignItems="center"
-        sx={{ margin: 5, minHeight: "50vh" }}
+        sx={{ margin: 5 }}
       >
         <Grid item xs={12} sm={8} md={6} lg={4}>
           <MainCard

@@ -7,13 +7,12 @@ export default async function DashboardLayout({
   children,
   params
 }: ChildrenLocalProps) {
-
-  const translation = await getDictionary(params.lang);
+  const translation = await getDictionary(params.lang)
   return (
-        <main>
-           <ResponsiveAppBar lang={params.lang} t={translation} />
-            {children}
-           <Footer/>
-        </main>
+    <main className="bg-white">
+      <ResponsiveAppBar lang={params.lang} t={translation} />
+      {children}
+      <Footer />
+    </main>
   )
 }

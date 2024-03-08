@@ -16,15 +16,14 @@ const Register = ({ t }: TranslateProps) => {
 
   return (
     <LayoutWrapper>
-      {code} === {mobile}
       <Grid
         container
         justifyContent="center"
         alignItems="center"
-        sx={{ margin: 5, minHeight: "50vh" }}
+        sx={{ margin: 5 }}
       >
         <Grid item xs={12} sm={8} md={6} lg={5} xl={4}>
-          <MainCard shadow={3} sx={{ borderRadius: "8px", p: 3 }}>
+          <MainCard shadow={3} sx={{ borderRadius: "8px" }}>
             <Stack mt={3}>
               {step == "data" && (
                 <RegisterForm
