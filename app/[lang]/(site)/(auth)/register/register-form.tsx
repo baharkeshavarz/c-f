@@ -14,13 +14,27 @@ import TextFieldInput from "@/components/common/inputs/text-input"
 import Loading from "@/components/common/loading/loading"
 import { useCountriesStore } from "@/store/countries"
 import CommonServices from "@/services/common"
+import AuthFooter from "@/components/auth/footer"
+import AuthHeader from "@/components/auth/header"
+import { IdentificationIcon } from "@heroicons/react/24/solid"
 
 interface RegisterFormProps {
   t: any
   setStep: Dispatch<SetStateAction<string>>
+  setMobile: Dispatch<SetStateAction<string>>
+  code: string
+  setCode: Dispatch<SetStateAction<string>>
+  setToken: Dispatch<SetStateAction<string>>
 }
 
-const RegisterForm = ({ t, setStep }: RegisterFormProps) => {
+const RegisterForm = ({
+  t,
+  setStep,
+  setMobile,
+  code,
+  setCode,
+  setToken
+}: RegisterFormProps) => {
   const {
     countriesInfo,
     onSetCountriesList,
@@ -31,7 +45,7 @@ const RegisterForm = ({ t, setStep }: RegisterFormProps) => {
   const [countriesCode, setCountriesCode] = useState([])
   const [countriesList, setCountriesList] = useState([])
   const [nationalities, setNationalities] = useState([])
-  const [code, setCode] = useState("")
+  const [countryCode, setCountryCode] = useState("")
   const [nationality, setNationality] = useState(null)
   const [location, setLocation] = useState(null)
   const [state, setState] = useState("")
@@ -46,12 +60,12 @@ const RegisterForm = ({ t, setStep }: RegisterFormProps) => {
   } = useForm()
 
   // Handle Register
-  const handleRegister: SubmitHandler<FieldValues> = async data => {
+  const handleRegister: SubmitHandler<FieldValues> = async values => {
     setState("loading")
     const formData = {
-      prefixMobileNumber: code,
-      mobileNumber: data.phoneNumber,
-      nationalCode: data.nationalCode,
+      prefixMobileNumber: countryCode,
+      mobileNumber: values.phoneNumber,
+      nationalCode: values.nationalCode,
       nationality: nationality!.id as string,
       location: location!.id as string
     }
@@ -65,6 +79,9 @@ const RegisterForm = ({ t, setStep }: RegisterFormProps) => {
         if (!data?.succeed) {
           toast.error(data?.message)
         } else {
+          setMobile(values.phoneNumber)
+          setCode(countryCode)
+          setToken(data.value)
           setStep("verify")
           toast.success(t.messages.sentSms)
         }
@@ -151,6 +168,12 @@ const RegisterForm = ({ t, setStep }: RegisterFormProps) => {
   return (
     <form onSubmit={handleSubmit(handleRegister)}>
       <Stack mt={2}>
+        <AuthHeader
+          page="register"
+          title={t.general.register}
+          subTitle={t.register.headerMsg}
+          icon={IdentificationIcon}
+        />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={4} md={4}>
             <SelectBoxInput
@@ -158,7 +181,7 @@ const RegisterForm = ({ t, setStep }: RegisterFormProps) => {
               value={code}
               options={countriesCode}
               onChange={(_, item: any) => {
-                setCode(item)
+                setCountryCode(item)
               }}
             />
           </Grid>
@@ -172,7 +195,6 @@ const RegisterForm = ({ t, setStep }: RegisterFormProps) => {
             />
           </Grid>
         </Grid>
-
         <Grid container spacing={2} mt={1}>
           <Grid item xs={12} sm={12} md={12}>
             <SelectBoxInput
@@ -230,6 +252,12 @@ const RegisterForm = ({ t, setStep }: RegisterFormProps) => {
       >
         {t.general.register}
       </MuiButton>
+      <AuthFooter
+        page="register"
+        pageLink="login"
+        title={t.general.login}
+        subTitle={t.login.dontHaveAccount}
+      />
     </form>
   )
 }

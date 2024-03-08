@@ -100,7 +100,8 @@
       "fileMaxSize": "الحد الأقصى لحجم الملف هو 5 ميغابايت",
       "verificationCodePhone": "يتم إرسال رمز التحقق إلى رقم هاتفك المحمول",
       "confirmCode": "تأكيد الرمز",
-      "welcome": "Welcome!"
+      "welcome": "Welcome!",
+      "successfulRegistration": "Your registration was successful"
     },
     "about": {
       "title": "معلومات عنا",

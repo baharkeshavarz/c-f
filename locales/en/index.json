@@ -100,7 +100,8 @@
       "verificationCodeEmail": "Verification code being sent to email",
       "verificationCodePhone": "Verification code being sent to your mobile number",
       "confirmCode": "Confirm the Code",
-      "welcome": "Welcome!"
+      "welcome": "Welcome!",
+      "successfulRegistration": "Your registration was successful"
     },
     "errors": {
       "errorHappened": "An error has occurred"

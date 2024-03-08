@@ -2,7 +2,7 @@
 
 import LayoutWrapper from "@/components/layout/layout-wrapper"
 import LoginForm from "./login-form"
-import { Grid, useTheme } from "@mui/material"
+import { Grid } from "@mui/material"
 import MainCard from "@/components/common/main-card"
 import { TranslateProps } from "@/types"
 import { useState } from "react"
@@ -12,7 +12,6 @@ const Login = ({ t }: TranslateProps) => {
   const [step, setStep] = useState("data")
   const [mobile, setMobile] = useState("")
   const [code, setCode] = useState("")
-  const theme = useTheme()
 
   return (
     <LayoutWrapper>

@@ -21,15 +21,15 @@ interface VerifyFormProps {
   setStep: Dispatch<SetStateAction<string>>
   activeStep?: number
   setActiveStep?: Dispatch<SetStateAction<number>>
+  token?: string
 }
 
 const VerifyForm = ({
   t,
   page,
-  isMobile,
   receiveData,
   setStep,
-  activeStep,
+  token = "",
   setActiveStep
 }: VerifyFormProps) => {
   const router = useRouter()
@@ -48,10 +48,12 @@ const VerifyForm = ({
   const handleVerify: SubmitHandler<FieldValues> = async val => {
     if (page === "register") {
       setState("loading")
+      const data = receiveData.split(" ")
       const registerData = {
-        mobileNumber: receiveData,
+        prefixMobileNumber: data[0],
+        mobileNumber: data[1],
         code: p2e(val?.otp),
-        token: ""
+        token
       }
       doVerifyRegister(registerData)
         .then(response => {
@@ -64,7 +66,7 @@ const VerifyForm = ({
               auth.login(response?.data?.value)
               auth.loadUser()
               auth.backToBeforeLogin(router)
-              toast.success("ثبت نام با موفقیت انجام شد.")
+              toast.success(t.messages.successfulRegistration)
             }
           }
         })

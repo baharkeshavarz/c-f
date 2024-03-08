@@ -4,16 +4,19 @@ import LayoutWrapper from "@/components/layout/layout-wrapper"
 import { Grid, Stack } from "@mui/material"
 import MainCard from "@/components/common/main-card"
 import { TranslateProps } from "@/types"
-import AuthFooter from "@/components/auth/footer"
-import AuthHeader from "@/components/auth/header"
-import { IdentificationIcon } from "@heroicons/react/24/solid"
 import { useState } from "react"
 import RegisterForm from "./register-form"
+import VerifyCode from "./verify-code"
 
 const Register = ({ t }: TranslateProps) => {
   const [step, setStep] = useState("data")
+  const [mobile, setMobile] = useState("")
+  const [code, setCode] = useState("")
+  const [token, setToken] = useState("")
+
   return (
     <LayoutWrapper>
+      {code} === {mobile}
       <Grid
         container
         justifyContent="center"
@@ -23,19 +26,25 @@ const Register = ({ t }: TranslateProps) => {
         <Grid item xs={12} sm={8} md={6} lg={5} xl={4}>
           <MainCard shadow={3} sx={{ borderRadius: "8px", p: 3 }}>
             <Stack mt={3}>
-              <AuthHeader
-                page="register"
-                title={t.general.register}
-                subTitle={t.register.headerMsg}
-                icon={IdentificationIcon}
-              />
-              <RegisterForm t={t} setStep={setStep} />
-              <AuthFooter
-                page="register"
-                pageLink="login"
-                title={t.general.login}
-                subTitle={t.login.dontHaveAccount}
-              />
+              {step == "data" && (
+                <RegisterForm
+                  t={t}
+                  setStep={setStep}
+                  setMobile={setMobile}
+                  code={code}
+                  setCode={setCode}
+                  setToken={setToken}
+                />
+              )}
+              {step === "verify" && (
+                <VerifyCode
+                  t={t}
+                  setStep={setStep}
+                  mobile={mobile}
+                  code={code}
+                  token={token}
+                />
+              )}
             </Stack>
           </MainCard>
         </Grid>

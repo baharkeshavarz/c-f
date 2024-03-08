@@ -9,10 +9,11 @@ interface VerifyCodeProps {
   t: any
   code: string
   mobile: string
+  token: string
   setStep: Dispatch<SetStateAction<string>>
 }
 
-const VerifyCode = ({ t, setStep, mobile, code }: VerifyCodeProps) => {
+const VerifyCode = ({ t, setStep, mobile, code, token }: VerifyCodeProps) => {
   const [status, setStatus] = useState("")
   const theme = useTheme()
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"))
@@ -27,9 +28,10 @@ const VerifyCode = ({ t, setStep, mobile, code }: VerifyCodeProps) => {
       <VerifyForm
         t={t}
         setStep={setStep}
-        receiveData={`${code}${mobile}`}
+        receiveData={`${code} ${mobile}`}
         isMobile={isMobile}
-        page="login"
+        page="register"
+        token={token}
       />
       <MuiButton
         sx={{
