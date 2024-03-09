@@ -45,7 +45,7 @@ const LocaleSwitcher = ({ classes, t }: LocaleSwitcherProps) => {
   }, [pathName])
 
   return (
-    <div className={`mx-1 flex h-full items-center bg-white ${classes}`}>
+    <div className={`mx-1 flex h-full items-center bg-black ${classes}`}>
       <FormControl variant="standard" sx={{ minWidth: 150, p: 0, m: 0 }}>
         <InputLabel
           sx={{
@@ -53,7 +53,8 @@ const LocaleSwitcher = ({ classes, t }: LocaleSwitcherProps) => {
             justifyContent: "center",
             alignItems: "center",
             padding: 0,
-            m: 0
+            m: 0,
+            color: "white"
           }}
         >
           {selectedLang ? LangInfo(selectedLang) : t.pages.general.language}

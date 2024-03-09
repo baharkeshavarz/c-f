@@ -1,7 +1,7 @@
 "use client"
 
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
-import { Grid, Stack, useTheme } from "@mui/material"
+import { Box, Grid, Stack, useTheme, useMediaQuery } from "@mui/material"
 import MuiButton from "@/components/common/button"
 import ValidationHelperText from "@/components/common/validation-helper-text"
 import { toast } from "react-toastify"
@@ -51,6 +51,7 @@ const RegisterForm = ({
   const [state, setState] = useState("")
   const { doRegister } = useAuthenticationStore()
   const theme = useTheme()
+  const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"))
 
   // Use Form
   const {
@@ -161,30 +162,28 @@ const RegisterForm = ({
     getCountriesFunc()
   }, [])
 
-  if (status === "loading") {
-    return <Loading />
-  }
+  // if (status === "loading") {
+  //   return <Loading />
+  // }
 
   return (
-    <form onSubmit={handleSubmit(handleRegister)}>
+    <form onSubmit={handleSubmit(handleRegister)} method="post">
       <Stack>
         <AuthHeader
           title={t.general.register}
           subTitle={t.register.headerMsg}
           icon={IdentificationIcon}
         />
-        <Grid container spacing={2} mt={1}>
-          <Grid item xs={12} sm={4} md={4}>
+        <Box display={"flex"} sx={{ flexDirection: isMobile ? "column" : "row"}} alignItems={"center"} mt={1}>
             <SelectBoxInput
               label={t.forms.code}
               value={code}
               options={countriesCode}
-              onChange={(_, item: any) => {
-                setCountryCode(item)
+              onChange={(_: any, item: any) => {
+                 setCountryCode(item)
               }}
             />
-          </Grid>
-          <Grid item xs={12} sm={8} md={8}>
+            <Box sx={{ marginLeft: 1}}></Box>
             <PhoneNumberInput
               register={register}
               name="phoneNumber"
@@ -192,8 +191,13 @@ const RegisterForm = ({
               t={t}
               icon={true}
             />
-          </Grid>
-        </Grid>
+        </Box>
+         <Box>
+            <ValidationHelperText
+              error={!!errors?.phoneNumber}
+              helperText={(errors?.phoneNumber?.message as string) || ""}
+            />
+        </Box>
         <Grid container spacing={2} mt={1}>
           <Grid item xs={12} sm={12} md={12}>
             <SelectBoxInput

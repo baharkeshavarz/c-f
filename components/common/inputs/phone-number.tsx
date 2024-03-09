@@ -37,6 +37,7 @@ const PhoneNumberInput = ({
   return (
     <TextField
       autoFocus={true}
+      size="small"
       disabled={disabled}
       onKeyDown={onlyDigitsWithMaxLen(10)}
       sx={{

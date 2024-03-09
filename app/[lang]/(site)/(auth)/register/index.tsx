@@ -23,7 +23,7 @@ const Register = ({ t }: TranslateProps) => {
         sx={{ margin: 5 }}
       >
         <Grid item xs={12} sm={8} md={6} lg={5} xl={4}>
-          <MainCard shadow={3} sx={{ borderRadius: "8px" }}>
+          <MainCard shadow={3} sx={{ borderRadius: "8px", p: 3 }}>
             <Stack mt={3}>
               {step == "data" && (
                 <RegisterForm

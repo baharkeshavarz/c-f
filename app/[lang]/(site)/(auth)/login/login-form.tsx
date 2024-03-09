@@ -1,7 +1,7 @@
 "use client"
 
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
-import { Grid, Stack, useTheme } from "@mui/material"
+import { Box, Stack, useTheme, useMediaQuery } from "@mui/material"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import MuiButton from "@/components/common/button"
 import ValidationHelperText from "@/components/common/validation-helper-text"
@@ -39,6 +39,7 @@ const LoginForm = ({
   const { doLogin } = useAuthenticationStore()
   const theme = useTheme()
   const { countriesInfo, onSetCountriesCodeList } = useCountriesStore()
+  const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"))
 
   const {
     register,
@@ -100,8 +101,7 @@ const LoginForm = ({
           icon={LockClosedIcon}
         />
 
-        <Grid container spacing={2} mt={1}>
-          <Grid item xs={12} sm={4} md={4}>
+        <Box display={"flex"} sx={{ flexDirection: isMobile ? "column" : "row"}} alignItems={"center"} mt={1}>
             <SelectBoxInput
               label={t.forms.code}
               value={code}
@@ -110,8 +110,7 @@ const LoginForm = ({
                 setCode(item)
               }}
             />
-          </Grid>
-          <Grid item xs={12} sm={8} md={8}>
+            <Box sx={{ marginLeft: 1}}></Box>
             <PhoneNumberInput
               register={register}
               name="phoneNumber"
@@ -119,8 +118,7 @@ const LoginForm = ({
               t={t}
               icon={true}
             />
-          </Grid>
-        </Grid>
+        </Box>
         <ValidationHelperText
           error={!!errors?.phoneNumber}
           helperText={(errors?.phoneNumber?.message as string) || ""}

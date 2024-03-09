@@ -23,11 +23,15 @@ const SelectBoxInput = ({
       {...sx}
       onChange={onChange}
       disablePortal
-      value={value}
+      value={value}      
+      size="small"
       options={options}
       renderInput={params => (
         <TextField
           sx={{
+            pt:'0 !important',
+            pb:'0 !important',
+            height:'3rem !important',
             "& label.Mui-focused": {
               color: theme.palette.grey[500]
             },
@@ -36,8 +40,13 @@ const SelectBoxInput = ({
                 borderColor: theme.palette.grey[500]
               }
             },
+            '& .MuiOutlinedInput-root.MuiInputBase-sizeSmall':{
+                paddingTop: "17px",
+                paddingBottom: "0px",
+                paddingLeft: "6px"
+            },
             "& .MuiInputBase-root": {
-              borderRadius: "2px"
+              borderRadius: "3px"
             }
           }}
           {...params}
