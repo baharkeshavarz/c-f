@@ -2,7 +2,7 @@
 
 import { Dispatch, SetStateAction, useState } from "react"
 import useAuthenticationStore from "@/store/authentication"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import CountDown from "@/components/common/countdown"
 import ValidationHelperText from "@/components/common/validation-helper-text"
 import { alpha, Box, Stack, TextField, useTheme } from "@mui/material"
@@ -107,7 +107,7 @@ const VerifyForm = ({
 
   const sendOtpAgain = () => {
     if (page === "register") {
-      resendRegisterOtp(mobileNumber).then(response => {
+      resendRegisterOtp(receiveData).then(response => {
         if (response?.status === 200) {
           if (!response?.data?.succeed) {
             toast.error(response?.data?.message)
@@ -118,7 +118,7 @@ const VerifyForm = ({
         }
       })
     } else {
-      doLogin({ phoneNumber: mobileNumber }).then(response => {
+      doLogin(receiveData).then(response => {
         if (response?.status === 200) {
           if (!response?.data?.succeed) {
             toast.error(response?.data?.message)
@@ -150,8 +150,9 @@ const VerifyForm = ({
               style: { color: theme.palette.grey[500] }
             }}
             onKeyUp={event => {
-              if (event.target.value.length === 6) {
-                handleSubmit(handleVerify)()
+              const target = event.target as HTMLInputElement;
+              if (target.value.length === 6) {
+                 handleSubmit(handleVerify)();
               }
             }}
             sx={{

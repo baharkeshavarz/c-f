@@ -47,7 +47,7 @@ const FinancialDeclaration = ({ t, activeStep, setActiveStep }: FinancialDeclara
            }}>
         <Grid container spacing={2}>
            <Grid item xs={12} sm={12} md={6}>
-             <SelectBoxInput label={t.forms.jobStatus} options={[]} />
+             <SelectBoxInput label={t.forms.jobStatus} options={[]} value="" />
           </Grid>
 
           <Grid item xs={12} sm={12} md={6}>

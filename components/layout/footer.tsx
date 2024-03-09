@@ -113,7 +113,7 @@ const Footer = () => {
                 {items.map(link => (
                   <li key={link}>
                     <Typography
-                      as="a"
+                      component="a" 
                       href="#"
                       color="gray"
                       className="hover:text-blue-gray-900 py-1.5 font-normal transition-colors"
@@ -127,7 +127,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex-center border-blue-gray-50 mt-12 w-full border-t py-4 text-white">
-          <Typography variant="small" className="mb-4 py-3 text-center md:mb-0">
+          <Typography variant="caption" className="mb-4 py-3 text-center md:mb-0">
             &copy; {currentYear} by{" "}
             <a href="https://material-tailwind.com/">Crowd Funding</a>
           </Typography>

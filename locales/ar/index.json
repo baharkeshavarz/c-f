@@ -7,10 +7,6 @@
     "login": "تسجيل الدخول"
   },
   "pages": {
-    "home": {
-      "title": "خوش آمدید",
-      "description": "این پروژه است"
-    },
     "calculator": {
       "amount": "كمية",
       "term": "خلال",
@@ -81,8 +77,8 @@
       "jobStatus": "الحالة الوظيفية",
       "monthlyInsultment": "الإهانة الشهرية",
       "mortgageRepayment": "سداد الرهن العقاري",
-      "code": "Code",
-      "nationality": "Nationality"
+      "code": "شفرة",
+      "nationality": "جنسية"
     },
     "formErrors": {
       "isRequired": "مطلوب",
@@ -101,7 +97,7 @@
       "verificationCodePhone": "يتم إرسال رمز التحقق إلى رقم هاتفك المحمول",
       "confirmCode": "تأكيد الرمز",
       "welcome": "Welcome!",
-      "successfulRegistration": "Your registration was successful"
+      "successfulRegistration": "تم تسجيلكم بنجاح"
     },
     "about": {
       "title": "معلومات عنا",

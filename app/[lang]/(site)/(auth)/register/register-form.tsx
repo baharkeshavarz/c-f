@@ -46,8 +46,8 @@ const RegisterForm = ({
   const [countriesList, setCountriesList] = useState([])
   const [nationalities, setNationalities] = useState([])
   const [countryCode, setCountryCode] = useState("")
-  const [nationality, setNationality] = useState(null)
-  const [location, setLocation] = useState(null)
+  const [nationality, setNationality] = useState<{ id: string } | null>(null);
+  const [location, setLocation] = useState<{ id: string } | null>(null);
   const [state, setState] = useState("")
   const { doRegister } = useAuthenticationStore()
   const theme = useTheme()
@@ -161,10 +161,10 @@ const RegisterForm = ({
     }
     getCountriesFunc()
   }, [])
-
-  // if (status === "loading") {
-  //   return <Loading />
-  // }
+  
+  if (status === "loading") {
+    return <Loading />
+  }
 
   return (
     <form onSubmit={handleSubmit(handleRegister)} method="post">
@@ -204,7 +204,7 @@ const RegisterForm = ({
               label={t.forms.nationality}
               value={nationality}
               options={nationalities}
-              onChange={(_, item: any) => {
+              onChange={(_: any, item: any) => {
                 setNationality(item)
               }}
             />
@@ -235,7 +235,7 @@ const RegisterForm = ({
               label={t.forms.country}
               value={location}
               options={countriesList}
-              onChange={(_, item: any) => {
+              onChange={(_: any, item: any) => {
                 setLocation(item)
               }}
             />

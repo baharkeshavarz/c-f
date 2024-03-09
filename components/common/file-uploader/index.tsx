@@ -26,7 +26,7 @@ interface FileUploaderProps {
 
 const FileUploader = ({ t, title, subTitle, setFile, sx }: FileUploaderProps) => {
   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("xs"))
-  const inputRef = useRef()
+  const inputRef = useRef<HTMLInputElement>(null);
   const theme = useTheme()
   const [image, setImage] = useState("")
   const [loading, setLoading] = useState(false)
@@ -52,10 +52,10 @@ const FileUploader = ({ t, title, subTitle, setFile, sx }: FileUploaderProps) =>
 
           if (fileType.startsWith("image/")) {
             // It's an image
-            setFile(reader!.result!.split(",")[1])
+            setFile(typeof reader?.result === 'string' ? reader.result.split(",")[1] : "");
             setIsPdf(false)
           } else if (fileType === "application/pdf") {
-            setFile(reader!.result!.split(",")[1])
+            setFile(typeof reader?.result === 'string' ? reader.result.split(",")[1] : "");
             setIsPdf(!!reader.result)
           } else {
             // Unsupported file type
@@ -98,8 +98,8 @@ const FileUploader = ({ t, title, subTitle, setFile, sx }: FileUploaderProps) =>
 
   // Handle Open Select File
   const handleFileUpload = () => {
-    if (!loading) {
-      inputRef.current.click()
+    if (!loading && inputRef.current) {
+      inputRef.current.click();
     } else {
       setLoading(true)
     }
@@ -124,7 +124,7 @@ const FileUploader = ({ t, title, subTitle, setFile, sx }: FileUploaderProps) =>
         type="file"
         hidden
         multiple
-        accept={["image/jpeg", "image/png", "application/pdf"]}
+        accept="image/jpeg, image/png, application/pdf"
         onChange={onImageChange}
       />
 
@@ -145,7 +145,7 @@ const FileUploader = ({ t, title, subTitle, setFile, sx }: FileUploaderProps) =>
               startIcon={<Photo />}
               size="medium"
               sx={{
-                background: `${theme.palette.brown[500]} !important`,
+                background: `${theme.palette.primary.dark} !important`,
                 borderRadius: "4px",
                 px: 2
               }}
@@ -162,9 +162,7 @@ const FileUploader = ({ t, title, subTitle, setFile, sx }: FileUploaderProps) =>
                 mb={2}
               >
                 <iframe
-                  frameborder="0"
-                  allowtransparency="yes"
-                  scrolling="no"
+                  allowTransparency={true}
                   width="70%"
                   height="500"
                   src={isPdf + "#toolbar=0"}
@@ -196,7 +194,7 @@ const FileUploader = ({ t, title, subTitle, setFile, sx }: FileUploaderProps) =>
                 variant="contained"
                 sx={{ borderRadius: "8px" }}
               >
-                Download the {tilte}
+                Download the {title}
               </Button>
             </Stack>
           ) : (

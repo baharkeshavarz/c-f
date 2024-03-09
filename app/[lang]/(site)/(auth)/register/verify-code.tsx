@@ -20,7 +20,6 @@ const VerifyCode = ({ t, setStep, mobile, code, token }: VerifyCodeProps) => {
   return (
     <>
       <AuthHeader
-        page="login"
         title={t.messages.confirmCode}
         subTitle={`${t.messages.verificationCodePhone}: ${code} ${mobile}`}
         icon={ThumbUpOffAltIcon}

@@ -32,6 +32,7 @@ const GmailVerification = ({ t, activeStep, setActiveStep }: GmailVerificationPr
             isMobile={isMobile}
             setStep={setStep}
             page="gmail"
+            receiveData=""
             activeStep={activeStep}
             setActiveStep={setActiveStep}
         />

@@ -129,6 +129,7 @@ const PersonalInformation = ({ t, activeStep, setActiveStep }: PersonalInformati
              <SelectBoxInput  
                  label={t.forms.country}
                  options={[]} 
+                 value=""
              />
           </Grid>
 
@@ -136,13 +137,16 @@ const PersonalInformation = ({ t, activeStep, setActiveStep }: PersonalInformati
              <SelectBoxInput  
                  label={t.forms.province}
                  options={[]} 
+                 value=""
              />
           </Grid>
 
           <Grid item xs={12} sm={12} md={4} lg={4}>
                <SelectBoxInput      
                  label={t.forms.city}
-                 options={[]} />
+                 options={[]}
+                 value=""
+               />
            </Grid>
 
           <Grid item xs={12} sm={12} md={12} lg={12}>

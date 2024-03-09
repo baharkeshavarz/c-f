@@ -7,7 +7,7 @@ interface InputEvent extends React.KeyboardEvent<HTMLInputElement> {
   metaKey: boolean
 }
 
-export const onlyDigitsWithMaxLen = (max: number) => (event: InputEvent) => {
+export const onlyDigitsWithMaxLen = (max: number) => (event: React.ChangeEvent<HTMLInputElement> & InputEvent) => {
   if (
     event.key === "Backspace" ||
     event.key === "Delete" ||

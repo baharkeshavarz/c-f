@@ -60,9 +60,6 @@ const Palette = (mode: any) => {
       A400: "#616161",
       A700: "#303030"
     },
-    brown: {
-      500: "#795548"
-    },
     text: {
       primary: `rgba(${mainColor}, 0.87)`,
       secondary: `rgba(${mainColor}, 0.68)`,

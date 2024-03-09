@@ -21,8 +21,8 @@ const CountDown = ({ t, amount= 120, actionFunc } : CountDownProps) => {
   }
 
   const timer = (remaining: number) => {
-    let m = Math.floor(remaining / 60)
-    let s = remaining % 60
+    let m: string | number = Math.floor(remaining / 60)
+    let s: string | number = remaining % 60
     m = m < 10 ? "0" + m : m
     s = s < 10 ? "0" + s : s
 

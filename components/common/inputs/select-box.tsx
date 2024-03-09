@@ -20,7 +20,7 @@ const SelectBoxInput = ({
 
   return (
     <Autocomplete
-      {...sx}
+      {...(sx as any)} 
       onChange={onChange}
       disablePortal
       value={value}      

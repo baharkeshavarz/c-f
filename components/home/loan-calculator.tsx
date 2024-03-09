@@ -23,7 +23,7 @@ const LoanCalculator = ({ t }: LoanCalculatorProps) => {
                 </div>
                 <div className="flex-center flex-1 space-x-2">
                   <Button
-                    variant="filled"
+                    variant="contained"
                     className="flex-center bg-light-800 h-10"
                   >
                     <span className="h4-semibold text-dark100_light900">+</span>
@@ -32,12 +32,9 @@ const LoanCalculator = ({ t }: LoanCalculatorProps) => {
                     placeholder="10000"
                     value="1500"
                     className="focus:!border-light-800"
-                    labelProps={{
-                      className: "before:content-none after:content-none"
-                    }}
-                  />
+                   />
                   <Button
-                    variant="filled"
+                    variant="contained"
                     className="flex-center bg-light-800 h-10"
                   >
                     <span className="text-dark100_light900 text-xl">-</span>
@@ -52,7 +49,7 @@ const LoanCalculator = ({ t }: LoanCalculatorProps) => {
                 </div>
                 <div className="flex-center flex-1 space-x-2">
                   <Button
-                    variant="filled"
+                    variant="contained"
                     className="flex-center bg-light-800 h-10"
                   >
                     <span className="h4-semibold text-dark100_light900">+</span>
@@ -61,12 +58,9 @@ const LoanCalculator = ({ t }: LoanCalculatorProps) => {
                     placeholder="10000"
                     value="12"
                     className="focus:!border-light-800"
-                    labelProps={{
-                      className: "before:content-none after:content-none"
-                    }}
                   />
                   <Button
-                    variant="filled"
+                    variant="contained"
                     className="flex-center bg-light-800 h-10"
                   >
                     <span className="text-dark100_light900 text-xl">-</span>

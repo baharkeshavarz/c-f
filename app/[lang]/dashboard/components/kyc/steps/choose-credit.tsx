@@ -81,7 +81,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark, 
                     }}>
                   <TaskAltIcon/>
                   <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -94,7 +94,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark 
                     }}>
                     <TaskAltIcon/>
                     <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -108,7 +108,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark
                     }}>
                   <TaskAltIcon/>
                     <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -121,7 +121,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark
                     }}>
                   <TaskAltIcon/>
                     <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -185,7 +185,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark
                     }}>
                   <TaskAltIcon/>
                   <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -198,7 +198,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark,
                     }}>
                     <TaskAltIcon/>
                     <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -212,7 +212,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark 
                     }}>
                   <TaskAltIcon/>
                     <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -225,7 +225,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark,
                     }}>
                   <TaskAltIcon/>
                     <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -289,7 +289,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark
                     }}>
                   <TaskAltIcon/>
                   <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -302,7 +302,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark,
                     }}>
                     <TaskAltIcon/>
                     <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -316,7 +316,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark
                     }}>
                   <TaskAltIcon/>
                     <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>
@@ -329,7 +329,7 @@ const ChooseCredit = ({ t, activeStep, setActiveStep }: ChooseCreditProps) => {
                     justifyContent: "flex-start",
                     alignItems: "center", 
                     gap: 1, 
-                    color: theme.palette.brown[500] 
+                    color: theme.palette.primary.dark 
                     }}>
                   <TaskAltIcon/>
                     <Typography variant="body1" color="textSecondary" sx={{ my: 1 }}>

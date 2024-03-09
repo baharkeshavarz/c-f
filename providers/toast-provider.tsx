@@ -7,7 +7,7 @@ import { useTheme, useMediaQuery } from "@mui/material"
 
 const ToastProvider = () => {
   const theme = useTheme()
-  const xs = useMediaQuery(theme => theme.breakpoints.down("xs"))
+  const xs = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <ToastContainer

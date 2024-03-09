@@ -7,10 +7,6 @@
     "login": "Log In"
   },
   "pages": {
-    "home": {
-      "title": "Learn About Our Companyre",
-      "description": "There are many variations of passages of available but the majority have suffered alteration in some form, by injected humou or randomised words."
-    },
     "calculator": {
       "amount": "Amount",
       "term": "Term",

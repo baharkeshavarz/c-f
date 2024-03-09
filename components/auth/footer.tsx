@@ -25,7 +25,7 @@ const AuthFooter = ({ page, pageLink, title, subTitle }: AuthFooterProps)  => {
                 {subTitle}
                 <Link
                     href={`/${lang}/${pageLink}`}
-                    style={{ paddingRight: 0.5, paddingLeft: 0.5, fontWeight: "bold", color: theme.palette.brown[500] }}
+                    style={{ paddingRight: 0.5, paddingLeft: 0.5, fontWeight: "bold", color: theme.palette.primary.dark }}
                 >
                  {title}
                 </Link>

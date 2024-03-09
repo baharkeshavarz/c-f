@@ -85,7 +85,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                         color: "grey.700" // Just text label (COMPLETED)
                       },
                     "& .MuiStepLabel-root .Mui-active": {
-                      color: "brown.500" // circle color (ACTIVE)
+                      color: "primay.dark" // circle color (ACTIVE)
                     },
                     "& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel":
                       {
@@ -98,7 +98,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
                 >
                   <StepLabel {...labelProps}>
                     <Stack>
-                      <Typography variant="subtitle1Bold">{label}</Typography>
+                      <Typography variant="subtitle1">{label}</Typography>
                       <Typography variant="caption">
                         {stepsInfo[index]}
                       </Typography>
@@ -122,7 +122,7 @@ const VarticalLinearStepper = ({ t }: TranslateProps) => {
               }}
             >
               <Typography
-                variant="subtitle1Bold"
+                variant="subtitle1"
                 color={theme.palette.grey[600]}
                 paddingX={1.5}
               >
